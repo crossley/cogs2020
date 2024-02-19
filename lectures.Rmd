@@ -1,0 +1,19 @@
+---
+title: "Lectures"
+description: Experimental Design and Data Analysis for the Cognitive and Brain Sciences
+output:
+  html_document:
+    toc: false 
+    theme: cosmo
+fontsize: 14pt
+---
+
+- Week 1
+  - [Understanding variable types in R](lectures/week_1/lecture_1.html)
+  - [Understanding the Workspace in R](lectures/week_1/lecture_2.html)
+  - [Container Variable Types and Accessing Elements in R](lectures/week_1/lecture_3.html)
+  - [Writing and Calling Functions in R](lectures/week_1/lecture_4.html)
+  - [Container Variable Type Coercion in R](lectures/week_1/lecture_5.html)
+  - [Assignment Operators in R](lectures/week_1/lecture_6.html)
+  - [Loops and Conditional Flow in R](lectures/week_1/lecture_7.html)
+  - [Getting Help in R](lectures/week_1/lecture_7.html)

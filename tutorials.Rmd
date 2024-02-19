@@ -1,0 +1,11 @@
+---
+title: "Tutorials"
+description: Experimental Design and Data Analysis for the Cognitive and Brain Sciences
+output:
+  html_document:
+    toc: false
+    theme: cosmo
+fontsize: 14pt
+---
+
+- [Week 1 tutorial](tutorials/tutorial_1.html)

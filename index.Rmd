@@ -1,0 +1,19 @@
+---
+title: "COGS2020"
+description: Experimental Design and Data Analysis for the Cognitive and Brain Sciences
+output:
+  html_document:
+    toc: false
+    theme: cosmo
+fontsize: 14pt
+---
+
+## Weclome
+
+Please use the nav bar to get around.
+
+<!---
+<center>
+    ![](img/brain_bling.jpg)
+</center>
+--->

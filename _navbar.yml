@@ -1,0 +1,9 @@
+title: "COGS2020"
+type: default
+left:
+  - text: "Lectures"
+    href: lectures.html
+  - text: "Tutorials"
+    href: tutorials.html
+  - text: "Homework"
+    href: homework.html

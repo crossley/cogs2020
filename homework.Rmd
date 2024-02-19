@@ -1,0 +1,11 @@
+---
+title: "Homework"
+description: Experimental Design and Data Analysis for the Cognitive and Brain Sciences
+output:
+  html_document:
+    toc: false
+    theme: cosmo
+fontsize: 14pt
+---
+
+- Coming soon.
