@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Writing and Calling Functions in R</title>
+  <title>Reshaping Data with data.table</title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -20,7 +20,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Writing and Calling Functions in R',
+                title: 'Reshaping Data with data.table',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -3207,70 +3207,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Introduction to Functions in R</h2></hgroup><article  id="introduction-to-functions-in-r">
+<slide class=""><hgroup><h2>Introduction to Data Reshaping</h2></hgroup><article  id="introduction-to-data-reshaping">
 
-<h3>What is a Function?</h3>
+<p>Reshaping data involves changing how your data is organised in whatever sort of container you are using to store it. For us, this container will almost always be a <code>data.table</code> Luckily, the <code>data.table</code> package in R provides efficient functions for reshaping.</p>
 
-<ul>
-<li>A function is a piece of code written to carry out a specified task.</li>
-<li>It can take inputs, perform an operation, and return an output.</li>
-</ul>
+</article></slide><slide class=""><hgroup><h2>Wide Format data.table Example</h2></hgroup><article  id="wide-format-data.table-example">
 
-</article></slide><slide class=""><hgroup><h2>Writing a Function</h2></hgroup><article  id="writing-a-function">
-
-<h3>Basic Structure</h3>
-
-<ul>
-<li>A function is defined using the <code>function()</code> keyword.</li>
-<li>The body of the function is enclosed in <code>{}</code>.</li>
-</ul>
-
-<pre class = 'prettyprint lang-r'># Example of a simple function
-my_function &lt;- function(x) {
-  return(x * 2)
-}</pre>
-
-<h3>Specifying Arguments</h3>
+<pre >##    Subject Congruent Incongruent
+##      &lt;num&gt;     &lt;num&gt;       &lt;num&gt;
+## 1:       1     0.512       0.710
+## 2:       2     0.469       0.689
+## 3:       3     0.482       0.725</pre>
 
 <ul>
-<li>Arguments are specified within the parentheses.</li>
-<li>They represent the inputs the function can accept.</li>
+<li>Each column represents a different variable or condition (e.g., &ldquo;Congruent&rdquo; and &ldquo;Incongruent&rdquo; response times).</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Calling a Function</h2></hgroup><article  id="calling-a-function">
+</article></slide><slide class=""><hgroup><h2>Long Format data.table Example</h2></hgroup><article  id="long-format-data.table-example">
 
-<h3>How to Call</h3>
+<pre >##    Subject   Condition ResponseTime
+##      &lt;num&gt;      &lt;fctr&gt;        &lt;num&gt;
+## 1:       1   Congruent        0.512
+## 2:       2   Congruent        0.469
+## 3:       3   Congruent        0.482
+## 4:       1 Incongruent        0.710
+## 5:       2 Incongruent        0.689
+## 6:       3 Incongruent        0.725</pre>
 
 <ul>
-<li>To call a function, use its name followed by parentheses.</li>
-<li>Inside the parentheses, provide the necessary arguments.</li>
+<li><code>Subject</code>: Identifier for each subject.</li>
+<li><code>Condition</code>: Specifies the condition under which the measurement was taken (e.g., &ldquo;Congruent&rdquo; or &ldquo;Incongruent&rdquo;).</li>
+<li><code>ResponseTime</code>: The measured response time for the condition.</li>
 </ul>
 
-<pre class = 'prettyprint lang-r'># Calling the function
-result &lt;- my_function(5)
-print(result)</pre>
+</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format">
 
-<pre >## [1] 10</pre>
+<p>Wide format can look bad.</p>
 
-<h3>Return Value</h3>
+<pre >##    subject congruent_red_squares congruent_red_circles congruent_green_squares
+##      &lt;num&gt;                 &lt;num&gt;                 &lt;num&gt;                   &lt;num&gt;
+## 1:       1            0.92420690            0.11523556               0.4242907
+## 2:       2            0.04503525            0.03817182               0.8769480
+## 3:       3            0.45266543            0.11606227               0.3241076
+##    congruent_green_circles incongruent_red_squares incongruent_red_circles
+##                      &lt;num&gt;                   &lt;num&gt;                   &lt;num&gt;
+## 1:               0.9739668               0.8432093               0.5626044
+## 2:               0.7437526               0.4929206               0.8242510
+## 3:               0.2508600               0.4953395               0.2604399
+##    incongruent_green_squares incongruent_green_circles
+##                        &lt;num&gt;                     &lt;num&gt;
+## 1:                 0.9871745                 0.2877010
+## 2:                 0.3278055                 0.6280071
+## 3:                 0.7608210                 0.5286584</pre>
+
+</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-1">
+
+<p>Long format looks better.</p>
+
+<pre >##     subject                 Condition ResponseTime
+##       &lt;num&gt;                    &lt;fctr&gt;        &lt;num&gt;
+##  1:       1     congruent_red_squares   0.94079289
+##  2:       2     congruent_red_squares   0.68486346
+##  3:       3     congruent_red_squares   0.60130423
+##  4:       1     congruent_red_circles   0.91541815
+##  5:       2     congruent_red_circles   0.85893190
+##  6:       3     congruent_red_circles   0.14236737
+##  7:       1   congruent_green_squares   0.99967713
+##  8:       2   congruent_green_squares   0.74514227
+##  9:       3   congruent_green_squares   0.19669260
+## 10:       1   congruent_green_circles   0.64586186
+## 11:       2   congruent_green_circles   0.45429016
+## 12:       3   congruent_green_circles   0.37457068
+## 13:       1   incongruent_red_squares   0.06046797
+## 14:       2   incongruent_red_squares   0.92123653
+## 15:       3   incongruent_red_squares   0.25101307
+## 16:       1   incongruent_red_circles   0.20588677
+## 17:       2   incongruent_red_circles   0.56654035
+## 18:       3   incongruent_red_circles   0.93282604
+## 19:       1 incongruent_green_squares   0.92581701
+## 20:       2 incongruent_green_squares   0.12430665
+## 21:       3 incongruent_green_squares   0.50201929
+## 22:       1 incongruent_green_circles   0.59615382
+## 23:       2 incongruent_green_circles   0.60073169
+## 24:       3 incongruent_green_circles   0.03926567
+##     subject                 Condition ResponseTime</pre>
+
+</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-2">
+
+<p>Long format makes grouping / aggregation much easier and scalable.</p>
+
+<pre class = 'prettyprint lang-r'># compute mean ResponseTime per Condition from long format
+long_dt[, mean(ResponseTime), .(Condition)]
+
+# compute mean ResponseTime per Condition from wide format
+wide_dt[, .( mean(congruent_red_squares), 
+            mean(congruent_red_circles), 
+            mean(congruent_green_squares), 
+            mean(congruent_green_circles), 
+            mean(incongruent_red_squares), 
+            mean(incongruent_red_circles), 
+            mean(incongruent_green_squares), 
+            mean(incongruent_green_circles)
+            )]</pre>
+
+</article></slide><slide class=""><hgroup><h2><code>melt()</code> for wide to long</h2></hgroup><article  id="melt-for-wide-to-long">
+
+<pre class = 'prettyprint lang-r'>library(data.table)
+
+wide_dt &lt;- data.table(
+  Subject = c(1, 2, 3),
+  Congruent = c(0.512, 0.469, 0.482),
+  Incongruent = c(0.710, 0.689, 0.725)
+)
+
+# Convert from wide to long format
+long_dt &lt;- melt(wide_dt, 
+                id.vars = &quot;Subject&quot;, 
+                variable.name = &quot;Condition&quot;,
+                value.name = &quot;ResponseTime&quot;)</pre>
 
 <ul>
-<li>The <code>return()</code> function specifies the output of the function.</li>
-<li>If <code>return()</code> is not explicitly called, the last line is returned automatically.</li>
+<li>The <code>id.vars</code> parameter specifies columns that should remain unchanged, while <code>variable.name</code> and <code>value.name</code> parameters rename the melted columns.</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Quiz: Functions in R</h2></hgroup><article  id="quiz-functions-in-r">
+</article></slide><slide class=""><hgroup><h2><code>dcast()</code> for long to wide</h2></hgroup><article  id="dcast-for-long-to-wide">
 
-<p>How do you define a function in R that takes no arguments and prints &ldquo;Hello, World!&rdquo;?</p>
+<pre class = 'prettyprint lang-r'># Convert back to wide format for comparison
+wide_dt_again &lt;- dcast(long_dt, Subject ~ Condition, value.var = &quot;ResponseTime&quot;)
+print(wide_dt_again)</pre>
 
-<ol>
-<li><code>function() {print(&quot;Hello, World!&quot;)}</code></li>
-<li><code>myFunc &lt;- print(&quot;Hello, World!&quot;)</code></li>
-<li><code>myFunc &lt;- function() {print(&quot;Hello, World!&quot;)}</code></li>
-<li><code>function myFunc() {return(&quot;Hello, World!&quot;)}</code></li>
-</ol>
+<pre >## Key: &lt;Subject&gt;
+##    Subject Congruent Incongruent
+##      &lt;num&gt;     &lt;num&gt;       &lt;num&gt;
+## 1:       1     0.512       0.710
+## 2:       2     0.469       0.689
+## 3:       3     0.482       0.725</pre>
 
-<h3>Answer 1</h3>
+<ul>
+<li><p><code>long_dt</code>: The long format input <code>data.table</code></p></li>
+<li><p><code>Subject ~ Condition</code>: This formula tells <code>dcast</code> to group by <code>Subject</code> and spread columns out named after each <code>Condition</code></p></li>
+<li><p><code>value.var = &quot;ResponseTime&quot;</code>: Specifies which column to fill values from.</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Question 1</h2></hgroup><article  id="question-1">
+
+<p>Given <code>dt_sales</code> below, which line of code correctly converts <code>dt_sales</code> into a long format?</p>
+
+<pre >   Product Q1_Sales Q2_Sales
+1:       A      150      200
+2:       B      100      150</pre>
+
+<pre class = 'prettyprint lang-r'>melt(dt_sales, id.vars = &quot;Product&quot;, measure.vars = c(&quot;Q1_Sales&quot;, &quot;Q2_Sales&quot;))
+dcast(dt_sales, Product ~ Q1_Sales + Q2_Sales, value.var = &quot;Sales&quot;)
+dt_sales[, .(Product, Q1_Sales, Q2_Sales)]
+melt(dt_sales, id.vars = &quot;Q1_Sales&quot;, measure.vars = &quot;Product&quot;)</pre>
 
 <details>
 
@@ -3280,24 +3370,24 @@ Click here for the answer
 
 </summary>
 
-<ul>
-<li>The correct answer is <strong>3</strong>. <code>myFunc &lt;- function()   {print(&quot;Hello, World!&quot;)}</code> defines a function that takes no arguments and prints &ldquo;Hello, World!&rdquo;.</li>
-</ul>
+<pre class = 'prettyprint lang-r'>  melt(dt_sales, id.vars = &quot;Product&quot;, measure.vars = c(&quot;Q1_Sales&quot;, &quot;Q2_Sales&quot;))`</pre>
 
 </details>
 
-</article></slide><slide class=""><hgroup><h2>Quiz: Functions in R</h2></hgroup><article  id="quiz-functions-in-r-1">
+</article></slide><slide class=""><hgroup><h2>Question 2</h2></hgroup><article  id="question-2">
 
-<p>Given a function <code>addNumbers</code> that takes two arguments, <code>x</code> and <code>y</code>, and returns their sum, which of the following calls is correct?</p>
+<p>Given <code>dt_long_sales</code> in long format which line of code correctly converts it to wide format, where each row represents a product and each quarter’s sales are in separate columns?</p>
 
-<ol>
-<li><code>addNumbers(x, y)</code></li>
-<li><code>addNumbers &lt;- (x + y)</code></li>
-<li><code>result &lt;- addNumbers(2, 3)</code></li>
-<li><code>result = addNumbers(x: 2, y: 3)</code></li>
-</ol>
+<pre >   Product   Quarter Sales
+1:       A   Q1_Sales  150
+2:       A   Q2_Sales  200
+3:       B   Q1_Sales  100
+4:       B   Q2_Sales  150</pre>
 
-<h3>Answer 2</h3>
+<pre class = 'prettyprint lang-r'>dcast(dt_long_sales, Product ~ Sales, value.var = &quot;Quarter&quot;)
+dcast(dt_long_sales, Product ~ Quarter, value.var = &quot;Sales&quot;)
+dt_long_sales[, .(Product, Quarter, Sales)]
+dcast(dt_long_sales, Quarter ~ Product, value.var = &quot;Sales&quot;)</pre>
 
 <details>
 
@@ -3307,28 +3397,9 @@ Click here for the answer
 
 </summary>
 
-<ul>
-<li>The correct answer is <strong>3</strong>. <code>result &lt;- addNumbers(2, 3)</code> correctly calls the function <code>addNumbers</code> with 2 and 3 as arguments and stores the sum in <code>result</code>.</li>
-</ul>
+<pre class = 'prettyprint lang-r'>  dcast(dt_long_sales, Product ~ Quarter, value.var = &quot;Sales&quot;)</pre>
 
-</details>
-
-</article></slide><slide class=""><hgroup><h2>Best Practices for Writing Functions</h2></hgroup><article  id="best-practices-for-writing-functions">
-
-<h3>Clarity and Reusability</h3>
-
-<ul>
-<li><p>Name functions clearly and concisely.</p></li>
-<li><p>Write functions to perform a single task.</p></li>
-<li><p>Use comments to explain the function’s purpose and inputs.</p></li>
-</ul>
-
-<h3>Testing and Debugging</h3>
-
-<ul>
-<li><p>Test functions with different inputs to ensure they work as expected.</p></li>
-<li><p>Debug functions by checking each part of the function separately.</p></li>
-</ul></article></slide>
+</details></article></slide>
 
 
   <slide class="backdrop"></slide>
