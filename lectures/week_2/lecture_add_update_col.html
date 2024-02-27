@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reshaping Data with data.table</title>
+  <title>Adding, updating, and removing columns in data.table</title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -20,7 +20,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Reshaping Data with data.table',
+                title: 'Adding, updating, and removing columns in <code>data.table</code>',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -3207,160 +3207,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Introduction to Data Reshaping</h2></hgroup><article  id="introduction-to-data-reshaping">
-
-<p>Reshaping data involves changing how your data is organised in whatever sort of container you are using to store it. For us, this container will almost always be a <code>data.table</code> Luckily, the <code>data.table</code> package in R provides efficient functions for reshaping.</p>
-
-</article></slide><slide class=""><hgroup><h2>Wide Format data.table Example</h2></hgroup><article  id="wide-format-data.table-example">
-
-<pre >##    Subject Congruent Incongruent
-##      &lt;num&gt;     &lt;num&gt;       &lt;num&gt;
-## 1:       1     0.512       0.710
-## 2:       2     0.469       0.689
-## 3:       3     0.482       0.725</pre>
+<slide class=""><hgroup><h2>Adding Columns in <code>data.table</code></h2></hgroup><article  id="adding-columns-in-data.table">
 
 <ul>
-<li>Each column represents a different variable or condition (e.g., &ldquo;Congruent&rdquo; and &ldquo;Incongruent&rdquo; response times).</li>
+<li><p>Use the <code>:=</code> operator to add new columns by <strong>reference</strong></p></li>
+<li><p>This means that the original <code>data.table</code> is modified directly, rather than creating a new copy</p></li>
+<li><p>This means we won’t need to reassign the <code>data.table</code> to itself after adding columns (no <code>&lt;-</code> operator)</p></li>
+<li><p>This makes adding columns very fast, even for large datasets</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Long Format data.table Example</h2></hgroup><article  id="long-format-data.table-example">
-
-<pre >##    Subject   Condition ResponseTime
-##      &lt;num&gt;      &lt;fctr&gt;        &lt;num&gt;
-## 1:       1   Congruent        0.512
-## 2:       2   Congruent        0.469
-## 3:       3   Congruent        0.482
-## 4:       1 Incongruent        0.710
-## 5:       2 Incongruent        0.689
-## 6:       3 Incongruent        0.725</pre>
+</article></slide><slide class=""><hgroup><h2>Adding Columns in <code>data.table</code></h2></hgroup><article  id="adding-columns-in-data.table-1">
 
 <ul>
-<li><code>Subject</code>: Identifier for each subject.</li>
-<li><code>Condition</code>: Specifies the condition under which the measurement was taken (e.g., &ldquo;Congruent&rdquo; or &ldquo;Incongruent&rdquo;).</li>
-<li><code>ResponseTime</code>: The measured response time for the condition.</li>
+<li>When using the <code>:=</code> operator, we don’t need to reassign the <code>data.table</code> to itself using the <code>&lt;-</code> operator.</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format">
+<pre class = 'prettyprint lang-r'>DT &lt;- data.table(ID = 1:3, Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
 
-<p>Wide format can look bad.</p>
+DT[, Age := c(25, 30, 35)]  # Adds a new column &#39;Age&#39;
 
-<pre >##    subject congruent_red_squares congruent_red_circles congruent_green_squares
-##      &lt;num&gt;                 &lt;num&gt;                 &lt;num&gt;                   &lt;num&gt;
-## 1:       1             0.9150941             0.1404589               0.3844885
-## 2:       2             0.9581192             0.4916987               0.4751510
-## 3:       3             0.4049534             0.2129512               0.6823088
-##    congruent_green_circles incongruent_red_squares incongruent_red_circles
-##                      &lt;num&gt;                   &lt;num&gt;                   &lt;num&gt;
-## 1:               0.4139805               0.3008852               0.5457820
-## 2:               0.8803089               0.4737242               0.6925572
-## 3:               0.4966686               0.8381063               0.1381222
-##    incongruent_green_squares incongruent_green_circles
-##                        &lt;num&gt;                     &lt;num&gt;
-## 1:                 0.5546412                 0.2484432
-## 2:                 0.3275629                 0.3422652
-## 3:                 0.2423302                 0.6649743</pre>
+print(DT)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-1">
+<pre >##       ID    Name   Age
+##    &lt;int&gt;  &lt;char&gt; &lt;num&gt;
+## 1:     1   Alice    25
+## 2:     2     Bob    30
+## 3:     3 Charlie    35</pre>
 
-<p>Long format looks better.</p>
-
-<pre >##     subject                 Condition ResponseTime
-##       &lt;num&gt;                    &lt;fctr&gt;        &lt;num&gt;
-##  1:       1     congruent_red_squares  0.034873897
-##  2:       2     congruent_red_squares  0.129607748
-##  3:       3     congruent_red_squares  0.834727439
-##  4:       1     congruent_red_circles  0.479516200
-##  5:       2     congruent_red_circles  0.541057396
-##  6:       3     congruent_red_circles  0.118261303
-##  7:       1   congruent_green_squares  0.935827091
-##  8:       2   congruent_green_squares  0.645097872
-##  9:       3   congruent_green_squares  0.406761851
-## 10:       1   congruent_green_circles  0.645437111
-## 11:       2   congruent_green_circles  0.117708683
-## 12:       3   congruent_green_circles  0.575803590
-## 13:       1   incongruent_red_squares  0.170331751
-## 14:       2   incongruent_red_squares  0.734555632
-## 15:       3   incongruent_red_squares  0.833675467
-## 16:       1   incongruent_red_circles  0.455075770
-## 17:       2   incongruent_red_circles  0.484294350
-## 18:       3   incongruent_red_circles  0.217226531
-## 19:       1 incongruent_green_squares  0.040340154
-## 20:       2 incongruent_green_squares  0.317021125
-## 21:       3 incongruent_green_squares  0.252092761
-## 22:       1 incongruent_green_circles  0.302969684
-## 23:       2 incongruent_green_circles  0.129895858
-## 24:       3 incongruent_green_circles  0.006371618
-##     subject                 Condition ResponseTime</pre>
-
-</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-2">
-
-<p>Long format makes grouping / aggregation much easier and scalable.</p>
-
-<pre class = 'prettyprint lang-r'># compute mean ResponseTime per Condition from long format
-long_dt[, mean(ResponseTime), .(Condition)]
-
-# compute mean ResponseTime per Condition from wide format
-wide_dt[, .( mean(congruent_red_squares), 
-            mean(congruent_red_circles), 
-            mean(congruent_green_squares), 
-            mean(congruent_green_circles), 
-            mean(incongruent_red_squares), 
-            mean(incongruent_red_circles), 
-            mean(incongruent_green_squares), 
-            mean(incongruent_green_circles)
-            )]</pre>
-
-</article></slide><slide class=""><hgroup><h2><code>melt()</code> for wide to long</h2></hgroup><article  id="melt-for-wide-to-long">
-
-<pre class = 'prettyprint lang-r'>library(data.table)
-
-wide_dt &lt;- data.table(
-  Subject = c(1, 2, 3),
-  Congruent = c(0.512, 0.469, 0.482),
-  Incongruent = c(0.710, 0.689, 0.725)
-)
-
-# Convert from wide to long format
-long_dt &lt;- melt(wide_dt, 
-                id.vars = &quot;Subject&quot;, 
-                variable.name = &quot;Condition&quot;,
-                value.name = &quot;ResponseTime&quot;)</pre>
+</article></slide><slide class=""><hgroup><h2>Updating Columns in <code>data.table</code></h2></hgroup><article  id="updating-columns-in-data.table">
 
 <ul>
-<li>The <code>id.vars</code> parameter specifies columns that should remain unchanged, while <code>variable.name</code> and <code>value.name</code> parameters rename the melted columns.</li>
+<li><p>The <code>:=</code> operator is also used to update the values of existing columns in a <code>data.table</code>.</p></li>
+<li><p>Still no <code>&lt;-</code> operator needed!</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2><code>dcast()</code> for long to wide</h2></hgroup><article  id="dcast-for-long-to-wide">
+<pre class = 'prettyprint lang-r'>DT[, Age := Age + 5]  # Updates the &#39;Age&#39; column by adding 5 to each value
+print(DT)</pre>
 
-<pre class = 'prettyprint lang-r'># Convert back to wide format for comparison
-wide_dt_again &lt;- dcast(long_dt, Subject ~ Condition, value.var = &quot;ResponseTime&quot;)
-print(wide_dt_again)</pre>
+<pre >##       ID    Name   Age
+##    &lt;int&gt;  &lt;char&gt; &lt;num&gt;
+## 1:     1   Alice    30
+## 2:     2     Bob    35
+## 3:     3 Charlie    40</pre>
 
-<pre >## Key: &lt;Subject&gt;
-##    Subject Congruent Incongruent
-##      &lt;num&gt;     &lt;num&gt;       &lt;num&gt;
-## 1:       1     0.512       0.710
-## 2:       2     0.469       0.689
-## 3:       3     0.482       0.725</pre>
+</article></slide><slide class=""><hgroup><h2>Removing Columns in <code>data.table</code></h2></hgroup><article  id="removing-columns-in-data.table">
 
 <ul>
-<li><p><code>long_dt</code>: The long format input <code>data.table</code></p></li>
-<li><p><code>Subject ~ Condition</code>: This formula tells <code>dcast</code> to group by <code>Subject</code> and spread columns out named after each <code>Condition</code></p></li>
-<li><p><code>value.var = &quot;ResponseTime&quot;</code>: Specifies which column to fill values from.</p></li>
+<li><p>The <code>:=</code> operator can also be used to remove columns from a <code>data.table</code>.</p></li>
+<li><p>You guessed it, no <code>&lt;-</code> operator needed!</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Question 1</h2></hgroup><article  id="question-1">
+<pre class = 'prettyprint lang-r'>DT[, Age := NULL]  # Removes the &#39;Age&#39; column
+print(DT)</pre>
 
-<p>Given <code>dt_sales</code> below, which line of code correctly converts <code>dt_sales</code> into a long format?</p>
+<pre >##       ID    Name
+##    &lt;int&gt;  &lt;char&gt;
+## 1:     1   Alice
+## 2:     2     Bob
+## 3:     3 Charlie</pre>
 
-<pre >   Product Q1_Sales Q2_Sales
-1:       A      150      200
-2:       B      100      150</pre>
+</article></slide><slide class=""><hgroup><h2>Conditional Updating</h2></hgroup><article  id="conditional-updating">
 
-<pre class = 'prettyprint lang-r'>melt(dt_sales, id.vars = &quot;Product&quot;, measure.vars = c(&quot;Q1_Sales&quot;, &quot;Q2_Sales&quot;))
-dcast(dt_sales, Product ~ Q1_Sales + Q2_Sales, value.var = &quot;Sales&quot;)
-dt_sales[, .(Product, Q1_Sales, Q2_Sales)]
-melt(dt_sales, id.vars = &quot;Q1_Sales&quot;, measure.vars = &quot;Product&quot;)</pre>
+<ul>
+<li><code>data.table</code> allows for conditional updates. This means you can update or add columns based on conditions applied to other columns.</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'># Adds a &#39;Group&#39; column based on a condition
+DT[, Group := ifelse(Name == &quot;Alice&quot;, &quot;A&quot;, &quot;B&quot;)]  
+print(DT)</pre>
+
+<pre >##       ID    Name  Group
+##    &lt;int&gt;  &lt;char&gt; &lt;char&gt;
+## 1:     1   Alice      A
+## 2:     2     Bob      B
+## 3:     3 Charlie      B</pre>
+
+</article></slide><slide class=""><hgroup><h2>Adding Multiple Columns</h2></hgroup><article  id="adding-multiple-columns">
+
+<ul>
+<li><p>You can add multiple columns at once by passing a list to the <code>:=</code> operator.</p></li>
+<li><p>The syntax <code>.()</code> is equivalent to <code>list()</code> when used in the context of <code>data.table</code>.</p></li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>DT[, c(&quot;Height&quot;, &quot;Weight&quot;) := .(c(160, 175, 180), c(60, 70, 75))]
+print(DT)</pre>
+
+<pre >##       ID    Name  Group Height Weight
+##    &lt;int&gt;  &lt;char&gt; &lt;char&gt;  &lt;num&gt;  &lt;num&gt;
+## 1:     1   Alice      A    160     60
+## 2:     2     Bob      B    175     70
+## 3:     3 Charlie      B    180     75</pre>
+
+</article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question">
+
+<ul>
+<li>Given a <code>data.table</code> <code>DT</code> with a column <code>Score</code>, what does the following code do?</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>DT[, Score := Score * 2]</pre>
+
+<ol>
+<li>Doubles the value of a variable outside of <code>DT</code> named <code>Score</code></li>
+<li>Creates a new table with all <code>Score</code> values doubled</li>
+<li>Doubles the values in the <code>Score</code> column for all rows in <code>DT</code></li>
+<li>Generates an error because <code>Score</code> is not defined</li>
+</ol>
 
 <details>
 
@@ -3370,24 +3321,25 @@ Click here for the answer
 
 </summary>
 
-<pre class = 'prettyprint lang-r'>  melt(dt_sales, id.vars = &quot;Product&quot;, measure.vars = c(&quot;Q1_Sales&quot;, &quot;Q2_Sales&quot;))`</pre>
+<p>The correct answer is A)</p>
+
+The <code>:=</code> operator is used to update existing columns in <code>data.table</code>, in this case, doubling each value in the <code>Score</code> column.
 
 </details>
 
-</article></slide><slide class=""><hgroup><h2>Question 2</h2></hgroup><article  id="question-2">
+</article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question-1">
 
-<p>Given <code>dt_long_sales</code> in long format which line of code correctly converts it to wide format, where each row represents a product and each quarter’s sales are in separate columns?</p>
+<ul>
+<li>How do you remove a column named <code>OldColumn</code> from a <code>data.table</code> <code>DT</code>?</li>
+</ul>
 
-<pre >   Product   Quarter Sales
-1:       A   Q1_Sales  150
-2:       A   Q2_Sales  200
-3:       B   Q1_Sales  100
-4:       B   Q2_Sales  150</pre>
+<pre class = 'prettyprint lang-r'>DT[, OldColumn := NULL] # A
 
-<pre class = 'prettyprint lang-r'>dcast(dt_long_sales, Product ~ Sales, value.var = &quot;Quarter&quot;)
-dcast(dt_long_sales, Product ~ Quarter, value.var = &quot;Sales&quot;)
-dt_long_sales[, .(Product, Quarter, Sales)]
-dcast(dt_long_sales, Quarter ~ Product, value.var = &quot;Sales&quot;)</pre>
+remove(DT$OldColumn) # B
+
+DT$OldColumn &lt;- NULL # C
+
+unset(DT, &quot;OldColumn&quot;) # D</pre>
 
 <details>
 
@@ -3397,7 +3349,73 @@ Click here for the answer
 
 </summary>
 
-<pre class = 'prettyprint lang-r'>  dcast(dt_long_sales, Product ~ Quarter, value.var = &quot;Sales&quot;)</pre>
+<ol>
+<li><code>DT[, OldColumn := NULL]</code></li>
+</ol>
+
+Using the <code>:=</code> operator with <code>NULL</code> effectively removes the specified column from the <code>data.table</code>.
+
+</details>
+
+</article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question-2">
+
+<ul>
+<li>What does the following code achieve in a <code>data.table</code> named <code>DT</code>?</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>DT[, Category := ifelse(Score &gt; 50, &quot;Pass&quot;, &quot;Fail&quot;)]</pre>
+
+<ol>
+<li><p>Filters <code>DT</code> to only include rows where <code>Score</code> is greater than 50</p></li>
+<li><p>Adds a new row named <code>Category</code> based on the condition</p></li>
+<li><p>Adds or updates a column named <code>Category</code>, assigning &ldquo;Pass&rdquo; or &ldquo;Fail&rdquo; based on the <code>Score</code></p></li>
+<li><p>Divides the <code>Score</code> by 50 and assigns it to a new column <code>Category</code></p></li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer">
+
+<details>
+
+<summary>
+
+Click here for the answer
+
+</summary>
+
+<ol>
+<li>Adds or updates a column named <code>Category</code>, assigning &ldquo;Pass&rdquo; or &ldquo;Fail&rdquo; based on the <code>Score</code>. This is an example of conditional updating using the <code>:=</code> operator, where the new or updated column values depend on a condition applied to another column.</li>
+</ol>
+
+</details>
+
+</article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question-3">
+
+<ul>
+<li>What does the following code do?</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>DT[, c(&quot;mean&quot;, &quot;err&quot;) := .(mean(Score), sd(Score) / sqrt(.N))]</pre>
+
+<ol>
+<li><p>Calculates the mean and standard error of the <code>Score</code> column, assigning the results to global variables <code>mean</code> and <code>err</code>.</p></li>
+<li><p>Adds two new rows named <code>mean</code> and <code>err</code> with the calculated values.</p></li>
+<li><p>Adds or updates two columns named <code>mean</code> and <code>err</code> in <code>DT</code>, where <code>mean</code> is the average of <code>Score</code> and <code>err</code> is the standard error of <code>Score</code>.</p></li>
+<li><p>Generates an error because the syntax is incorrect.</p></li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer-1">
+
+<details>
+
+<summary>
+
+Click here for the answer
+
+</summary>
+
+<ol>
+<li>Adds or updates two columns named <code>mean</code> and <code>err</code> in <code>DT</code>, where <code>mean</code> is the average of <code>Score</code> and <code>err</code> is the standard error of <code>Score</code>. This line of code demonstrates how to perform grouped calculations and assign the results to new or existing columns in a <code>data.table</code>. The <code>.N</code> symbol represents the number of rows in each group (or in the whole table if not grouped), which is used to calculate the standard error of the <code>Score</code>.</li>
+</ol>
 
 </details></article></slide>
 

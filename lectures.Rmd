@@ -9,11 +9,22 @@ fontsize: 14pt
 ---
 
 - Week 1
-  - [Understanding variable types in R](lectures/week_1/lecture_1.html)
-  - [Understanding the Workspace in R](lectures/week_1/lecture_2.html)
-  - [Container Variable Types and Accessing Elements in R](lectures/week_1/lecture_3.html)
-  - [Writing and Calling Functions in R](lectures/week_1/lecture_4.html)
-  - [Container Variable Type Coercion in R](lectures/week_1/lecture_5.html)
-  - [Assignment Operators in R](lectures/week_1/lecture_6.html)
-  - [Loops and Conditional Flow in R](lectures/week_1/lecture_7.html)
-  - [Getting Help in R](lectures/week_1/lecture_7.html)
+  - <a href="lectures/week_1/lecture_variable_types.html" target="_blank">Understanding variable types in R</a>
+  - <a href="lectures/week_1/lecture_workspace.html" target="_blank">Understanding the Workspace in R</a>
+  - <a href="lectures/week_1/lecture_container_types.html" target="_blank">Container Variable Types and Accessing Elements in R</a>
+  - <a href="lectures/week_1/lecture_functions_1.html" target="_blank">Writing and Calling Functions in R</a>
+  - <a href="lectures/week_1/lecture_functions_2.html" target="_blank">Writing and Calling Functions in R</a>
+  - <a href="lectures/week_1/lecture_container_type_coercion.html" target="_blank">Container Variable Type Coercion in R</a>
+  - <a href="lectures/week_1/lecture_assignment_operators.html" target="_blank">Assignment Operators in R</a>
+  - <a href="lectures/week_1/lecture_loops_cond_flow_1.html" target="_blank">Loops and Conditional Flow in R</a>
+  - <a href="lectures/week_1/lecture_loops_cond_flow_2.html" target="_blank">Loops and Conditional Flow in R</a>
+  - <a href="lectures/week_1/lecture_getting_help.html" target="_blank">Getting Help in R</a>
+  - <a href="lectures/week_1/lecture_mre.html" target="_blank">Creating a Minimal Reproducible Example</a>
+
+- Week 2
+  - <a href="lectures/week_2/lecture_using_libraries.html" target="_blank">Using external libraries</a>
+  - <a href="lectures/week_2/lecture_datatable_basics.html" target="_blank">Introduction to `data.table`</a>
+  - <a href="lectures/week_2/lecture_add_update_col.html" target="_blank">Adding and updating `data.table` columns</a>
+  - <a href="lectures/week_2/lecture_joins.html" target="_blank">`data.table` joins</a>
+  - <a href="lectures/week_2/lecture_reshaping_datatables.html" target="_blank">`data.table` reshaping</a>
+  - <a href="lectures/week_2/lecture_chaining.html" target="_blank">Chaining `data.table` calls</a>

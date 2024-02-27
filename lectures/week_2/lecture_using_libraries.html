@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reshaping Data with data.table</title>
+  <title>Installing, Loading, and Using External Libraries in R</title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -20,7 +20,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Reshaping Data with data.table',
+                title: 'Installing, Loading, and Using External Libraries in R',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -3207,199 +3207,93 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Introduction to Data Reshaping</h2></hgroup><article  id="introduction-to-data-reshaping">
+<slide class=""><hgroup><h2>Introduction to External Libraries in R</h2></hgroup><article  id="introduction-to-external-libraries-in-r">
 
-<p>Reshaping data involves changing how your data is organised in whatever sort of container you are using to store it. For us, this container will almost always be a <code>data.table</code> Luckily, the <code>data.table</code> package in R provides efficient functions for reshaping.</p>
+<p>External libraries in R enhance the functionality by providing additional functions, datasets, and methods that are not available in the base R package.</p>
 
-</article></slide><slide class=""><hgroup><h2>Wide Format data.table Example</h2></hgroup><article  id="wide-format-data.table-example">
+</article></slide><slide class=""><hgroup><h2>Installing Libraries</h2></hgroup><article  id="installing-libraries">
 
-<pre >##    Subject Congruent Incongruent
-##      &lt;num&gt;     &lt;num&gt;       &lt;num&gt;
-## 1:       1     0.512       0.710
-## 2:       2     0.469       0.689
-## 3:       3     0.482       0.725</pre>
+<p>Use the <code>install.packages()</code> function to install new libraries from CRAN (Comprehensive R Archive Network).</p>
+
+<pre class = 'prettyprint lang-r'>install.packages(&quot;package_name&quot;)</pre>
 
 <ul>
-<li>Each column represents a different variable or condition (e.g., &ldquo;Congruent&rdquo; and &ldquo;Incongruent&rdquo; response times).</li>
+<li>This command only needs to be run once per R installation to add the library to your system.</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Long Format data.table Example</h2></hgroup><article  id="long-format-data.table-example">
+</article></slide><slide class=""><hgroup><h2>Example: Installing the <code>data.table</code> Package</h2></hgroup><article  id="example-installing-the-data.table-package">
 
-<pre >##    Subject   Condition ResponseTime
-##      &lt;num&gt;      &lt;fctr&gt;        &lt;num&gt;
-## 1:       1   Congruent        0.512
-## 2:       2   Congruent        0.469
-## 3:       3   Congruent        0.482
-## 4:       1 Incongruent        0.710
-## 5:       2 Incongruent        0.689
-## 6:       3 Incongruent        0.725</pre>
+<pre class = 'prettyprint lang-r'>install.packages(&quot;data.table&quot;)</pre>
 
 <ul>
-<li><code>Subject</code>: Identifier for each subject.</li>
-<li><code>Condition</code>: Specifies the condition under which the measurement was taken (e.g., &ldquo;Congruent&rdquo; or &ldquo;Incongruent&rdquo;).</li>
-<li><code>ResponseTime</code>: The measured response time for the condition.</li>
+<li>After installation, the package is permanently available on your machine, until or unless it is explicitly removed.</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format">
+</article></slide><slide class=""><hgroup><h2>Loading Libraries</h2></hgroup><article  id="loading-libraries">
 
-<p>Wide format can look bad.</p>
+<p>After installation, use the <code>library()</code> or <code>require()</code> function to load the library into your R session.</p>
 
-<pre >##    subject congruent_red_squares congruent_red_circles congruent_green_squares
-##      &lt;num&gt;                 &lt;num&gt;                 &lt;num&gt;                   &lt;num&gt;
-## 1:       1             0.9150941             0.1404589               0.3844885
-## 2:       2             0.9581192             0.4916987               0.4751510
-## 3:       3             0.4049534             0.2129512               0.6823088
-##    congruent_green_circles incongruent_red_squares incongruent_red_circles
-##                      &lt;num&gt;                   &lt;num&gt;                   &lt;num&gt;
-## 1:               0.4139805               0.3008852               0.5457820
-## 2:               0.8803089               0.4737242               0.6925572
-## 3:               0.4966686               0.8381063               0.1381222
-##    incongruent_green_squares incongruent_green_circles
-##                        &lt;num&gt;                     &lt;num&gt;
-## 1:                 0.5546412                 0.2484432
-## 2:                 0.3275629                 0.3422652
-## 3:                 0.2423302                 0.6649743</pre>
-
-</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-1">
-
-<p>Long format looks better.</p>
-
-<pre >##     subject                 Condition ResponseTime
-##       &lt;num&gt;                    &lt;fctr&gt;        &lt;num&gt;
-##  1:       1     congruent_red_squares  0.034873897
-##  2:       2     congruent_red_squares  0.129607748
-##  3:       3     congruent_red_squares  0.834727439
-##  4:       1     congruent_red_circles  0.479516200
-##  5:       2     congruent_red_circles  0.541057396
-##  6:       3     congruent_red_circles  0.118261303
-##  7:       1   congruent_green_squares  0.935827091
-##  8:       2   congruent_green_squares  0.645097872
-##  9:       3   congruent_green_squares  0.406761851
-## 10:       1   congruent_green_circles  0.645437111
-## 11:       2   congruent_green_circles  0.117708683
-## 12:       3   congruent_green_circles  0.575803590
-## 13:       1   incongruent_red_squares  0.170331751
-## 14:       2   incongruent_red_squares  0.734555632
-## 15:       3   incongruent_red_squares  0.833675467
-## 16:       1   incongruent_red_circles  0.455075770
-## 17:       2   incongruent_red_circles  0.484294350
-## 18:       3   incongruent_red_circles  0.217226531
-## 19:       1 incongruent_green_squares  0.040340154
-## 20:       2 incongruent_green_squares  0.317021125
-## 21:       3 incongruent_green_squares  0.252092761
-## 22:       1 incongruent_green_circles  0.302969684
-## 23:       2 incongruent_green_circles  0.129895858
-## 24:       3 incongruent_green_circles  0.006371618
-##     subject                 Condition ResponseTime</pre>
-
-</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-2">
-
-<p>Long format makes grouping / aggregation much easier and scalable.</p>
-
-<pre class = 'prettyprint lang-r'># compute mean ResponseTime per Condition from long format
-long_dt[, mean(ResponseTime), .(Condition)]
-
-# compute mean ResponseTime per Condition from wide format
-wide_dt[, .( mean(congruent_red_squares), 
-            mean(congruent_red_circles), 
-            mean(congruent_green_squares), 
-            mean(congruent_green_circles), 
-            mean(incongruent_red_squares), 
-            mean(incongruent_red_circles), 
-            mean(incongruent_green_squares), 
-            mean(incongruent_green_circles)
-            )]</pre>
-
-</article></slide><slide class=""><hgroup><h2><code>melt()</code> for wide to long</h2></hgroup><article  id="melt-for-wide-to-long">
-
-<pre class = 'prettyprint lang-r'>library(data.table)
-
-wide_dt &lt;- data.table(
-  Subject = c(1, 2, 3),
-  Congruent = c(0.512, 0.469, 0.482),
-  Incongruent = c(0.710, 0.689, 0.725)
-)
-
-# Convert from wide to long format
-long_dt &lt;- melt(wide_dt, 
-                id.vars = &quot;Subject&quot;, 
-                variable.name = &quot;Condition&quot;,
-                value.name = &quot;ResponseTime&quot;)</pre>
+<pre class = 'prettyprint lang-r'>library(package_name)</pre>
 
 <ul>
-<li>The <code>id.vars</code> parameter specifies columns that should remain unchanged, while <code>variable.name</code> and <code>value.name</code> parameters rename the melted columns.</li>
+<li>This command must be run every time you start a new R session and want to use the library.</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2><code>dcast()</code> for long to wide</h2></hgroup><article  id="dcast-for-long-to-wide">
+</article></slide><slide class=""><hgroup><h2>Example: Loading the <code>data.table</code> Package</h2></hgroup><article  id="example-loading-the-data.table-package">
 
-<pre class = 'prettyprint lang-r'># Convert back to wide format for comparison
-wide_dt_again &lt;- dcast(long_dt, Subject ~ Condition, value.var = &quot;ResponseTime&quot;)
-print(wide_dt_again)</pre>
-
-<pre >## Key: &lt;Subject&gt;
-##    Subject Congruent Incongruent
-##      &lt;num&gt;     &lt;num&gt;       &lt;num&gt;
-## 1:       1     0.512       0.710
-## 2:       2     0.469       0.689
-## 3:       3     0.482       0.725</pre>
+<pre class = 'prettyprint lang-r'>library(data.table)</pre>
 
 <ul>
-<li><p><code>long_dt</code>: The long format input <code>data.table</code></p></li>
-<li><p><code>Subject ~ Condition</code>: This formula tells <code>dcast</code> to group by <code>Subject</code> and spread columns out named after each <code>Condition</code></p></li>
-<li><p><code>value.var = &quot;ResponseTime&quot;</code>: Specifies which column to fill values from.</p></li>
+<li>Notice that we use <code>data.table</code> with the <code>library()</code> function and we use <code>&quot;data.table&quot;</code> with the <code>install.packages()</code> function.</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Question 1</h2></hgroup><article  id="question-1">
+</article></slide><slide class=""><hgroup><h2>Installing vs. Loading Libraries</h2></hgroup><article  id="installing-vs.-loading-libraries">
 
-<p>Given <code>dt_sales</code> below, which line of code correctly converts <code>dt_sales</code> into a long format?</p>
+<ul>
+<li><p><strong>Installing a Library</strong>: Downloads and installs the package’s files to your R library directory. This is a one-time process for each R installation.</p></li>
+<li><p><strong>Loading a Library</strong>: Makes the package’s functions available in your current R session. This must be done every time you start a new session and wish to use the package.</p></li>
+</ul>
 
-<pre >   Product Q1_Sales Q2_Sales
-1:       A      150      200
-2:       B      100      150</pre>
+</article></slide><slide class=""><hgroup><h2>Listing Installed Libraries</h2></hgroup><article  id="listing-installed-libraries">
 
-<pre class = 'prettyprint lang-r'>melt(dt_sales, id.vars = &quot;Product&quot;, measure.vars = c(&quot;Q1_Sales&quot;, &quot;Q2_Sales&quot;))
-dcast(dt_sales, Product ~ Q1_Sales + Q2_Sales, value.var = &quot;Sales&quot;)
-dt_sales[, .(Product, Q1_Sales, Q2_Sales)]
-melt(dt_sales, id.vars = &quot;Q1_Sales&quot;, measure.vars = &quot;Product&quot;)</pre>
+<p>You can list all installed libraries using the <code>installed.packages()</code> function.</p>
 
-<details>
+<pre class = 'prettyprint lang-r'>installed.packages()</pre>
 
-<summary>
+</article></slide><slide class=""><hgroup><h2>Updating Libraries</h2></hgroup><article  id="updating-libraries">
 
-Click here for the answer
+<p>Keep your libraries up to date to benefit from bug fixes and new features.</p>
 
-</summary>
+<pre class = 'prettyprint lang-r'>update.packages()</pre>
 
-<pre class = 'prettyprint lang-r'>  melt(dt_sales, id.vars = &quot;Product&quot;, measure.vars = c(&quot;Q1_Sales&quot;, &quot;Q2_Sales&quot;))`</pre>
+<ul>
+<li>Optionally, you can specify a package name to update only a specific library.</li>
+</ul>
 
-</details>
+</article></slide><slide class=""><hgroup><h2>Removing Libraries</h2></hgroup><article  id="removing-libraries">
 
-</article></slide><slide class=""><hgroup><h2>Question 2</h2></hgroup><article  id="question-2">
+<p>If needed, you can remove installed libraries using the <code>remove.packages()</code> function.</p>
 
-<p>Given <code>dt_long_sales</code> in long format which line of code correctly converts it to wide format, where each row represents a product and each quarter’s sales are in separate columns?</p>
+<pre class = 'prettyprint lang-r'>remove.packages(&quot;package_name&quot;)</pre>
 
-<pre >   Product   Quarter Sales
-1:       A   Q1_Sales  150
-2:       A   Q2_Sales  200
-3:       B   Q1_Sales  100
-4:       B   Q2_Sales  150</pre>
+</article></slide><slide class=""><hgroup><h2>Using External Libraries</h2></hgroup><article  id="using-external-libraries">
 
-<pre class = 'prettyprint lang-r'>dcast(dt_long_sales, Product ~ Sales, value.var = &quot;Quarter&quot;)
-dcast(dt_long_sales, Product ~ Quarter, value.var = &quot;Sales&quot;)
-dt_long_sales[, .(Product, Quarter, Sales)]
-dcast(dt_long_sales, Quarter ~ Product, value.var = &quot;Sales&quot;)</pre>
+<p>Once a library is loaded, you can use its functions as if they were part of the base R language.</p>
 
-<details>
+<pre class = 'prettyprint lang-r'># Assuming `data.table` is already loaded
+library(data.table)
 
-<summary>
+# Create a data table
+dt &lt;- data.table(x = c(1, 2, 3), y = c(4, 5, 6))
 
-Click here for the answer
+# Print the data table
+print(dt)</pre>
 
-</summary>
-
-<pre class = 'prettyprint lang-r'>  dcast(dt_long_sales, Product ~ Quarter, value.var = &quot;Sales&quot;)</pre>
-
-</details></article></slide>
+<pre >##        x     y
+##    &lt;num&gt; &lt;num&gt;
+## 1:     1     4
+## 2:     2     5
+## 3:     3     6</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reshaping Data with data.table</title>
+  <title>Joins in data.table</title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -20,7 +20,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Reshaping Data with data.table',
+                title: 'Joins in <code>data.table</code>',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -3207,160 +3207,107 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Introduction to Data Reshaping</h2></hgroup><article  id="introduction-to-data-reshaping">
-
-<p>Reshaping data involves changing how your data is organised in whatever sort of container you are using to store it. For us, this container will almost always be a <code>data.table</code> Luckily, the <code>data.table</code> package in R provides efficient functions for reshaping.</p>
-
-</article></slide><slide class=""><hgroup><h2>Wide Format data.table Example</h2></hgroup><article  id="wide-format-data.table-example">
-
-<pre >##    Subject Congruent Incongruent
-##      &lt;num&gt;     &lt;num&gt;       &lt;num&gt;
-## 1:       1     0.512       0.710
-## 2:       2     0.469       0.689
-## 3:       3     0.482       0.725</pre>
+<slide class=""><hgroup><h2>Basic Concept of Joins</h2></hgroup><article  id="basic-concept-of-joins">
 
 <ul>
-<li>Each column represents a different variable or condition (e.g., &ldquo;Congruent&rdquo; and &ldquo;Incongruent&rdquo; response times).</li>
+<li><p>Joins are used to combine two data tables based on a common key or keys.</p></li>
+<li><p>E.g., you have a table of students and a table of their test scores, and you want to combine them into a single table.</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Long Format data.table Example</h2></hgroup><article  id="long-format-data.table-example">
-
-<pre >##    Subject   Condition ResponseTime
-##      &lt;num&gt;      &lt;fctr&gt;        &lt;num&gt;
-## 1:       1   Congruent        0.512
-## 2:       2   Congruent        0.469
-## 3:       3   Congruent        0.482
-## 4:       1 Incongruent        0.710
-## 5:       2 Incongruent        0.689
-## 6:       3 Incongruent        0.725</pre>
+</article></slide><slide class=""><hgroup><h2>Join using the <code>merge</code> function</h2></hgroup><article  id="join-using-the-merge-function">
 
 <ul>
-<li><code>Subject</code>: Identifier for each subject.</li>
-<li><code>Condition</code>: Specifies the condition under which the measurement was taken (e.g., &ldquo;Congruent&rdquo; or &ldquo;Incongruent&rdquo;).</li>
-<li><code>ResponseTime</code>: The measured response time for the condition.</li>
+<li><p>The <code>merge</code> function is used to join two data tables.</p></li>
+<li><p>It’s syntax is <code>merge(x, y, by = &quot;ID&quot;, all.x = FALSE, all.y = FALSE)</code>.</p></li>
+<li><p><strong>x, y</strong>: <code>x</code> is the the left table, and <code>y</code> is the right table to be merged.</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format">
+<ol>
+<li><p><strong>by</strong>: The column names on which to merge the tables.</p></li>
+<li><p><strong>by.x, by.y</strong>: Used when the columns to join on have different names in the two tables.</p></li>
+<li><p><strong>all, all.x, all.y</strong>: control the type of join:</p></li>
+</ol>
 
-<p>Wide format can look bad.</p>
+</article></slide><slide class=""><hgroup><h2>Left Join</h2></hgroup><article  id="left-join">
 
-<pre >##    subject congruent_red_squares congruent_red_circles congruent_green_squares
-##      &lt;num&gt;                 &lt;num&gt;                 &lt;num&gt;                   &lt;num&gt;
-## 1:       1             0.9150941             0.1404589               0.3844885
-## 2:       2             0.9581192             0.4916987               0.4751510
-## 3:       3             0.4049534             0.2129512               0.6823088
-##    congruent_green_circles incongruent_red_squares incongruent_red_circles
-##                      &lt;num&gt;                   &lt;num&gt;                   &lt;num&gt;
-## 1:               0.4139805               0.3008852               0.5457820
-## 2:               0.8803089               0.4737242               0.6925572
-## 3:               0.4966686               0.8381063               0.1381222
-##    incongruent_green_squares incongruent_green_circles
-##                        &lt;num&gt;                     &lt;num&gt;
-## 1:                 0.5546412                 0.2484432
-## 2:                 0.3275629                 0.3422652
-## 3:                 0.2423302                 0.6649743</pre>
+<p>A left join returns all rows from the left table, and the matched rows from the right table. The result is NULL in the right side when there is no match.</p>
 
-</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-1">
+<pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
+DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
 
-<p>Long format looks better.</p>
+left_join_result &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all.x = TRUE)
+print(left_join_result)</pre>
 
-<pre >##     subject                 Condition ResponseTime
-##       &lt;num&gt;                    &lt;fctr&gt;        &lt;num&gt;
-##  1:       1     congruent_red_squares  0.034873897
-##  2:       2     congruent_red_squares  0.129607748
-##  3:       3     congruent_red_squares  0.834727439
-##  4:       1     congruent_red_circles  0.479516200
-##  5:       2     congruent_red_circles  0.541057396
-##  6:       3     congruent_red_circles  0.118261303
-##  7:       1   congruent_green_squares  0.935827091
-##  8:       2   congruent_green_squares  0.645097872
-##  9:       3   congruent_green_squares  0.406761851
-## 10:       1   congruent_green_circles  0.645437111
-## 11:       2   congruent_green_circles  0.117708683
-## 12:       3   congruent_green_circles  0.575803590
-## 13:       1   incongruent_red_squares  0.170331751
-## 14:       2   incongruent_red_squares  0.734555632
-## 15:       3   incongruent_red_squares  0.833675467
-## 16:       1   incongruent_red_circles  0.455075770
-## 17:       2   incongruent_red_circles  0.484294350
-## 18:       3   incongruent_red_circles  0.217226531
-## 19:       1 incongruent_green_squares  0.040340154
-## 20:       2 incongruent_green_squares  0.317021125
-## 21:       3 incongruent_green_squares  0.252092761
-## 22:       1 incongruent_green_circles  0.302969684
-## 23:       2 incongruent_green_circles  0.129895858
-## 24:       3 incongruent_green_circles  0.006371618
-##     subject                 Condition ResponseTime</pre>
+<pre >## Key: &lt;ID&gt;
+##       ID    Name Score
+##    &lt;num&gt;  &lt;char&gt; &lt;num&gt;
+## 1:     1   Alice    NA
+## 2:     2     Bob    85
+## 3:     3 Charlie    90</pre>
 
-</article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-2">
+</article></slide><slide class=""><hgroup><h2>Right Join</h2></hgroup><article  id="right-join">
 
-<p>Long format makes grouping / aggregation much easier and scalable.</p>
+<p>A right join returns all rows from the right table, and the matched rows from the left table. The result is NULL in the left side when there is no match.</p>
 
-<pre class = 'prettyprint lang-r'># compute mean ResponseTime per Condition from long format
-long_dt[, mean(ResponseTime), .(Condition)]
+<pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
+DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
 
-# compute mean ResponseTime per Condition from wide format
-wide_dt[, .( mean(congruent_red_squares), 
-            mean(congruent_red_circles), 
-            mean(congruent_green_squares), 
-            mean(congruent_green_circles), 
-            mean(incongruent_red_squares), 
-            mean(incongruent_red_circles), 
-            mean(incongruent_green_squares), 
-            mean(incongruent_green_circles)
-            )]</pre>
+right_join_result &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all.y = TRUE)
+print(right_join_result)</pre>
 
-</article></slide><slide class=""><hgroup><h2><code>melt()</code> for wide to long</h2></hgroup><article  id="melt-for-wide-to-long">
+<pre >## Key: &lt;ID&gt;
+##       ID    Name Score
+##    &lt;num&gt;  &lt;char&gt; &lt;num&gt;
+## 1:     2     Bob    85
+## 2:     3 Charlie    90
+## 3:     4    &lt;NA&gt;    88</pre>
 
-<pre class = 'prettyprint lang-r'>library(data.table)
+</article></slide><slide class=""><hgroup><h2>Inner Join</h2></hgroup><article  id="inner-join">
 
-wide_dt &lt;- data.table(
-  Subject = c(1, 2, 3),
-  Congruent = c(0.512, 0.469, 0.482),
-  Incongruent = c(0.710, 0.689, 0.725)
-)
+<p>An inner join returns rows when there is at least one match in both tables. If there is no match, the rows are omitted.</p>
 
-# Convert from wide to long format
-long_dt &lt;- melt(wide_dt, 
-                id.vars = &quot;Subject&quot;, 
-                variable.name = &quot;Condition&quot;,
-                value.name = &quot;ResponseTime&quot;)</pre>
+<pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
+DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
+
+inner_join_result &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all = FALSE)
+print(inner_join_result)</pre>
+
+<pre >## Key: &lt;ID&gt;
+##       ID    Name Score
+##    &lt;num&gt;  &lt;char&gt; &lt;num&gt;
+## 1:     2     Bob    85
+## 2:     3 Charlie    90</pre>
+
+</article></slide><slide class=""><hgroup><h2>Outer Join</h2></hgroup><article  id="outer-join">
+
+<p>An outer join returns all rows from both tables, with matching rows from both sides where available. If there is no match, the missing side will contain NULL.</p>
+
+<pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
+DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
+
+outer_join_result &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all = TRUE)
+print(outer_join_result)</pre>
+
+<pre >## Key: &lt;ID&gt;
+##       ID    Name Score
+##    &lt;num&gt;  &lt;char&gt; &lt;num&gt;
+## 1:     1   Alice    NA
+## 2:     2     Bob    85
+## 3:     3 Charlie    90
+## 4:     4    &lt;NA&gt;    88</pre>
+
+</article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question">
 
 <ul>
-<li>The <code>id.vars</code> parameter specifies columns that should remain unchanged, while <code>variable.name</code> and <code>value.name</code> parameters rename the melted columns.</li>
+<li>What is the result of the following code?</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2><code>dcast()</code> for long to wide</h2></hgroup><article  id="dcast-for-long-to-wide">
+<pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
+DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
 
-<pre class = 'prettyprint lang-r'># Convert back to wide format for comparison
-wide_dt_again &lt;- dcast(long_dt, Subject ~ Condition, value.var = &quot;ResponseTime&quot;)
-print(wide_dt_again)</pre>
+result &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all.x = TRUE, all.y = TRUE)</pre>
 
-<pre >## Key: &lt;Subject&gt;
-##    Subject Congruent Incongruent
-##      &lt;num&gt;     &lt;num&gt;       &lt;num&gt;
-## 1:       1     0.512       0.710
-## 2:       2     0.469       0.689
-## 3:       3     0.482       0.725</pre>
-
-<ul>
-<li><p><code>long_dt</code>: The long format input <code>data.table</code></p></li>
-<li><p><code>Subject ~ Condition</code>: This formula tells <code>dcast</code> to group by <code>Subject</code> and spread columns out named after each <code>Condition</code></p></li>
-<li><p><code>value.var = &quot;ResponseTime&quot;</code>: Specifies which column to fill values from.</p></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Question 1</h2></hgroup><article  id="question-1">
-
-<p>Given <code>dt_sales</code> below, which line of code correctly converts <code>dt_sales</code> into a long format?</p>
-
-<pre >   Product Q1_Sales Q2_Sales
-1:       A      150      200
-2:       B      100      150</pre>
-
-<pre class = 'prettyprint lang-r'>melt(dt_sales, id.vars = &quot;Product&quot;, measure.vars = c(&quot;Q1_Sales&quot;, &quot;Q2_Sales&quot;))
-dcast(dt_sales, Product ~ Q1_Sales + Q2_Sales, value.var = &quot;Sales&quot;)
-dt_sales[, .(Product, Q1_Sales, Q2_Sales)]
-melt(dt_sales, id.vars = &quot;Q1_Sales&quot;, measure.vars = &quot;Product&quot;)</pre>
+</article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer">
 
 <details>
 
@@ -3370,24 +3317,32 @@ Click here for the answer
 
 </summary>
 
-<pre class = 'prettyprint lang-r'>  melt(dt_sales, id.vars = &quot;Product&quot;, measure.vars = c(&quot;Q1_Sales&quot;, &quot;Q2_Sales&quot;))`</pre>
+<pre class = 'prettyprint lang-r'>  print(result)</pre>
+
+<pre >  ## Key: &lt;ID&gt;
+  ##       ID    Name Score
+  ##    &lt;num&gt;  &lt;char&gt; &lt;num&gt;
+  ## 1:     1   Alice    NA
+  ## 2:     2     Bob    85
+  ## 3:     3 Charlie    90
+  ## 4:     4    &lt;NA&gt;    88</pre>
+
+This is a full outer join – <code>all.x</code> and <code>all.y</code> are both TRUE – so all rows from both tables are returned.
 
 </details>
 
-</article></slide><slide class=""><hgroup><h2>Question 2</h2></hgroup><article  id="question-2">
+</article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question-1">
 
-<p>Given <code>dt_long_sales</code> in long format which line of code correctly converts it to wide format, where each row represents a product and each quarter’s sales are in separate columns?</p>
+<ul>
+<li>What is the result of the following code?</li>
+</ul>
 
-<pre >   Product   Quarter Sales
-1:       A   Q1_Sales  150
-2:       A   Q2_Sales  200
-3:       B   Q1_Sales  100
-4:       B   Q2_Sales  150</pre>
+<pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
+DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
 
-<pre class = 'prettyprint lang-r'>dcast(dt_long_sales, Product ~ Sales, value.var = &quot;Quarter&quot;)
-dcast(dt_long_sales, Product ~ Quarter, value.var = &quot;Sales&quot;)
-dt_long_sales[, .(Product, Quarter, Sales)]
-dcast(dt_long_sales, Quarter ~ Product, value.var = &quot;Sales&quot;)</pre>
+result_inner &lt;- merge(DT1, DT2, by = &quot;ID&quot;)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer-1">
 
 <details>
 
@@ -3397,7 +3352,118 @@ Click here for the answer
 
 </summary>
 
-<pre class = 'prettyprint lang-r'>  dcast(dt_long_sales, Product ~ Quarter, value.var = &quot;Sales&quot;)</pre>
+<pre class = 'prettyprint lang-r'>  print(result_inner)</pre>
+
+<pre >  ## Key: &lt;ID&gt;
+  ##       ID    Name Score
+  ##    &lt;num&gt;  &lt;char&gt; &lt;num&gt;
+  ## 1:     2     Bob    85
+  ## 2:     3 Charlie    90</pre>
+
+This performs an inner join, so only rows with matching <code>ID</code> values in both tables are returned. Rows with <code>ID</code> 2 and 3 will be included, each paired with their corresponding <code>Name</code> and <code>Score</code>.
+
+</details>
+
+</article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question-2">
+
+<ul>
+<li>What is the result of the following code?</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
+DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
+
+result_left &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all.x = TRUE)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer-2">
+
+<details>
+
+<summary>
+
+Click here for the answer
+
+</summary>
+
+<pre class = 'prettyprint lang-r'>  print(result_left)</pre>
+
+<pre >  ## Key: &lt;ID&gt;
+  ##       ID    Name Score
+  ##    &lt;num&gt;  &lt;char&gt; &lt;num&gt;
+  ## 1:     1   Alice    NA
+  ## 2:     2     Bob    85
+  ## 3:     3 Charlie    90</pre>
+
+This is a left join – <code>all.x</code> is TRUE – so all rows from <code>DT1</code> and only the matching rows from <code>DT2</code> are returned. Rows with <code>ID</code> 1, 2, and 3 from <code>DT1</code> are included, with <code>NA</code> for <code>Score</code> where there’s no match.
+
+</details>
+
+</article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question-3">
+
+<ul>
+<li>What is the result of the following code?</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
+DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
+
+result_right &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all.y = TRUE)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer-3">
+
+<details>
+
+<summary>
+
+Click here for the answer
+
+</summary>
+
+<pre class = 'prettyprint lang-r'>  print(result_right)</pre>
+
+<pre >  ## Key: &lt;ID&gt;
+  ##       ID    Name Score
+  ##    &lt;num&gt;  &lt;char&gt; &lt;num&gt;
+  ## 1:     2     Bob    85
+  ## 2:     3 Charlie    90
+  ## 3:     4    &lt;NA&gt;    88</pre>
+
+This is a right join – <code>all.y</code> is TRUE – so all rows from <code>DT2</code> and only the matching rows from <code>DT1</code> are returned. Rows with <code>ID</code> 2, 3, and 4 from <code>DT2</code> are included, with <code>NA</code> for <code>Name</code> where there’s no match.
+
+</details>
+
+</article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question-4">
+
+<ul>
+<li>What is the result of the following code?</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
+DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
+
+result_outer &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all = TRUE)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer-4">
+
+<details>
+
+<summary>
+
+Click here for the answer
+
+</summary>
+
+<pre class = 'prettyprint lang-r'>  print(result_outer)</pre>
+
+<pre >  ## Key: &lt;ID&gt;
+  ##       ID    Name Score
+  ##    &lt;num&gt;  &lt;char&gt; &lt;num&gt;
+  ## 1:     1   Alice    NA
+  ## 2:     2     Bob    85
+  ## 3:     3 Charlie    90
+  ## 4:     4    &lt;NA&gt;    88</pre>
+
+This is a full outer join – <code>all</code> is TRUE – so all rows from both <code>DT1</code> and <code>DT2</code> are returned. Rows with <code>ID</code> 1, 2, 3, and 4 are included, with <code>NA</code> for <code>Name</code> or <code>Score</code> where there’s no match.
 
 </details></article></slide>
 
