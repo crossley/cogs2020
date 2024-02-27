@@ -3246,19 +3246,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 
 <pre >##    subject congruent_red_squares congruent_red_circles congruent_green_squares
 ##      &lt;num&gt;                 &lt;num&gt;                 &lt;num&gt;                   &lt;num&gt;
-## 1:       1             0.9150941             0.1404589               0.3844885
-## 2:       2             0.9581192             0.4916987               0.4751510
-## 3:       3             0.4049534             0.2129512               0.6823088
+## 1:       1             0.5639383             0.1690465               0.3205858
+## 2:       2             0.3716122             0.6094975               0.2782768
+## 3:       3             0.9054757             0.4053170               0.2706870
 ##    congruent_green_circles incongruent_red_squares incongruent_red_circles
 ##                      &lt;num&gt;                   &lt;num&gt;                   &lt;num&gt;
-## 1:               0.4139805               0.3008852               0.5457820
-## 2:               0.8803089               0.4737242               0.6925572
-## 3:               0.4966686               0.8381063               0.1381222
+## 1:              0.83545595               0.4734518               0.3437299
+## 2:              0.04074369               0.3332120               0.3652781
+## 3:              0.20165058               0.9635328               0.6204369
 ##    incongruent_green_squares incongruent_green_circles
 ##                        &lt;num&gt;                     &lt;num&gt;
-## 1:                 0.5546412                 0.2484432
-## 2:                 0.3275629                 0.3422652
-## 3:                 0.2423302                 0.6649743</pre>
+## 1:                 0.1981469                 0.1624775
+## 2:                 0.2732871                 0.1931977
+## 3:                 0.9353818                 0.4349281</pre>
 
 </article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-1">
 
@@ -3266,30 +3266,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 
 <pre >##     subject                 Condition ResponseTime
 ##       &lt;num&gt;                    &lt;fctr&gt;        &lt;num&gt;
-##  1:       1     congruent_red_squares  0.034873897
-##  2:       2     congruent_red_squares  0.129607748
-##  3:       3     congruent_red_squares  0.834727439
-##  4:       1     congruent_red_circles  0.479516200
-##  5:       2     congruent_red_circles  0.541057396
-##  6:       3     congruent_red_circles  0.118261303
-##  7:       1   congruent_green_squares  0.935827091
-##  8:       2   congruent_green_squares  0.645097872
-##  9:       3   congruent_green_squares  0.406761851
-## 10:       1   congruent_green_circles  0.645437111
-## 11:       2   congruent_green_circles  0.117708683
-## 12:       3   congruent_green_circles  0.575803590
-## 13:       1   incongruent_red_squares  0.170331751
-## 14:       2   incongruent_red_squares  0.734555632
-## 15:       3   incongruent_red_squares  0.833675467
-## 16:       1   incongruent_red_circles  0.455075770
-## 17:       2   incongruent_red_circles  0.484294350
-## 18:       3   incongruent_red_circles  0.217226531
-## 19:       1 incongruent_green_squares  0.040340154
-## 20:       2 incongruent_green_squares  0.317021125
-## 21:       3 incongruent_green_squares  0.252092761
-## 22:       1 incongruent_green_circles  0.302969684
-## 23:       2 incongruent_green_circles  0.129895858
-## 24:       3 incongruent_green_circles  0.006371618
+##  1:       1     congruent_red_squares   0.57028445
+##  2:       2     congruent_red_squares   0.76218085
+##  3:       3     congruent_red_squares   0.05483344
+##  4:       1     congruent_red_circles   0.83374341
+##  5:       2     congruent_red_circles   0.42364944
+##  6:       3     congruent_red_circles   0.43459494
+##  7:       1   congruent_green_squares   0.61919366
+##  8:       2   congruent_green_squares   0.37556849
+##  9:       3   congruent_green_squares   0.60765499
+## 10:       1   congruent_green_circles   0.03361356
+## 11:       2   congruent_green_circles   0.29743561
+## 12:       3   congruent_green_circles   0.56835194
+## 13:       1   incongruent_red_squares   0.08571122
+## 14:       2   incongruent_red_squares   0.79735083
+## 15:       3   incongruent_red_squares   0.43901876
+## 16:       1   incongruent_red_circles   0.01041793
+## 17:       2   incongruent_red_circles   0.84409133
+## 18:       3   incongruent_red_circles   0.32319304
+## 19:       1 incongruent_green_squares   0.86643055
+## 20:       2 incongruent_green_squares   0.72170326
+## 21:       3 incongruent_green_squares   0.26434592
+## 22:       1 incongruent_green_circles   0.75671073
+## 23:       2 incongruent_green_circles   0.89298880
+## 24:       3 incongruent_green_circles   0.21561802
 ##     subject                 Condition ResponseTime</pre>
 
 </article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-2">
@@ -3333,7 +3333,9 @@ long_dt &lt;- melt(wide_dt,
 </article></slide><slide class=""><hgroup><h2><code>dcast()</code> for long to wide</h2></hgroup><article  id="dcast-for-long-to-wide">
 
 <pre class = 'prettyprint lang-r'># Convert back to wide format for comparison
-wide_dt_again &lt;- dcast(long_dt, Subject ~ Condition, value.var = &quot;ResponseTime&quot;)
+wide_dt_again &lt;- dcast(long_dt, 
+                       Subject ~ Condition, 
+                       value.var = &quot;ResponseTime&quot;)
 print(wide_dt_again)</pre>
 
 <pre >## Key: &lt;Subject&gt;
@@ -3345,7 +3347,7 @@ print(wide_dt_again)</pre>
 
 <ul>
 <li><p><code>long_dt</code>: The long format input <code>data.table</code></p></li>
-<li><p><code>Subject ~ Condition</code>: This formula tells <code>dcast</code> to group by <code>Subject</code> and spread columns out named after each <code>Condition</code></p></li>
+<li><p><code>Subject ~ Condition</code>: Group by <code>Subject</code> and spread columns out named after each <code>Condition</code></p></li>
 <li><p><code>value.var = &quot;ResponseTime&quot;</code>: Specifies which column to fill values from.</p></li>
 </ul>
 

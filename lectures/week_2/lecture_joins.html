@@ -3217,9 +3217,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 </article></slide><slide class=""><hgroup><h2>Join using the <code>merge</code> function</h2></hgroup><article  id="join-using-the-merge-function">
 
 <ul>
-<li><p>The <code>merge</code> function is used to join two data tables.</p></li>
-<li><p>It’s syntax is <code>merge(x, y, by = &quot;ID&quot;, all.x = FALSE, all.y = FALSE)</code>.</p></li>
-<li><p><strong>x, y</strong>: <code>x</code> is the the left table, and <code>y</code> is the right table to be merged.</p></li>
+<li>The <code>merge</code> function is used to join two data tables.</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>merge(x, y, by = &quot;ID&quot;, all.x = FALSE, all.y = FALSE)`</pre>
+
+<ul>
+<li><strong>x, y</strong>: <code>x</code> is the the left table, and <code>y</code> is the right table to be merged.</li>
 </ul>
 
 <ol>
@@ -3340,7 +3344,7 @@ This is a full outer join – <code>all.x</code> and <code>all.y</code> are both
 <pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
 DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
 
-result_inner &lt;- merge(DT1, DT2, by = &quot;ID&quot;)</pre>
+result &lt;- merge(DT1, DT2, by = &quot;ID&quot;)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer-1">
 
@@ -3352,7 +3356,7 @@ Click here for the answer
 
 </summary>
 
-<pre class = 'prettyprint lang-r'>  print(result_inner)</pre>
+<pre class = 'prettyprint lang-r'>  print(result)</pre>
 
 <pre >  ## Key: &lt;ID&gt;
   ##       ID    Name Score
@@ -3373,7 +3377,7 @@ This performs an inner join, so only rows with matching <code>ID</code> values i
 <pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
 DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
 
-result_left &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all.x = TRUE)</pre>
+result &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all.x = TRUE)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer-2">
 
@@ -3385,7 +3389,7 @@ Click here for the answer
 
 </summary>
 
-<pre class = 'prettyprint lang-r'>  print(result_left)</pre>
+<pre class = 'prettyprint lang-r'>  print(result)</pre>
 
 <pre >  ## Key: &lt;ID&gt;
   ##       ID    Name Score
@@ -3407,7 +3411,7 @@ This is a left join – <code>all.x</code> is TRUE – so all rows from <code>DT
 <pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
 DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
 
-result_right &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all.y = TRUE)</pre>
+result &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all.y = TRUE)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer-3">
 
@@ -3419,7 +3423,7 @@ Click here for the answer
 
 </summary>
 
-<pre class = 'prettyprint lang-r'>  print(result_right)</pre>
+<pre class = 'prettyprint lang-r'>  print(result)</pre>
 
 <pre >  ## Key: &lt;ID&gt;
   ##       ID    Name Score
@@ -3441,7 +3445,7 @@ This is a right join – <code>all.y</code> is TRUE – so all rows from <code>D
 <pre class = 'prettyprint lang-r'>DT1 &lt;- data.table(ID = c(1, 2, 3), Name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;))
 DT2 &lt;- data.table(ID = c(2, 3, 4), Score = c(85, 90, 88))
 
-result_outer &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all = TRUE)</pre>
+result &lt;- merge(DT1, DT2, by = &quot;ID&quot;, all = TRUE)</pre>
 
 </article></slide><slide class=""><hgroup><h2>Answer</h2></hgroup><article  id="answer-4">
 
@@ -3453,7 +3457,7 @@ Click here for the answer
 
 </summary>
 
-<pre class = 'prettyprint lang-r'>  print(result_outer)</pre>
+<pre class = 'prettyprint lang-r'>  print(result)</pre>
 
 <pre >  ## Key: &lt;ID&gt;
   ##       ID    Name Score
