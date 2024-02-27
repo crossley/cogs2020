@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Loops and Conditional Flow in R</title>
+  <title>Creating and Calling Functions in R</title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -20,7 +20,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Loops and Conditional Flow in R',
+                title: 'Creating and Calling Functions in R',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -3207,248 +3207,93 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Introduction to Conditional Statements</h2></hgroup><article  id="introduction-to-conditional-statements">
-
-<p>Conditional statements allow R programs to execute different blocks of code based on certain conditions.</p>
-
-</article></slide><slide class=""><hgroup><h2>The <code>if</code> Statement</h2></hgroup><article  id="the-if-statement">
-
-<h3>Basic Syntax</h3>
-
-<pre class = 'prettyprint lang-r'>if (condition) {
-  # code to execute if condition is True
-}</pre>
-
-</article></slide><slide class=""><hgroup><h2>The <code>if</code> Statement</h2></hgroup><article  id="the-if-statement-1">
-
-<h3>Example</h3>
-
-<pre class = 'prettyprint lang-r'>x &lt;- 10
-if (x &gt; 5) {
-  print(&quot;x is greater than 5&quot;)
-}</pre>
-
-<pre >## [1] &quot;x is greater than 5&quot;</pre>
+<slide class=""><hgroup><h2>Introduction to Functions in R</h2></hgroup><article  id="introduction-to-functions-in-r">
 
 <ul>
-<li>Executes the print statement because the condition (<code>x &gt;   5</code>) is <code>True</code>.</li>
+<li><p>Functions in R are objects that allow you to package a sequence of statements to perform a specific task, improving code reusability and organization.</p></li>
+<li><p>They can take inputs, perform an operation, and return an output.</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>The <code>else</code> Statement</h2></hgroup><article  id="the-else-statement">
+</article></slide><slide class=""><hgroup><h2>Defining Functions</h2></hgroup><article  id="defining-functions">
 
-<h3>Extending <code>if</code> with <code>else</code></h3>
-
-<pre class = 'prettyprint lang-r'>if (condition) {
-  # code if condition is True
-} else {
-  # code if condition is False
+<pre class = 'prettyprint lang-r'>function_name &lt;- function(parameters) {
+  # Block of code
+  return(result)
 }</pre>
 
-</article></slide><slide class=""><hgroup><h2>The <code>else</code> Statement</h2></hgroup><article  id="the-else-statement-1">
+<ul>
+<li><p>A function is defined using the <code>function</code> keyword.</p></li>
+<li><p>The inputs are specified within the parentheses. They represent the inputs the function can accept.</p></li>
+<li><p>The body of the function is enclosed in <code>{}</code>.</p></li>
+<li><p>The <code>return()</code> statement is used to return the result of the function.</p></li>
+<li><p>If <code>return()</code> is not explicitly called, the last line is returned automatically.</p></li>
+</ul>
 
-<h3>Example</h3>
+</article></slide><slide class=""><hgroup><h2>Example: A Simple Function</h2></hgroup><article  id="example-a-simple-function">
 
-<pre class = 'prettyprint lang-r'>x &lt;- 3
-if (x &gt; 5) {
-  print(&quot;x is greater than 5&quot;)
-} else {
-  print(&quot;x is not greater than 5&quot;)
+<pre class = 'prettyprint lang-r'>greet &lt;- function(name) {
+  paste(&quot;Hello,&quot;, name, &quot;!&quot;)
 }</pre>
 
-<pre >## [1] &quot;x is not greater than 5&quot;</pre>
-
 <ul>
-<li>Executes the second print statement because the condition is <code>False</code>.</li>
+<li><p>The <code>greet</code> function takes a single argument, <code>name</code>.</p></li>
+<li><p>It returns a string that greets the user by name.</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>The <code>else if</code> Statement</h2></hgroup><article  id="the-else-if-statement">
+</article></slide><slide class=""><hgroup><h2>Calling Functions</h2></hgroup><article  id="calling-functions">
 
-<h3>For Multiple Conditions</h3>
+<pre class = 'prettyprint lang-r'>greet &lt;- function(name) {
+  paste(&quot;Hello,&quot;, name, &quot;!&quot;)
+}
 
-<pre class = 'prettyprint lang-r'>if (condition1) {
-  # code if condition1 is True
-} else if (condition2) {
-  # code if condition2 is True
-} else {
-  # code if neither condition is True
+message &lt;- greet(&quot;Alice&quot;)
+print(message)  # Outputs: Hello, Alice !</pre>
+
+<pre >## [1] &quot;Hello, Alice !&quot;</pre>
+
+<ul>
+<li>After defining a function, call it by using its name followed by parentheses <code>()</code> enclosing any arguments.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Parameters vs Arguments</h2></hgroup><article  id="parameters-vs-arguments">
+
+<ul>
+<li><p><strong>Parameters</strong> are the placeholders used in the function’s definition.</p></li>
+<li><p><strong>Arguments</strong> are the actual values passed to the function when it is called.</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Default Parameters</h2></hgroup><article  id="default-parameters">
+
+<p>Functions in R can have default parameter values, making some arguments optional.</p>
+
+<pre class = 'prettyprint lang-r'>greet &lt;- function(name=&quot;World&quot;) {
+  paste(&quot;Hello,&quot;, name, &quot;!&quot;)
 }</pre>
 
-</article></slide><slide class=""><hgroup><h2>The <code>else if</code> Statement</h2></hgroup><article  id="the-else-if-statement-1">
+</article></slide><slide class=""><hgroup><h2>Named Arguments</h2></hgroup><article  id="named-arguments">
 
-<h3>Example</h3>
+<p>Pass arguments to a function with or without specifying their names.</p>
 
-<pre class = 'prettyprint lang-r'>x &lt;- 5
-if (x &gt; 5) {
-  print(&quot;x is greater than 5&quot;)
-} else if (x == 5) {
-  print(&quot;x is equal to 5&quot;)
-} else {
-  print(&quot;x is less than 5&quot;)
-}</pre>
+<pre class = 'prettyprint lang-r'>describe_pet &lt;- function(animal_type, pet_name) {
+  cat(&quot;I have a&quot;, animal_type, &quot;named&quot;, pet_name, &quot;.\n&quot;)
+}
 
-<pre >## [1] &quot;x is equal to 5&quot;</pre>
+describe_pet(pet_name=&quot;Whiskers&quot;, animal_type=&quot;cat&quot;)</pre>
 
-<ul>
-<li>Executes the print statement in the <code>else if</code> block.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Utilizing the <code>any</code> Function in R</h2></hgroup><article  id="utilizing-the-any-function-in-r">
-
-<p>The <code>any</code> function is a logical operation in R that tests if <strong>any</strong> of the elements in a given vector or data structure are <code>TRUE</code>.</p>
-
-<h3>Example</h3>
-
-<pre class = 'prettyprint lang-r'>values &lt;- c(TRUE, FALSE, FALSE)
-result &lt;- any(values)
-print(result) # Output: TRUE</pre>
-
-<pre >## [1] TRUE</pre>
-
-</article></slide><slide class=""><hgroup><h2>Utilizing the <code>all</code> Function in R</h2></hgroup><article  id="utilizing-the-all-function-in-r">
-
-<p>The <code>all</code> function is a logical operation in R that tests if <strong>all</strong> of the elements in a given vector or data structure are <code>TRUE</code>.</p>
-
-<h3>Example</h3>
-
-<pre class = 'prettyprint lang-r'>values &lt;- c(TRUE, FALSE, FALSE)
-result &lt;- all(values)
-print(result) # Output: FALSE</pre>
-
-<pre >## [1] FALSE</pre>
-
-</article></slide><slide class=""><hgroup><h2>The <code>ifelse</code> Function</h2></hgroup><article  id="the-ifelse-function">
-
-<pre class = 'prettyprint lang-r'>ifelse(test_expression, yes, no)</pre>
-
-<ul>
-<li><p>The <code>ifelse</code> function is a vectorized conditional function which evaluates each element of the <code>test_expression</code>.</p></li>
-<li><p>If the condition for an element is <code>TRUE</code>, it returns the corresponding element from <code>yes</code>; otherwise, it returns the corresponding element from <code>no</code>.</p></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>The <code>ifelse</code> Function</h2></hgroup><article  id="the-ifelse-function-1">
-
-<h3>Example</h3>
-
-<pre class = 'prettyprint lang-r'>x &lt;- 5
-result &lt;- ifelse(x &gt; 10, &quot;Greater than 10&quot;, &quot;Less or equal to 10&quot;)
-print(result)</pre>
-
-<pre >## [1] &quot;Less or equal to 10&quot;</pre>
-
-<ul>
-<li>Returns a character vector: <code>&quot;Less or equal to 10&quot;</code>.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2><code>ifelse</code> can operate on vectors</h2></hgroup><article  id="ifelse-can-operate-on-vectors">
-
-<h3>Example</h3>
-
-<pre class = 'prettyprint lang-r'>x &lt;- c(5, 10, 15)
-result &lt;- ifelse(x &gt; 10, &quot;Greater than 10&quot;, &quot;Less or equal to 10&quot;)
-print(result)</pre>
-
-<pre >## [1] &quot;Less or equal to 10&quot; &quot;Less or equal to 10&quot; &quot;Greater than 10&quot;</pre>
-
-<ul>
-<li>Returns a character vector: <code>[&quot;Less or equal to 10&quot;, &quot;Less   or equal to 10&quot;, &quot;Greater than 10&quot;]</code>.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Considerations When Using <code>ifelse</code></h2></hgroup><article  id="considerations-when-using-ifelse">
-
-<ul>
-<li><strong>Type Coercion</strong>: The <code>yes</code> and <code>no</code> arguments must be the same type, or they will be coerced to a common type, which might not be intended.</li>
-</ul>
-
-<pre class = 'prettyprint lang-r'>x &lt;- c(5, 10, 15)
-result &lt;- ifelse(x &gt; 10, x, &quot;Less or equal to 10&quot;)
-print(result)</pre>
-
-<pre >## [1] &quot;Less or equal to 10&quot; &quot;Less or equal to 10&quot; &quot;15&quot;</pre>
-
-<ul>
-<li><p>Returns a character vector: <code>[&quot;Less or equal to 10&quot;, &quot;Less   or equal to 10&quot;, &quot;15&quot;]</code>.</p></li>
-<li><p>Last element is coerced to character.</p></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Introduction to Loops</h2></hgroup><article  id="introduction-to-loops">
-
-<p>Loops in R are used to execute a block of code repeatedly.</p>
-
-</article></slide><slide class=""><hgroup><h2>The <code>for</code> Loop</h2></hgroup><article  id="the-for-loop">
-
-<h3>Iterating Over Sequences</h3>
-
-<pre class = 'prettyprint lang-r'>for (element in sequence) {
-  # code to execute for each element
-}</pre>
-
-</article></slide><slide class=""><hgroup><h2>The <code>for</code> Loop</h2></hgroup><article  id="the-for-loop-1">
-
-<h3>Example</h3>
-
-<pre class = 'prettyprint lang-r'>fruits &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;)
-for (fruit in fruits) {
-  print(fruit)
-}</pre>
-
-<pre >## [1] &quot;apple&quot;
-## [1] &quot;banana&quot;
-## [1] &quot;cherry&quot;</pre>
-
-<ul>
-<li>Prints each fruit in the vector.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>The <code>while</code> Loop</h2></hgroup><article  id="the-while-loop">
-
-<h3>Repeating While a Condition is True</h3>
-
-<pre class = 'prettyprint lang-r'>while (condition) {
-  # code to execute while condition is True
-}</pre>
-
-</article></slide><slide class=""><hgroup><h2>The <code>while</code> Loop</h2></hgroup><article  id="the-while-loop-1">
-
-<h3>Example</h3>
-
-<pre class = 'prettyprint lang-r'>x &lt;- 5
-while (x &gt; 0) {
-  print(x)
-  x &lt;- x - 1
-}</pre>
-
-<pre >## [1] 5
-## [1] 4
-## [1] 3
-## [1] 2
-## [1] 1</pre>
-
-<ul>
-<li>Counts down from 5 to 1.</li>
-</ul>
+<pre >## I have a cat named Whiskers .</pre>
 
 </article></slide><slide class=""><hgroup><h2>Question 1</h2></hgroup><article  id="question-1">
 
-<p>What does the following code print?</p>
-
-<pre class = 'prettyprint lang-r'>if (FALSE) {
-  print(&quot;False!&quot;)
-} else if (TRUE) {
-  print(&quot;Now True!&quot;)
-} else {
-  print(&quot;Finally True!&quot;)
-}</pre>
-
-<pre >## [1] &quot;Now True!&quot;</pre>
+<p>How do you define a function in R that takes no arguments and prints &ldquo;Hello, World!&rdquo;?</p>
 
 <ol>
-<li>False!</li>
-<li>Now True!</li>
-<li>Finally True!</li>
-<li>Nothing</li>
+<li><code>function() {print(&quot;Hello, World!&quot;)}</code></li>
+<li><code>myFunc &lt;- print(&quot;Hello, World!&quot;)</code></li>
+<li><code>myFunc &lt;- function() {print(&quot;Hello, World!&quot;)}</code></li>
+<li><code>function myFunc() {return(&quot;Hello, World!&quot;)}</code></li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2>Answer 1</h2></hgroup><article  id="answer-1">
+<h3>Answer 1</h3>
 
 <details>
 
@@ -3459,33 +3304,23 @@ Click here for the answer
 </summary>
 
 <ul>
-<li>The correct answer is <strong>2. Now True!</strong>. The <code>else if</code> block is executed because its condition is <code>True</code>.</li>
+<li>The correct answer is <strong>3</strong>. <code>myFunc &lt;- function()   {print(&quot;Hello, World!&quot;)}</code> defines a function that takes no arguments and prints &ldquo;Hello, World!&rdquo;.</li>
 </ul>
 
 </details>
 
 </article></slide><slide class=""><hgroup><h2>Question 2</h2></hgroup><article  id="question-2">
 
-<p>How many times does the following loop run?</p>
-
-<pre class = 'prettyprint lang-r'>x &lt;- 3
-while (x &lt; 8) {
-  print(&quot;Looping!&quot;)
-  x &lt;- x + 2
-}</pre>
-
-<pre >## [1] &quot;Looping!&quot;
-## [1] &quot;Looping!&quot;
-## [1] &quot;Looping!&quot;</pre>
+<p>Given a function <code>addNumbers</code> that takes two arguments, <code>x</code> and <code>y</code>, and returns their sum, which of the following calls is correct?</p>
 
 <ol>
-<li>2 times</li>
-<li>3 times</li>
-<li>4 times</li>
-<li>5 times</li>
+<li><code>addNumbers(x, y)</code></li>
+<li><code>addNumbers &lt;- (x + y)</code></li>
+<li><code>result &lt;- addNumbers(2, 3)</code></li>
+<li><code>result = addNumbers(x: 2, y: 3)</code></li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2>Answer 2</h2></hgroup><article  id="answer-2">
+<h3>Answer 2</h3>
 
 <details>
 
@@ -3496,37 +3331,28 @@ Click here for the answer
 </summary>
 
 <ul>
-<li>The correct answer is <strong>2. 3 times</strong>. The loop increments <code>x</code> by 2 each time, starting from 3 and stopping before it reaches 8.</li>
+<li>The correct answer is <strong>3</strong>. <code>result &lt;- addNumbers(2, 3)</code> correctly calls the function <code>addNumbers</code> with 2 and 3 as arguments and stores the sum in <code>result</code>.</li>
 </ul>
 
 </details>
 
 </article></slide><slide class=""><hgroup><h2>Question 3</h2></hgroup><article  id="question-3">
 
-<p>Consider the following code:</p>
+<p>What is the output of the following code?</p>
 
-<pre class = 'prettyprint lang-r'>numbers &lt;- c(1, 4, 7, 10) # Initial vector of numbers
-target &lt;- 5               # Target value
-i &lt;- 1                    # Index to traverse the vector
+<pre class = 'prettyprint lang-r'>add &lt;- function(x, y) {
+  return(x + y)
+}
 
-while(any(numbers != target)) {
+print(add(5, 3))</pre>
 
-  i &lt;- ifelse(numbers[i]==target, i + 1, i)
-
-  numbers[i] &lt;- ifelse(numbers[i] &lt; target, 
-                       numbers[i] + 1, 
-                       numbers[i] - 1)
-
-  print(numbers)
-}</pre>
-
-<p>What will be the final state of the <code>numbers</code> vector after the loop terminates?</p>
+<pre >## [1] 8</pre>
 
 <ol>
-<li><code>c(5, 5, 5, 5)</code></li>
-<li><code>c(2, 5, 8, 11)</code></li>
-<li>The loop will not terminate and result in an infinite loop.</li>
-<li><code>c(1, 4, 7, 10)</code></li>
+<li>8</li>
+<li>53</li>
+<li>&ldquo;x + y&rdquo;</li>
+<li>Error</li>
 </ol>
 
 </article></slide><slide class=""><hgroup><h2>Answer 3</h2></hgroup><article  id="answer-3">
@@ -3540,7 +3366,61 @@ Click here for the answer
 </summary>
 
 <ul>
-<li>The correct answer is <strong>1. c(5, 5, 5, 5)</strong>. The script uses the <code>ifelse</code> statement to adjust each element towards the target value by either incrementing or decrementing. The loop iterates to the next element only when <code>numbers[i]</code> has reached the target value. Thus ensuring the loop will terminate when all numbers become equal to the target value of 5.</li>
+<li>The correct answer is <strong>1. 8</strong> because 5 + 3 equals 8.</li>
+</ul>
+
+</details>
+
+</article></slide><slide class=""><hgroup><h2>Question 4</h2></hgroup><article  id="question-4">
+
+<p>How do you define a function with one compulsory parameter <code>name</code> and one optional parameter <code>age</code> with a default value of 30 in R?</p>
+
+<ol>
+<li><code>person &lt;- function(name, age=30)</code></li>
+<li><code>person &lt;- function(name=30, age)</code></li>
+<li><code>person &lt;- function(name, age) {age &lt;- 30}</code></li>
+<li><code>person &lt;- function(name, optional age=30)</code></li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Answer 4</h2></hgroup><article  id="answer-4">
+
+<details>
+
+<summary>
+
+Click here for the answer
+
+</summary>
+
+<ul>
+<li>The correct answer is <strong>1. <code>person &lt;- function(name,   age=30)</code></strong>. This syntax correctly defines a function with a required <code>name</code> parameter and an optional <code>age</code> parameter that defaults to 30 if not provided.</li>
+</ul>
+
+</details>
+
+</article></slide><slide class=""><hgroup><h2>Question 5</h2></hgroup><article  id="question-5">
+
+<p>Given the <code>describe_pet</code> function definition from earlier, which of the following calls to <code>describe_pet</code> is correct in R?</p>
+
+<ol>
+<li><code>describe_pet(&quot;dog&quot;, &quot;Rover&quot;)</code></li>
+<li><code>describe_pet(pet_name=&quot;Daisy&quot;, animal_type=&quot;cat&quot;)</code></li>
+<li><code>describe_pet(animal_type=&quot;hamster&quot;)</code></li>
+<li><code>describe_pet(&quot;Daisy&quot;, animal_type=&quot;dog&quot;)</code></li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Answer 5</h2></hgroup><article  id="answer-5">
+
+<details>
+
+<summary>
+
+Click here for the answer
+
+</summary>
+
+<ul>
+<li>The correct answer is <strong>2. <code>describe_pet(pet_name=&quot;Daisy&quot;,   animal_type=&quot;cat&quot;)</code></strong>. It correctly provides both required arguments, using named arguments to specify them in any order.</li>
 </ul>
 
 </details></article></slide>

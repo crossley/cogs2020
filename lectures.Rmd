@@ -12,12 +12,10 @@ fontsize: 14pt
   - <a href="lectures/week_1/lecture_variable_types.html" target="_blank">Understanding variable types in R</a>
   - <a href="lectures/week_1/lecture_workspace.html" target="_blank">Understanding the Workspace in R</a>
   - <a href="lectures/week_1/lecture_container_types.html" target="_blank">Container Variable Types and Accessing Elements in R</a>
-  - <a href="lectures/week_1/lecture_functions_1.html" target="_blank">Writing and Calling Functions in R</a>
-  - <a href="lectures/week_1/lecture_functions_2.html" target="_blank">Writing and Calling Functions in R</a>
+  - <a href="lectures/week_1/lecture_functions.html" target="_blank">Writing and Calling Functions in R</a>
   - <a href="lectures/week_1/lecture_container_type_coercion.html" target="_blank">Container Variable Type Coercion in R</a>
   - <a href="lectures/week_1/lecture_assignment_operators.html" target="_blank">Assignment Operators in R</a>
-  - <a href="lectures/week_1/lecture_loops_cond_flow_1.html" target="_blank">Loops and Conditional Flow in R</a>
-  - <a href="lectures/week_1/lecture_loops_cond_flow_2.html" target="_blank">Loops and Conditional Flow in R</a>
+  - <a href="lectures/week_1/lecture_loops_cond_flow.html" target="_blank">Loops and Conditional Flow in R</a>
   - <a href="lectures/week_1/lecture_getting_help.html" target="_blank">Getting Help in R</a>
   - <a href="lectures/week_1/lecture_mre.html" target="_blank">Creating a Minimal Reproducible Example</a>
 
