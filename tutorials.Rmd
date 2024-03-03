@@ -14,10 +14,10 @@ fontsize: 14pt
 - Week 2
   - <a href="tutorials/tutorial_2.html" target="_blank">Tutorial 2 worksheet</a>
 
-<!---
 - Week 3
   - <a href="tutorials/tutorial_3.html" target="_blank">Tutorial 3 worksheet</a>
 
+<!---
 - Week 4
   - <a href="tutorials/tutorial_4.html" target="_blank">Tutorial 4 worksheet</a>
 

@@ -3376,10 +3376,10 @@ Click here for the answer
 <p>How do you define a function with one compulsory parameter <code>name</code> and one optional parameter <code>age</code> with a default value of 30 in R?</p>
 
 <ol>
-<li><code>person &lt;- function(name, age=30)</code></li>
-<li><code>person &lt;- function(name=30, age)</code></li>
-<li><code>person &lt;- function(name, age) {age &lt;- 30}</code></li>
-<li><code>person &lt;- function(name, optional age=30)</code></li>
+<li><code>person &lt;- function(name, age=30) {# do stuff}</code></li>
+<li><code>person &lt;- function(name=30, age) {# do stuff}</code></li>
+<li><code>person &lt;- function(name, age) {# do stuff}</code></li>
+<li><code>person &lt;- function(name, optional age=30) {# do stuff}}</code></li>
 </ol>
 
 </article></slide><slide class=""><hgroup><h2>Answer 4</h2></hgroup><article  id="answer-4">
@@ -3400,7 +3400,11 @@ Click here for the answer
 
 </article></slide><slide class=""><hgroup><h2>Question 5</h2></hgroup><article  id="question-5">
 
-<p>Given the <code>describe_pet</code> function definition from earlier, which of the following calls to <code>describe_pet</code> is correct in R?</p>
+<p>Given the <code>describe_pet</code> function below, which of the following calls to <code>describe_pet</code> is correct in R?</p>
+
+<pre class = 'prettyprint lang-r'>describe_pet &lt;- function(animal_type, pet_name) {
+  cat(&quot;I have a&quot;, animal_type, &quot;named&quot;, pet_name, &quot;.\n&quot;)
+}</pre>
 
 <ol>
 <li><code>describe_pet(&quot;dog&quot;, &quot;Rover&quot;)</code></li>
