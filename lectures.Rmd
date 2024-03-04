@@ -26,3 +26,9 @@ fontsize: 14pt
   - <a href="lectures/week_2/lecture_joins.html" target="_blank">`data.table` joins</a>
   - <a href="lectures/week_2/lecture_reshaping_datatables.html" target="_blank">`data.table` reshaping</a>
   - <a href="lectures/week_2/lecture_chaining.html" target="_blank">Chaining `data.table` calls</a>
+
+- Week 3
+  - <a href="lectures/week_3/lecture_intro_to_ggplot.html" target="_blank">Introduction to `ggplot`</a>
+  - <a href="lectures/week_3/lecture_basic_plotting.html" target="_blank">Basic plotting with `ggplot`</a>
+  - <a href="lectures/week_3/lecture_themes.html" target="_blank">Themes and customising appearance</a>
+  - <a href="lectures/week_3/lecture_facets.html" target="_blank">Putting many plots on a single figure</a>
