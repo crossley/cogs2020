@@ -29,6 +29,8 @@ fontsize: 14pt
 
 - Week 3
   - <a href="lectures/week_3/lecture_intro_to_ggplot.html" target="_blank">Introduction to `ggplot`</a>
-  - <a href="lectures/week_3/lecture_basic_plotting.html" target="_blank">Basic plotting with `ggplot`</a>
-  - <a href="lectures/week_3/lecture_themes.html" target="_blank">Themes and customising appearance</a>
-  - <a href="lectures/week_3/lecture_facets.html" target="_blank">Putting many plots on a single figure</a>
+  - <a href="lectures/week_3/lecture_aes.html" target="_blank">Basic Aesthetics in `ggplot`</a>
+  - <a href="lectures/week_3/lecture_geoms.html" target="_blank">Common Geoms in `ggplot`</a>
+  - <a href="lectures/week_3/lecture_scales.html" target="_blank">Scales in `ggplot2`</a>
+  - <a href="lectures/week_3/lecture_themes.html" target="_blank">Customization and Themes in `ggplot2`</a>
+  - <a href="lectures/week_3/lecture_facets.html" target="_blank">Faceting with `ggplot2`</a>
