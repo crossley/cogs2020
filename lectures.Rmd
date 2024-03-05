@@ -34,3 +34,4 @@ fontsize: 14pt
   - <a href="lectures/week_3/lecture_scales.html" target="_blank">Scales in `ggplot2`</a>
   - <a href="lectures/week_3/lecture_themes.html" target="_blank">Customization and Themes in `ggplot2`</a>
   - <a href="lectures/week_3/lecture_facets.html" target="_blank">Faceting with `ggplot2`</a>
+  - <a href="lectures/week_3/lecture_rmarkdown.html" target="_blank">Creating PDFs with R Markdown</a>
