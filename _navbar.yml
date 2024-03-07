@@ -1,6 +1,8 @@
 title: "COGS2020"
 type: default
 left:
+  - text: "Syllabus"
+    href: syllabus.html
   - text: "Lectures"
     href: lectures.html
   - text: "Tutorials"
