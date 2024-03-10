@@ -35,3 +35,10 @@ fontsize: 14pt
   - <a href="lectures/week_3/lecture_themes.html" target="_blank">Customization and Themes in `ggplot2`</a>
   - <a href="lectures/week_3/lecture_facets.html" target="_blank">Faceting with `ggplot2`</a>
   - <a href="lectures/week_3/lecture_rmarkdown.html" target="_blank">Creating PDFs with R Markdown</a>
+
+- Week 4
+  - <a href="lectures/week_4/lecture_descriptive_stats_plot_compare.html" target="_blank">Visuals Visuals Visuals</a>
+  - <a href="lectures/week_4/lecture_what_is_stats.html" target="_blank">Core Concepts of Statistical Thinking</a>
+  - <a href="lectures/week_4/lecture_descriptive_stats_central_tendancy.html" target="_blank">Descriptive Statistics and Data Visualization in R: Central Tendency</a>
+  - <a href="lectures/week_4/lecture_descriptive_stats_spread.html" target="_blank">Descriptive Statistics and Data Visualization in R: Dispersion and Spread</a>
+  - <a href="lectures/week_4/lecture_experiment_design.html" target="_blank">Basic Experiment Design in Psychology and Cognitive Science</a>
