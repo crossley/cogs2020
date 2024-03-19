@@ -9,6 +9,13 @@ output:
 fontsize: 14pt
 ---
 
+<!--
+Future:
+* must have computer / no loaners / can use PC lab
+* don't use R studio. Just use R. Teach Rscript command and
+  source command.
+--->
+
 
 #### Course unit guide
 * <a href="https://unitguides.mq.edu.au/unit_offerings/162973/unit_guide" target="_blank">unit guide</a>
