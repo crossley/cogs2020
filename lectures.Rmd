@@ -48,3 +48,12 @@ fontsize: 14pt
   - <a href="lectures/week_5/lecture_probability.html" target="_blank">Fundamentals of Probability</a>
   - <a href="lectures/week_5/lecture_moments.html" target="_blank">Moments of Random Variables</a>
   - <a href="lectures/week_5/lecture_R_distributions.html" target="_blank">Distributions in R</a>
+
+- Week 6
+  - <a href="lectures/week_6/lecture_dist_samp_means.html" target="_blank">Distribution of Sample Means</a>
+  - <a href="lectures/week_6/lecture_central_limit_theorem.html" target="_blank">Central Limit Theorem</a>
+  - <a href="lectures/week_6/lecture_normal_test.html" target="_blank">Normal test</a>
+  - <a href="lectures/week_6/lecture_critical_values.html" target="_blank">Critical Values</a>
+  - <a href="lectures/week_6/lecture_two_tailed_tests.html" target="_blank">Two-tailed tests</a>
+  - <a href="lectures/week_6/lecture_confidence_intervals.html" target="_blank">Confidence Intervals</a>
+  - <a href="lectures/week_6/" target="_blank">lecture_error_and_power.html</a>

@@ -12,7 +12,7 @@
 <meta name="author" content="Author: Matthew J. Crossley" />
 
 
-<title>Tutorial 3 - Visualise data with ggplot2</title>
+<title>Tutorial 6 solutions</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1502,46 +1502,85 @@ font-size: 0.95em;
 
 
 
-<h1 class="title toc-ignore">Tutorial 3 - Visualise data with
-<code>ggplot2</code></h1>
+<h1 class="title toc-ignore">Tutorial 6 solutions</h1>
 <h4 class="author">Author: Matthew J. Crossley</h4>
 <h4 class="date">Last update: 25 March, 2024</h4>
 
 </div>
 
 
-<pre class="r"><code>library(data.table)
+<pre class="r"><code># load the packages we will need
+library(data.table)
 library(ggplot2)
+
+# clean session
 rm(list=ls())
 
-d &lt;- as.data.table(diamonds)
+# 1
+# Assume X ~ Normal(mu_x, sig_x)
+# Then Null and alternative H&#39;s are:
+# H0: mu_x = 58
+# H1: mu_x &gt; 58
 
-## 1.
-ggplot(d[cut %in% c(&#39;Ideal&#39;, &#39;Premium&#39;)], aes(carat, fill=as.factor(cut))) +
-  geom_histogram(alpha=0.75)
+# type I error (alpha) = 0.05
+type_I_error &lt;- 0.05
 
-d[cut == &#39;Ideal&#39;, .(mean_hwy=mean(carat),
-        range_hwy=diff(range(carat))),
-    .(cut)]
+# estimate mu_x with mu_x_hat = x_bar
+x &lt;- c(63.97,
+      60.29,
+      85.60,
+      72.57,
+      54.65,
+      53.74,
+      69.13,
+      70.07,
+      67.19,
+      53.95
+     )
 
-## 2.
-ggplot(d[clarity %in% c(&#39;SI2&#39;, &#39;SI1&#39;, &#39;VS1&#39;)], 
-       aes(cut, fill=clarity)) +
-  geom_bar(position=position_dodge())
+n &lt;- length(x)
+x_bar_obs &lt;- mean(x)
 
-d[, .N, .(cut, clarity)]
+# define the sampling distribution of x_bar:
+#
+# X ~ Normal(mu_x, sig_x)
+# X_bar ~ Normal(mu_x_bar, sig_x_bar)
+#
+# mu_x_bar = mu_x
+# sig_x_bar = sig_x / sqrt(n)
 
-## 3.
-ggplot(d[price &lt; 10000], aes(cut, price, fill=clarity)) +
-  geom_boxplot()
+mu_x = 58
+sig_x = sqrt(10) # given in the problem
 
-d[price &lt; 1000, .(median_cty=as.numeric(median(price)),
-        range_cty=diff(range(price))),
-    .(cut, clarity)]
+mu_x_bar &lt;- mu_x # from central limit theorem
+sig_x_bar &lt;- sig_x / sqrt(n) # from central limit theorem
 
-## 4.
-ggplot(d[color == &#39;E&#39;], aes(carat, price, colour=cut, fill=color)) +
-  geom_point()</code></pre>
+# critical value
+critical_value &lt;- qnorm(type_I_error, mu_x_bar, sig_x_bar, lower.tail=F)
+
+# p-value
+p_value &lt;- pnorm(x_bar_obs, mu_x_bar, sig_x_bar, lower.tail=F)
+
+ans_1_test_stat_obs &lt;- x_bar_obs
+ans_1_critical_value &lt;- critical_value
+ans_1_p_value &lt;- p_value
+
+# 2
+theta_hat_obs &lt;- 8 # read off of the plot
+p_value &lt;- 0.138240 + 0.036864 + 0.004096 # what you observed plus more extreme outcomes
+critical_value &lt;- 10 # because at this value and beyond the p-val would be &lt; 0.05 and we would reject H0
+
+ans_3_critical_value &lt;- critical_value
+ans_3_p_value &lt;- p_value
+
+# 3
+ans_4a &lt;- &quot;alpha&quot;
+ans_4b &lt;- &quot;confidence&quot;
+ans_4c &lt;- &quot;power&quot;
+ans_4d &lt;- &quot;beta&quot;
+ans_4e &lt;- 0.5
+ans_4f &lt;- 0.95
+ans_4g &lt;- &quot;NO&quot;</code></pre>
 
 
 
