@@ -56,4 +56,4 @@ fontsize: 14pt
   - <a href="lectures/week_6/lecture_critical_values.html" target="_blank">Critical Values</a>
   - <a href="lectures/week_6/lecture_two_tailed_tests.html" target="_blank">Two-tailed tests</a>
   - <a href="lectures/week_6/lecture_confidence_intervals.html" target="_blank">Confidence Intervals</a>
-  - <a href="lectures/week_6/" target="_blank">lecture_error_and_power.html</a>
+  - <a href="lectures/week_6/lecture_error_and_power.html" target="_blank">Inferential Error and Statistical Power</a>
