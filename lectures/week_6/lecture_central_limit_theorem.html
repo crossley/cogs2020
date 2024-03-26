@@ -3220,7 +3220,22 @@ ul.task-list{list-style: none;}
 
 </article></slide><slide class=""><hgroup><h2>Applied to the distribution of sample means</h2></hgroup><article  id="applied-to-the-distribution-of-sample-means">
 
-<p>$$  $$</p>
+<p>\[
+\begin{align}
+\boldsymbol{Y} &amp;= \frac{1}{n} (\boldsymbol{X}_1 + \boldsymbol{X}_2 + \dots + \boldsymbol{X}_n) \\
+\\
+E(\boldsymbol{Y}) &amp;= E(\frac{1}{n} (\boldsymbol{X}_1 + \boldsymbol{X}_2 + \dots + \boldsymbol{X}_n)) \\
+    &amp;= \frac{1}{n} 
+    (E(\boldsymbol{X}_1) + E(\boldsymbol{X}_2) + \dots + E(\boldsymbol{X}_n)) \\
+    &amp;= \frac{1}{n} (\mu_x + \mu_x + \ldots + \mu_x) \\
+    &amp;= \mu_x \\
+\\   
+Var(\boldsymbol{Y}) &amp;= Var(\frac{1}{n} (\boldsymbol{X}_1 + \boldsymbol{X}_2 + \dots + \boldsymbol{X}_n)) \\
+    &amp;= Var(\frac{1}{n^2} (Var(\boldsymbol{X}_1) + Var(\boldsymbol{X}_2) + \dots + Var(\boldsymbol{X}_n)) \\
+    &amp;= \frac{1}{n^2} ( \sigma_x^2 + \sigma_x^2 + \dots + \sigma_x^2 ) \\
+    &amp;= \frac{1}{n} \sigma_x^2 \\
+\end{align}
+\]</p>
 
 <p>\[
 \begin{align}
@@ -3253,7 +3268,30 @@ ul.task-list{list-style: none;}
 \end{align}
 \]</p>
 
-<p>Here, \(\sigma_Y\) is called the <strong>standard error of the mean (SEM)</strong> and it is very commonly used to draw error bars on various plots.</p></article></slide>
+<p>Here, \(\sigma_Y\) is called the <strong>standard error of the mean (SEM)</strong> and it is very commonly used to draw error bars on various plots.</p>
+
+</article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question">
+
+<p>What does the Central Limit Theorem (CLT) state about the distribution of sample means?</p>
+
+<ul>
+<li><p>The distribution of sample means will approach a uniform distribution as the sample size increases.</p></li>
+<li><p>The distribution of sample means will be skewed towards the left or right depending on the population distribution.</p></li>
+<li><p>The distribution of sample means will approach a normal distribution as the sample size increases, regardless of the population distribution.</p></li>
+<li><p>The distribution of sample means is irrelevant to the shape of the population distribution.</p></li>
+</ul>
+
+<details>
+
+<summary>
+
+<strong>Answer</strong>
+
+</summary>
+
+<strong>Correct Answer:</strong> The Central Limit Theorem states that, given a sufficiently large sample size, the distribution of sample means will be approximately normally distributed, regardless of the shape of the population distribution.
+
+</details></article></slide>
 
 
   <slide class="backdrop"></slide>
