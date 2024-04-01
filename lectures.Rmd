@@ -57,3 +57,8 @@ fontsize: 14pt
   - <a href="lectures/week_6/lecture_two_tailed_tests.html" target="_blank">Two-tailed tests</a>
   - <a href="lectures/week_6/lecture_confidence_intervals.html" target="_blank">Confidence Intervals</a>
   - <a href="lectures/week_6/lecture_error_and_power.html" target="_blank">Inferential Error and Statistical Power</a>
+
+- Week 7
+  - <a href="lectures/week_7/lecture_z_test.html" target="_blank">Standardisation and the $z$ distribution</a>
+  - <a href="lectures/week_7/lecture_t_test_one_sample.html" target="_blank">The single sample $t$-test</a>
+  - <a href="lectures/week_7/lecture_t_test_two_sample.html" target="_blank">$t$-tests for comparing two means</a>
