@@ -3275,8 +3275,8 @@ H_1: &amp;\mu_X - \mu_Y &gt; 0 \\
 <p>\[
 \begin{align}
 \widehat{\mu_X - \mu_Y} &amp;= \bar{X} - \bar{Y} \\
-t_{obs} &amp;= \frac{(\bar{X} - \bar{Y}) - (\mu_{X_{H_0}} - \mu_{Y_{H_0}})}{\sqrt{s^2_{X-Y}}} \\
-t_{obs} &amp;= \frac{(\bar{X} - \bar{Y})}{\sqrt{s^2_{X-Y}}}
+t_{obs} &amp;= \frac{(\bar{x} - \bar{y}) - (\mu_{X_{H_0}} - \mu_{Y_{H_0}})}{\sqrt{s^2_{X-Y}}} \\
+t_{obs} &amp;= \frac{(\bar{x} - \bar{y})}{\sqrt{s^2_{X-Y}}}
 \end{align}
 \]</p>
 
@@ -3291,15 +3291,16 @@ t_{obs} &amp;= \frac{(\bar{X} - \bar{Y})}{\sqrt{s^2_{X-Y}}}
 
 <ul>
 <li><p><strong>Equal variances</strong>:</p></li>
-<li><p>Sample \(x_{obs}\) has \(n_1\) observations with a sample variance of \(s_X^2\).</p></li>
-<li><p>Sample \(y_{obs}\) has \(n_2\) observations with a sample variance of \(s_Y^2\).</p></li>
+<li><p>Sample \(x_{obs}\) has \(n_x\) observations with a sample variance of \(s_X^2\).</p></li>
+<li><p>Sample \(y_{obs}\) has \(n_y\) observations with a sample variance of \(s_Y^2\).</p></li>
 </ul>
 
 <p>\[
 \begin{align}
-s_{X - Y} = s_{pooled} \\
+s_{X - Y} &amp;= s_{pooled} \\
 s_{pooled}^2 &amp;= \frac{(n_X - 1)s_X^2 + (n_Y - 1)s_Y^2}{n_X + n_Y - 2} \\
-s_{pooled} &amp;= \sqrt{s_{pooled}^2}
+s_{pooled} &amp;= \sqrt{s_{pooled}^2} \\
+df &amp;= 2n - 2
 \end{align}
 \]</p>
 
@@ -3312,7 +3313,7 @@ s_{pooled} &amp;= \sqrt{s_{pooled}^2}
 <p>\[
 \begin{align}
 t_{obs} &amp;= \frac{(\bar{X} - \bar{Y})}{\sqrt{\frac{s_X^2}{n_1} + \frac{s_Y^2}{n_2}}} \\
-        &amp;\sim t_{df} \\
+        &amp;\sim t(df) \\
 df &amp;= \frac{\left(\frac{s_X^2}{n_1} + \frac{s_Y^2}{n_2}\right)^2}{\frac{\left(\frac{s_X^2}{n_1}\right)^2}{n_1 - 1} + \frac{\left(\frac{s_Y^2}{n_2}\right)^2}{n_2 - 1}}
 \end{align}
 \]</p>
@@ -3343,13 +3344,13 @@ res &lt;- t.test(x=x_obs,
 ##  Two Sample t-test
 ## 
 ## data:  x_obs and y_obs
-## t = -1.6986, df = 18, p-value = 0.1066
+## t = -3.0474, df = 18, p-value = 0.006932
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.3929588  0.3592587
+##  -5.925155 -1.089295
 ## sample estimates:
 ## mean of x mean of y 
-##  9.571942 11.088792</pre>
+##  8.682736 12.189961</pre>
 
 </article></slide><slide class=""><hgroup><h2>Repeated measures t-test</h2></hgroup><article  id="repeated-measures-t-test">
 
@@ -3421,13 +3422,13 @@ d_obs &lt;- x_obs - y_obs</pre>
 ##  Paired t-test
 ## 
 ## data:  x_obs and y_obs
-## t = -1.0273, df = 9, p-value = 0.3311
+## t = -2.3365, df = 9, p-value = 0.04427
 ## alternative hypothesis: true mean difference is not equal to 0
 ## 95 percent confidence interval:
-##  -3.653863  1.371705
+##  -3.75655723 -0.06076919
 ## sample estimates:
 ## mean difference 
-##       -1.141079</pre>
+##       -1.908663</pre>
 
 </article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question">
 
