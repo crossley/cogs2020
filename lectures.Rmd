@@ -74,3 +74,7 @@ fontsize: 14pt
   - <a href="lectures/week_9/lecture_anova_rm.html" target="_blank">Repeated Measures One-way ANOVA</a>
   - <a href="lectures/week_9/lecture_anova_twoway.html" target="_blank">Two-way ANOVA</a>
   - <a href="lectures/week_9/lecture_anova_mixed.html" target="_blank">Mixed ANOVA</a>
+
+- Week 10
+  - <a href="lectures/week_10/lecture_correlation.html" target="_blank">Correlation</a>
+  - <a href="lectures/week_10/lecture_simple_linear_regression.html" target="_blank">Simple linear regression</a>
