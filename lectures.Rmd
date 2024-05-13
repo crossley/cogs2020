@@ -78,3 +78,7 @@ fontsize: 14pt
 - Week 10
   - <a href="lectures/week_10/lecture_correlation.html" target="_blank">Correlation</a>
   - <a href="lectures/week_10/lecture_simple_linear_regression.html" target="_blank">Simple linear regression</a>
+
+- Week 11
+  - <a href="lectures/week_11/lecture_multiple_regression.html" target="_blank">Multiple regression</a>
+  - Simple linear regression and multiple regression examples (will be done interactively during lecture)
