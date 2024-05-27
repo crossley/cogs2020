@@ -82,3 +82,10 @@ fontsize: 14pt
 - Week 11
   - <a href="lectures/week_11/lecture_multiple_regression.html" target="_blank">Multiple regression</a>
   - Simple linear regression and multiple regression examples (will be done interactively during lecture)
+
+- Week 12
+  - Plain old review session
+
+- Week 13
+  - Loose ends
+  - <a href="lectures/week_13/lecture_partial_correlation.html" target="_blank">Partial correlation</a>
