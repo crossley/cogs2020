@@ -1,0 +1,2 @@
+# cogs2020 initngit add .ngit commit -m first commitngit branch -M mainngit remote add origin git@github.com:crossley/cogs2020.gitngit push -u origin main
+# cogs2020 initngit add .ngit commit -m first commitngit branch -M mainngit remote add origin git@github.com:crossley/cogs2020.gitngit push -u origin main
