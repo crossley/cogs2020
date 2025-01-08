@@ -1,0 +1,140 @@
+---
+title: "COGS2020 Syllabus"
+author: "Matthew J. Crossley"
+date: "2024"
+output:
+  html_document:
+    toc: false
+    theme: cosmo
+fontsize: 14pt
+---
+
+<!--
+Future:
+* must have computer / no loaners / can use PC lab
+* don't use R studio. Just use R. Teach Rscript command and
+  source command.
+--->
+
+
+#### Course unit guide
+* <a href="https://unitguides.mq.edu.au/unit_offerings/162973/unit_guide" target="_blank">unit guide</a>
+
+#### Course Schedule
+| Activity | Day       | Time           | Location                        |
+|:---------|:----------|:---------------|:--------------------------------|
+|Lecture   | Tuesday   | 09:00 -- 11:00 | 23WW T2 Lecture Theatre         |
+|Tutorial  | Tuesday   | 12:00 -- 14:00 | 12SW 318 Tutorial/Computer Room |
+|Tutorial  | Tuesday   | 14:00 -- 16:00 | 12SW 318 Tutorial/Computer Room |
+|Tutorial  | Wednesday | 09:00 -- 11:00 | 12SW 318 Tutorial/Computer Room |
+|Tutorial  | Wednesday | 11:00 -- 13:00 | 12SW 318 Tutorial/Computer Room |
+|Tutorial  | Thursday  | 13:00 -- 15:00 | 12SW 318 Tutorial/Computer Room |
+|Tutorial  | Thursday  | 15:00 -- 17:00 | 12SW 318 Tutorial/Computer Room |
+|Tutorial  | Friday    | 13:00 -- 15:00 | 12SW 318 Tutorial/Computer Room |
+|Tutorial  | Friday    | 15:00 -- 17:00 | 12SW 318 Tutorial/Computer Room |
+
+#### Weekly Topics
+| WEEK    | TOPIC                                                           |
+|:--------|:----------------------------------------------------------------|
+| Week 1  | Introduction to data, analysis, and R programming               |
+| Week 2  | Introduction to data, analysis, and R programming               |
+| Week 3  | Introduction to data, analysis, and R programming               |
+| Week 4  | Introduction to data, analysis, and R programming               |
+| Week 5  | Null Hypothesis Significance Testing (NHST)                     |
+| Week 6  | Null Hypothesis Significance Testing (NHST)                     |
+| Week 7  | Null Hypothesis Significance Testing (NHST)                     |
+| Week 8  | Null Hypothesis Significance Testing (NHST)                     |
+| Week 9  | Linear models and inference: model fitting and model comparison |
+| Week 10 | Linear models and inference: model fitting and model comparison |
+| Week 11 | Linear models and inference: model fitting and model comparison |
+| Week 12 | Linear models and inference: model fitting and model comparison |
+| Week 13 | Preparing for the final exam                                    |
+
+#### Lecture and tuturial delivery
+* Lectures and tutorials will be delivered on campus in the
+  rooms indicated above unless special circumstances require
+  otherwise.
+
+* There will be no livestream of the lectures. However, the
+  lectures will be recorded and made available on iLearn.
+
+#### Readings
+* **Required Text**: The main readings for this unit are
+  available online [here]().
+
+* **Optional Text**: *R for Data Science* by Hadley Wickham
+  and Garrett Grolemund. This book is available for free
+  online [here](https://r4ds.hadley.nz/).
+
+#### Course Philosophy
+* **Useful humans**: By the end of the course, you will be
+  fully prepared to grapple with the most common data
+  exploration and analysis situations that occur in
+  cognitive neuroscience. You will learn how to draw
+  inferences from data and how to communicate those
+  inferences to others.
+
+* **Code everyday**: Learning to program is very much like
+  learning a new language crossed with learning a new motor
+  skill. Daily practice and full immersion will help you
+  immensely. There is no replacement for learning by doing.
+  Semi-weekly problem sets and quizzes are designed to keep
+  you motivated and on the hook.
+
+* **Learn how to think**: Intro courses can sometimes leave
+  students simply consulting a cheat sheet of "apply test X
+  in situation Y".  Ultimately, the needs of your future
+  research will be unique. You will need to apply the
+  general principles of statistics and programming to get
+  the job done.
+
+* **Learn how to teach yourself**: The ultimate goal is for
+  you to develop the ability to teach yourself more
+  statistics and more programming. No matter how many
+  courses you take, your research will eventually take you
+  here. Might as well get started early.
+
+* In the spirit of the last bullet point, you may have to
+  recognise when a programming or statistics concept has not
+  been covered in lecture or tutorials in exactly the way a
+  quiz question or homework problem is asking. This is a
+  feature, not a bug. This is very important for you to
+  develop deep and flexible knowledge of the material.
+  However, pleae do not hesitate to come see me or your
+  tutors for help.
+
+#### Performance Evaluation
+* 25% quizzes
+* 40% problem sets
+* 35% final exam
+
+* **Quizzes**: 10 online quizzes (multiple choice and
+  numeric response) designed to assess and provide feedback
+  regarding your understanding of core programming and
+  statistics concepts. Graded on a continuous 0%-100% scale.
+  The 2 lowest quizzes (missed or marked non-credit) may be
+  dropped without penalty. These will challenging and they
+  will take time to complete. Please do not leave them to
+  the last minute.
+
+* **Problem sets**: 4 problem sets will be released
+  approximately 1 every three weeks. They will follow the
+  tutorial activities closely and will culminate in a full
+  statistical analysis and report of real cognitive
+  neuroscience data.
+
+* **Final exam**: 2 hour exam using only pen and paper. The
+  exam will occur sometime during the exam period as
+  scheduled by MQ. Though the exam is pen and paper, it will
+  nevertheless assess your R programming knowledge by asking
+  you to interpret code blocks and read the output of
+  statistical analyses performed in R.
+
+* **Grading**: Quizzes will be delivered and marked through
+  iLearn. Problem sets and the final exam will be marked by
+  hand. Where possible, we will give partial credit on these
+  two assessment types.
+
+* **Attendance**: Attendance is not compulsory, but is
+  highly recommended. This applies both to lecture and
+  tutorial.

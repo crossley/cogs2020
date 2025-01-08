@@ -1,0 +1,91 @@
+---
+title: "Lectures"
+description: Experimental Design and Data Analysis for the Cognitive and Brain Sciences
+output:
+  html_document:
+    toc: false 
+    theme: cosmo
+fontsize: 14pt
+---
+
+- Week 1
+  - <a href="lectures/week_1/lecture_variable_types.html" target="_blank">Understanding variable types in R</a>
+  - <a href="lectures/week_1/lecture_workspace.html" target="_blank">Understanding the Workspace in R</a>
+  - <a href="lectures/week_1/lecture_container_types.html" target="_blank">Container Variable Types and Accessing Elements in R</a>
+  - <a href="lectures/week_1/lecture_functions.html" target="_blank">Writing and Calling Functions in R</a>
+  - <a href="lectures/week_1/lecture_container_type_coercion.html" target="_blank">Container Variable Type Coercion in R</a>
+  - <a href="lectures/week_1/lecture_assignment_operators.html" target="_blank">Assignment Operators in R</a>
+  - <a href="lectures/week_1/lecture_loops_cond_flow.html" target="_blank">Loops and Conditional Flow in R</a>
+  - <a href="lectures/week_1/lecture_getting_help.html" target="_blank">Getting Help in R</a>
+  - <a href="lectures/week_1/lecture_mre.html" target="_blank">Creating a Minimal Reproducible Example</a>
+
+- Week 2
+  - <a href="lectures/week_2/lecture_using_libraries.html" target="_blank">Using external libraries</a>
+  - <a href="lectures/week_2/lecture_datatable_basics.html" target="_blank">Introduction to `data.table`</a>
+  - <a href="lectures/week_2/lecture_add_update_col.html" target="_blank">Adding and updating `data.table` columns</a>
+  - <a href="lectures/week_2/lecture_joins.html" target="_blank">`data.table` joins</a>
+  - <a href="lectures/week_2/lecture_reshaping_datatables.html" target="_blank">`data.table` reshaping</a>
+  - <a href="lectures/week_2/lecture_chaining.html" target="_blank">Chaining `data.table` calls</a>
+
+- Week 3
+  - <a href="lectures/week_3/lecture_intro_to_ggplot.html" target="_blank">Introduction to `ggplot`</a>
+  - <a href="lectures/week_3/lecture_aes.html" target="_blank">Basic Aesthetics in `ggplot`</a>
+  - <a href="lectures/week_3/lecture_geoms.html" target="_blank">Common Geoms in `ggplot`</a>
+  - <a href="lectures/week_3/lecture_scales.html" target="_blank">Scales in `ggplot2`</a>
+  - <a href="lectures/week_3/lecture_themes.html" target="_blank">Customization and Themes in `ggplot2`</a>
+  - <a href="lectures/week_3/lecture_facets.html" target="_blank">Faceting with `ggplot2`</a>
+  - <a href="lectures/week_3/lecture_rmarkdown.html" target="_blank">Creating PDFs with R Markdown</a>
+
+- Week 4
+  - <a href="lectures/week_4/lecture_descriptive_stats_plot_compare.html" target="_blank">Visuals Visuals Visuals</a>
+  - <a href="lectures/week_4/lecture_what_is_stats.html" target="_blank">Core Concepts of Statistical Thinking</a>
+  - <a href="lectures/week_4/lecture_descriptive_stats_central_tendancy.html" target="_blank">Descriptive Statistics and Data Visualization in R: Central Tendency</a>
+  - <a href="lectures/week_4/lecture_descriptive_stats_spread.html" target="_blank">Descriptive Statistics and Data Visualization in R: Dispersion and Spread</a>
+  - <a href="lectures/week_4/lecture_experiment_design.html" target="_blank">Basic Experiment Design in Psychology and Cognitive Science</a>
+
+- Week 5
+  - <a href="lectures/week_5/lecture_random_variable.html" target="_blank">Random Variables and Probability Distributions</a>
+  - <a href="lectures/week_5/lecture_probability.html" target="_blank">Fundamentals of Probability</a>
+  - <a href="lectures/week_5/lecture_moments.html" target="_blank">Moments of Random Variables</a>
+  - <a href="lectures/week_5/lecture_R_distributions.html" target="_blank">Distributions in R</a>
+
+- Week 6
+  - <a href="lectures/week_6/lecture_dist_samp_means.html" target="_blank">Distribution of Sample Means</a>
+  - <a href="lectures/week_6/lecture_central_limit_theorem.html" target="_blank">Central Limit Theorem</a>
+  - <a href="lectures/week_6/lecture_normal_test.html" target="_blank">Normal test</a>
+  - <a href="lectures/week_6/lecture_critical_values.html" target="_blank">Critical Values</a>
+  - <a href="lectures/week_6/lecture_two_tailed_tests.html" target="_blank">Two-tailed tests</a>
+  - <a href="lectures/week_6/lecture_confidence_intervals.html" target="_blank">Confidence Intervals</a>
+  - <a href="lectures/week_6/lecture_error_and_power.html" target="_blank">Inferential Error and Statistical Power</a>
+
+- Week 7
+  - <a href="lectures/week_7/lecture_z_test.html" target="_blank">Standardisation and the $z$ distribution</a>
+  - <a href="lectures/week_7/lecture_t_test_one_sample.html" target="_blank">The single sample $t$-test</a>
+  - <a href="lectures/week_7/lecture_t_test_two_sample.html" target="_blank">$t$-tests for comparing two means</a>
+
+- Week 8
+  - <a href="lectures/week_8/lecture_effect_size.html" target="_blank">Effect Size</a>
+  - <a href="lectures/week_8/lecture_power_review.html" target="_blank">Review of Power</a>
+  - <a href="lectures/week_8/lecture_p_hacking.html" target="_blank">P-Hacking</a>
+  - <a href="lectures/week_8/lecture_putting_it_all_together.html" target="_blank">Putting it all together</a>
+
+- Week 9
+  - <a href="lectures/week_9/lecture_anova_oneway.html" target="_blank">One-way ANOVA</a>
+  - <a href="lectures/week_9/lecture_anova_rm.html" target="_blank">Repeated Measures One-way ANOVA</a>
+  - <a href="lectures/week_9/lecture_anova_twoway.html" target="_blank">Two-way ANOVA</a>
+  - <a href="lectures/week_9/lecture_anova_mixed.html" target="_blank">Mixed ANOVA</a>
+
+- Week 10
+  - <a href="lectures/week_10/lecture_correlation.html" target="_blank">Correlation</a>
+  - <a href="lectures/week_10/lecture_simple_linear_regression.html" target="_blank">Simple linear regression</a>
+
+- Week 11
+  - <a href="lectures/week_11/lecture_multiple_regression.html" target="_blank">Multiple regression</a>
+  - Simple linear regression and multiple regression examples (will be done interactively during lecture)
+
+- Week 12
+  - Plain old review session
+
+- Week 13
+  - Loose ends
+  - <a href="lectures/week_13/lecture_partial_correlation.html" target="_blank">Partial correlation</a>
