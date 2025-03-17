@@ -1,0 +1,50 @@
+---
+title: "Tutorials"
+description: Experimental Design and Data Analysis for the Cognitive and Brain Sciences
+output:
+  html_document:
+    toc: false
+    theme: cosmo
+fontsize: 14pt
+---
+
+- Week 1
+  - <a href="tutorials/tutorial_1.html" target="_blank">Tutorial 1 worksheet</a>
+
+- Week 2
+  - <a href="tutorials/tutorial_2.html" target="_blank">Tutorial 2 worksheet</a>
+
+- Week 3
+  - <a href="tutorials/tutorial_3.html" target="_blank">Tutorial 3 worksheet</a>
+
+- Week 4
+  - <a href="tutorials/tutorial_4.html" target="_blank">Tutorial 4 worksheet</a>
+
+- Week 5
+  - <a href="tutorials/tutorial_5.html" target="_blank">Tutorial 5 worksheet</a>
+
+- Week 6
+  - <a href="tutorials/tutorial_6.html" target="_blank">Tutorial 6 worksheet</a>
+
+- Week 7
+  - <a href="tutorials/tutorial_7.html" target="_blank">Tutorial 7 worksheet</a>
+
+<!---
+- Week 8
+  - <a href="tutorials/tutorial_8.html" target="_blank">Tutorial 8 worksheet</a>
+
+- Week 9
+  - <a href="tutorials/tutorial_9.html" target="_blank">Tutorial 9 worksheet</a>
+
+- Week 10
+  - <a href="tutorials/tutorial_10.html" target="_blank">Tutorial 10 worksheet</a>
+
+- Week 11
+  - <a href="tutorials/tutorial_11.html" target="_blank">Tutorial 11 worksheet</a>
+
+- Week 12
+  - <a href="tutorials/tutorial_12.html" target="_blank">Tutorial 12 worksheet</a>
+
+- Week 13
+  - <a href="tutorials/tutorial_13.html" target="_blank">Tutorial 13 worksheet</a>
+--->
