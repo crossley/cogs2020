@@ -44,10 +44,10 @@ fontsize: 14pt
   - <a href="lectures/week_4/lecture_experiment_design.html" target="_blank">Basic Experiment Design in Psychology and Cognitive Science</a>
 
 - Week 5
-  - <a href="lectures/week_5/lecture_random_variable.html" target="_blank">Random Variables and Probability Distributions</a>
   - <a href="lectures/week_5/lecture_probability.html" target="_blank">Fundamentals of Probability</a>
+  - <a href="lectures/week_5/lecture_random_variable.html" target="_blank">Random Variables and Probability Distributions</a>
   - <a href="lectures/week_5/lecture_moments.html" target="_blank">Moments of Random Variables</a>
-  - <a href="lectures/week_5/lecture_R_distributions.html" target="_blank">Distributions in R</a>
+  - <a href="lectures/week_5/lecture_probability_functions.html" target="_blank">Key Probability Functions</a>
 
 - Week 6
   - <a href="lectures/week_6/lecture_dist_samp_means.html" target="_blank">Distribution of Sample Means</a>
