@@ -50,24 +50,27 @@ fontsize: 14pt
   - <a href="lectures/week_5/lecture_probability_functions.html" target="_blank">Key Probability Functions</a>
 
 - Week 6
+  - <a href="lectures/week_6/lecture_central_limit_theorem_sums.html" target="_blank">Central Limit Theorem part 1</a>
+  - <a href="lectures/week_6/lecture_central_limit_theorem_means.html" target="_blank">Central Limit Theorem part 2</a>
+  - <a href="lectures/week_6/lecture_central_limit_theorem_formal.html" target="_blank">Central Limit Theorem part 3</a>
   - <a href="lectures/week_6/lecture_dist_samp_means.html" target="_blank">Distribution of Sample Means</a>
-  - <a href="lectures/week_6/lecture_central_limit_theorem.html" target="_blank">Central Limit Theorem</a>
   - <a href="lectures/week_6/lecture_normal_test.html" target="_blank">Normal test</a>
-  - <a href="lectures/week_6/lecture_critical_values.html" target="_blank">Critical Values</a>
   - <a href="lectures/week_6/lecture_two_tailed_tests.html" target="_blank">Two-tailed tests</a>
+  - <a href="lectures/week_6/lecture_critical_values.html" target="_blank">Critical Values</a>
   - <a href="lectures/week_6/lecture_confidence_intervals.html" target="_blank">Confidence Intervals</a>
-  - <a href="lectures/week_6/lecture_error_and_power.html" target="_blank">Inferential Error and Statistical Power</a>
+  - <a href="lectures/week_6/lecture_3_decisions.html" target="_blank">Three Ways to Make a Decision</a>
 
 - Week 7
-  - <a href="lectures/week_7/lecture_z_test.html" target="_blank">Standardisation and the $z$ distribution</a>
-  - <a href="lectures/week_7/lecture_t_test_one_sample.html" target="_blank">The single sample $t$-test</a>
-  - <a href="lectures/week_7/lecture_t_test_two_sample.html" target="_blank">$t$-tests for comparing two means</a>
+  - <a href="lectures/week_7/lecture_effect_size.html" target="_blank">Effect Size</a>
+  - <a href="lectures/week_7/lecture_error_and_power.html" target="_blank">Inferential Error and Statistical Power</a>
+  - <a href="lectures/week_7/lecture_power_review.html" target="_blank">Review of Power</a>
+  - <a href="lectures/week_7/lecture_p_hacking.html" target="_blank">P-Hacking</a>
+  - <a href="lectures/week_7/lecture_putting_it_all_together.html" target="_blank">Putting it all together</a>
 
 - Week 8
-  - <a href="lectures/week_8/lecture_effect_size.html" target="_blank">Effect Size</a>
-  - <a href="lectures/week_8/lecture_power_review.html" target="_blank">Review of Power</a>
-  - <a href="lectures/week_8/lecture_p_hacking.html" target="_blank">P-Hacking</a>
-  - <a href="lectures/week_8/lecture_putting_it_all_together.html" target="_blank">Putting it all together</a>
+  - <a href="lectures/week_8/lecture_z_test.html" target="_blank">Standardisation and the $z$ distribution</a>
+  - <a href="lectures/week_8/lecture_t_test_one_sample.html" target="_blank">The single sample $t$-test</a>
+  - <a href="lectures/week_8/lecture_t_test_two_sample.html" target="_blank">$t$-tests for comparing two means</a>
 
 - Week 9
   - <a href="lectures/week_9/lecture_anova_oneway.html" target="_blank">One-way ANOVA</a>
@@ -78,14 +81,14 @@ fontsize: 14pt
 - Week 10
   - <a href="lectures/week_10/lecture_correlation.html" target="_blank">Correlation</a>
   - <a href="lectures/week_10/lecture_simple_linear_regression.html" target="_blank">Simple linear regression</a>
+  - <a href="lectures/week_10/lecture_multiple_regression.html" target="_blank">Multiple regression</a>
+  - <a href="lectures/week_10/lecture_partial_correlation.html" target="_blank">Partial correlation</a>
 
 - Week 11
-  - <a href="lectures/week_11/lecture_multiple_regression.html" target="_blank">Multiple regression</a>
-  - Simple linear regression and multiple regression examples (will be done interactively during lecture)
+  - TBD
 
 - Week 12
-  - Plain old review session
+  - TBD
 
 - Week 13
-  - Loose ends
-  - <a href="lectures/week_13/lecture_partial_correlation.html" target="_blank">Partial correlation</a>
+  - TBD
