@@ -61,11 +61,10 @@ fontsize: 14pt
   - <a href="lectures/week_6/lecture_3_decisions.html" target="_blank">Three Ways to Make a Decision</a>
 
 - Week 7
-  - <a href="lectures/week_7/lecture_effect_size.html" target="_blank">Effect Size</a>
   - <a href="lectures/week_7/lecture_error_and_power.html" target="_blank">Inferential Error and Statistical Power</a>
   - <a href="lectures/week_7/lecture_power_review.html" target="_blank">Review of Power</a>
+  - <a href="lectures/week_7/lecture_effect_size.html" target="_blank">Effect Size</a>
   - <a href="lectures/week_7/lecture_p_hacking.html" target="_blank">P-Hacking</a>
-  - <a href="lectures/week_7/lecture_putting_it_all_together.html" target="_blank">Putting it all together</a>
 
 - Week 8
   - <a href="lectures/week_8/lecture_z_test.html" target="_blank">Standardisation and the $z$ distribution</a>
