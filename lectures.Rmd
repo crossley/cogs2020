@@ -74,6 +74,7 @@ fontsize: 14pt
 
 - Week 9
   - <a href="lectures/week_9/lecture_anova_oneway.html" target="_blank">One-way ANOVA</a>
+  - <a href="lectures/week_9/lecture_anova_oneway_assumptions.html" target="_blank">One-way ANOVA</a>
   - <a href="lectures/week_9/lecture_anova_rm.html" target="_blank">Repeated Measures One-way ANOVA</a>
   - <a href="lectures/week_9/lecture_anova_twoway.html" target="_blank">Two-way ANOVA</a>
   - <a href="lectures/week_9/lecture_anova_mixed.html" target="_blank">Mixed ANOVA</a>

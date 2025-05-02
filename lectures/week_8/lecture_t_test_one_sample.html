@@ -3228,8 +3228,8 @@ s_X &amp;= \sqrt{S^2_X} \\
 
 <p>\[
 X \sim \mathscr{N}(\mu_X, \sigma_X): \text{Good} \\
-\overline{X} \sim \mathscr{N}(\mu_X, \frac{\sigma_X}{n}): \text{Good} \\
-\overline{X} \sim \mathscr{N}(\mu_X, \frac{\widehat{\sigma_X}}{n}): \text{BAD} \\
+\overline{X} \sim \mathscr{N}(\mu_X, \frac{\sigma_X}{\sqrt{n}}): \text{Good} \\
+\overline{X} \sim \mathscr{N}(\mu_X, \frac{\widehat{\sigma_X}}{\sqrt{n}}): \text{BAD} \\
 \]</p>
 
 </article></slide><slide class=""><hgroup><h2>\(\widehat{\sigma_X}\) turns a Normal into a <em>t</em></h2></hgroup><article  id="widehatsigma_x-turns-a-normal-into-a-t">
@@ -3366,11 +3366,7 @@ res &lt;- t.test(x=x_obs,
               var.equal=F, ## doesn&#39;t matter with one-sample
               conf.level=0.95)</pre>
 
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<ul>
-<li>The output of the <code>t.test</code> function:</li>
-</ul>
+</article></slide><slide class=""><hgroup><h2>The output of the <code>t.test</code> function:</h2></hgroup><article  id="the-output-of-the-t.test-function">
 
 <pre >## 
 ##  One Sample t-test
