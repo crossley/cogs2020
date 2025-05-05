@@ -73,7 +73,7 @@ fontsize: 14pt
   - <a href="lectures/week_8/lecture_putting_it_all_together.html" target="_blank">Putting it all together</a>
 
 - Week 9
-  - <a href="lectures/week_9/lecture_t_test_assumptions.html" target="_blank">Assumptions in $t$-tests</a>
+  - <a href="lectures/week_8/lecture_t_test_assumptions.html" target="_blank">Assumptions in $t$-tests</a>
   - <a href="lectures/week_9/lecture_anova_oneway.html" target="_blank">One-way ANOVA</a>
   - <a href="lectures/week_9/lecture_anova_oneway_assumptions.html" target="_blank">Assumptions in one-way ANOVA</a>
 

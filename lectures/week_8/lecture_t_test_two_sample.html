@@ -21,7 +21,8 @@
       // Slide settings
       settings: {
                 title: 'Two-sample t-tests',
-                        useBuilds: true,
+                        subtitle: 'Toggle <strong>w</strong> to adjust slide width',
+                useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
         enableTouch: true,
@@ -3201,7 +3202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
         <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
-      
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
             <p style="margin-top: 6px; margin-left: -2px;">2025</p>
           </hgroup>
@@ -3334,13 +3335,13 @@ res &lt;- t.test(x=x_obs,
 ##  Two Sample t-test
 ## 
 ## data:  x_obs and y_obs
-## t = -3.0299, df = 18, p-value = 0.007201
+## t = -5.7163, df = 18, p-value = 2.025e-05
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -5.0491488 -0.9141823
+##  -3.777061 -1.746842
 ## sample estimates:
 ## mean of x mean of y 
-##   9.85317  12.83484</pre>
+##  8.954495 11.716446</pre>
 
 </article></slide><slide class=""><hgroup><h2>Repeated measures t-test</h2></hgroup><article  id="repeated-measures-t-test">
 
@@ -3404,13 +3405,13 @@ d_obs &lt;- x_obs - y_obs</pre>
 ##  Paired t-test
 ## 
 ## data:  x_obs and y_obs
-## t = -3.3051, df = 9, p-value = 0.009155
+## t = -1.3646, df = 9, p-value = 0.2055
 ## alternative hypothesis: true mean difference is not equal to 0
 ## 95 percent confidence interval:
-##  -3.3301650 -0.6238514
+##  -3.6632148  0.9065851
 ## sample estimates:
 ## mean difference 
-##       -1.977008</pre>
+##       -1.378315</pre>
 
 </article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question">
 

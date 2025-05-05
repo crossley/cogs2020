@@ -19,6 +19,6 @@ fontsize: 14pt
 - <a href="tutorials/tutors/COGS2020-WEEK4-TUTORIAL.html" target="_blank">Tutorial 4 worksheet</a>
 - <a href="tutorials/tutors/COGS2020week5tutorial2025v2.pdf" target="_blank">Tutorial 5 worksheet</a>
 - <a href="tutorials/tutors/COGS2020week6tutorial2025.pdf" target="_blank">Tutorial 6 worksheet</a>
-- <a href="tutorials/tutors/COGS2020WEEK7TUTORIAL2025-final.pdf" target="_blank">Tutorial 7 slides</a>
+- <a href="tutorials/tutors/COGS2020WEEK7TUTORIAL2025-final.pdf" target="_blank">Tutorial 7 slided</a>
 - <a href="tutorials/tutors/COGS2020-WEEK8-TUTORIALEXAMPLE.html" target="_blank">Tutorial 8 worksheet</a>
 - <a href="tutorials/tutors/COGS2020WEEK8TUTORIAL2025-final.pdf" target="_blank">Tutorial 8 slides</a>

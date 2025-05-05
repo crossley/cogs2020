@@ -21,7 +21,8 @@
       // Slide settings
       settings: {
                 title: 'Reshaping Data with data.table',
-                        useBuilds: true,
+                        subtitle: 'Toggle <strong>w</strong> to adjust slide width',
+                useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
         enableTouch: true,
@@ -3201,7 +3202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
         <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
-      
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
             <p style="margin-top: 6px; margin-left: -2px;">2024</p>
           </hgroup>
@@ -3212,6 +3213,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 <p>Reshaping data involves changing how your data is organised in whatever sort of container you are using to store it. For us, this container will almost always be a <code>data.table</code> Luckily, the <code>data.table</code> package in R provides efficient functions for reshaping.</p>
 
 </article></slide><slide class=""><hgroup><h2>Wide Format data.table Example</h2></hgroup><article  id="wide-format-data.table-example">
+
+<pre >## Warning: package &#39;data.table&#39; was built under R version 4.3.3</pre>
 
 <pre >##    Subject Congruent Incongruent
 ##      &lt;num&gt;     &lt;num&gt;       &lt;num&gt;
@@ -3246,19 +3249,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 
 <pre >##    subject congruent_red_squares congruent_red_circles congruent_green_squares
 ##      &lt;num&gt;                 &lt;num&gt;                 &lt;num&gt;                   &lt;num&gt;
-## 1:       1             0.5639383             0.1690465               0.3205858
-## 2:       2             0.3716122             0.6094975               0.2782768
-## 3:       3             0.9054757             0.4053170               0.2706870
+## 1:       1            0.09036462             0.4576625               0.8395739
+## 2:       2            0.90471847             0.2707995               0.4854740
+## 3:       3            0.48763414             0.8476232               0.1277650
 ##    congruent_green_circles incongruent_red_squares incongruent_red_circles
 ##                      &lt;num&gt;                   &lt;num&gt;                   &lt;num&gt;
-## 1:              0.83545595               0.4734518               0.3437299
-## 2:              0.04074369               0.3332120               0.3652781
-## 3:              0.20165058               0.9635328               0.6204369
+## 1:               0.3321140               0.7497325              0.05748557
+## 2:               0.5492948               0.3272924              0.54439835
+## 3:               0.5230726               0.5345912              0.46163305
 ##    incongruent_green_squares incongruent_green_circles
 ##                        &lt;num&gt;                     &lt;num&gt;
-## 1:                 0.1981469                 0.1624775
-## 2:                 0.2732871                 0.1931977
-## 3:                 0.9353818                 0.4349281</pre>
+## 1:                 0.5594327                 0.3080047
+## 2:                 0.6651799                 0.7455875
+## 3:                 0.7163730                 0.8415654</pre>
 
 </article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-1">
 
@@ -3266,30 +3269,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 
 <pre >##     subject                 Condition ResponseTime
 ##       &lt;num&gt;                    &lt;fctr&gt;        &lt;num&gt;
-##  1:       1     congruent_red_squares   0.57028445
-##  2:       2     congruent_red_squares   0.76218085
-##  3:       3     congruent_red_squares   0.05483344
-##  4:       1     congruent_red_circles   0.83374341
-##  5:       2     congruent_red_circles   0.42364944
-##  6:       3     congruent_red_circles   0.43459494
-##  7:       1   congruent_green_squares   0.61919366
-##  8:       2   congruent_green_squares   0.37556849
-##  9:       3   congruent_green_squares   0.60765499
-## 10:       1   congruent_green_circles   0.03361356
-## 11:       2   congruent_green_circles   0.29743561
-## 12:       3   congruent_green_circles   0.56835194
-## 13:       1   incongruent_red_squares   0.08571122
-## 14:       2   incongruent_red_squares   0.79735083
-## 15:       3   incongruent_red_squares   0.43901876
-## 16:       1   incongruent_red_circles   0.01041793
-## 17:       2   incongruent_red_circles   0.84409133
-## 18:       3   incongruent_red_circles   0.32319304
-## 19:       1 incongruent_green_squares   0.86643055
-## 20:       2 incongruent_green_squares   0.72170326
-## 21:       3 incongruent_green_squares   0.26434592
-## 22:       1 incongruent_green_circles   0.75671073
-## 23:       2 incongruent_green_circles   0.89298880
-## 24:       3 incongruent_green_circles   0.21561802
+##  1:       1     congruent_red_squares   0.63172725
+##  2:       2     congruent_red_squares   0.77623095
+##  3:       3     congruent_red_squares   0.89293911
+##  4:       1     congruent_red_circles   0.57121216
+##  5:       2     congruent_red_circles   0.68884069
+##  6:       3     congruent_red_circles   0.26426613
+##  7:       1   congruent_green_squares   0.99682401
+##  8:       2   congruent_green_squares   0.88973048
+##  9:       3   congruent_green_squares   0.60057390
+## 10:       1   congruent_green_circles   0.63776503
+## 11:       2   congruent_green_circles   0.19114320
+## 12:       3   congruent_green_circles   0.95576341
+## 13:       1   incongruent_red_squares   0.59653883
+## 14:       2   incongruent_red_squares   0.72418131
+## 15:       3   incongruent_red_squares   0.07083491
+## 16:       1   incongruent_red_circles   0.38905937
+## 17:       2   incongruent_red_circles   0.09588949
+## 18:       3   incongruent_red_circles   0.30960923
+## 19:       1 incongruent_green_squares   0.11316197
+## 20:       2 incongruent_green_squares   0.66240201
+## 21:       3 incongruent_green_squares   0.07481482
+## 22:       1 incongruent_green_circles   0.14808223
+## 23:       2 incongruent_green_circles   0.85760981
+## 24:       3 incongruent_green_circles   0.89932586
 ##     subject                 Condition ResponseTime</pre>
 
 </article></slide><slide class=""><hgroup><h2>Why long or wide format?</h2></hgroup><article  id="why-long-or-wide-format-2">

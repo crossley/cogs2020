@@ -21,7 +21,8 @@
       // Slide settings
       settings: {
                 title: 'Mixed ANOVA',
-                        useBuilds: true,
+                        subtitle: 'Toggle <strong>w</strong> to adjust slide width',
+                useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
         enableTouch: true,
@@ -3201,7 +3202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
         <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
-      
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
       <p data-config-presenter><!-- populated from slide_config.json --></p>
             <p style="margin-top: 6px; margin-left: -2px;">2025</p>
           </hgroup>
@@ -3213,29 +3214,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 <li>A mixed ANOVA is a combination of a between-subjects and within-subjects ANOVA.</li>
 </ul>
 
-<pre >##             y      A      B subject
-##         &lt;num&gt; &lt;fctr&gt; &lt;fctr&gt;  &lt;fctr&gt;
-##  1: 1.2635883      1      1       1
-##  2: 5.1925205      1      1       2
-##  3: 0.6362877      1      1       3
-##  4: 1.6249713      1      1       4
-##  5: 1.0582504      1      1       5
-##  6: 1.6390954      1      2       6
-##  7: 2.6920065      1      2       7
-##  8: 0.3256524      1      2       8
-##  9: 2.4594195      1      2       9
-## 10: 3.3067713      1      2      10
-## 11: 3.4342646      2      1       1
-## 12: 2.1872123      2      1       2
-## 13: 7.6044806      2      1       3
-## 14: 7.4396438      2      1       4
-## 15: 3.2011893      2      1       5
-## 16: 3.8478096      2      2       6
-## 17: 4.5490080      2      2       7
-## 18: 4.3358906      2      2       8
-## 19: 3.9254158      2      2       9
-## 20: 2.9050393      2      2      10
-##             y      A      B subject</pre>
+<pre >##              y      A      B subject
+##          &lt;num&gt; &lt;fctr&gt; &lt;fctr&gt;  &lt;fctr&gt;
+##  1:  6.1202911      1      1       1
+##  2: -0.2075034      1      1       2
+##  3:  5.2949038      1      1       3
+##  4:  0.2226657      1      1       4
+##  5:  1.1681307      1      1       5
+##  6:  2.5389600      1      2       6
+##  7:  4.7875653      1      2       7
+##  8:  5.3391930      1      2       8
+##  9:  0.6443142      1      2       9
+## 10:  1.6972607      1      2      10
+## 11:  6.1922363      2      1       1
+## 12:  1.1912952      2      1       2
+## 13:  5.3139917      2      1       3
+## 14:  6.3777939      2      1       4
+## 15:  2.8415053      2      1       5
+## 16:  6.2131175      2      2       6
+## 17:  0.3730121      2      2       7
+## 18:  1.0205452      2      2       8
+## 19:  6.7782024      2      2       9
+## 20:  3.0413372      2      2      10
+##              y      A      B subject</pre>
 
 </article></slide><slide class=""><hgroup><h2>Mixed ANOVA using <code>ezANOVA</code></h2></hgroup><article  id="mixed-anova-using-ezanova">
 
@@ -3246,10 +3247,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 <pre class = 'prettyprint lang-r'>ezANOVA(data=d, dv=y, wid=subject, within=.(A), between=.(B))</pre>
 
 <pre >## $ANOVA
-##   Effect DFn DFd         F          p p&lt;.05        ges
-## 2      B   1   8 0.4822691 0.50705912       0.01414459
-## 3      A   1   8 6.0810559 0.03895386     * 0.36677612
-## 4    B:A   1   8 0.2761890 0.61346095       0.02563267</pre>
+##   Effect DFn DFd          F         p p&lt;.05         ges
+## 2      B   1   8 0.03562049 0.8550013       0.002035179
+## 3      A   1   8 0.95684635 0.3566324       0.060878399
+## 4    B:A   1   8 0.33062325 0.5810987       0.021908471</pre>
 
 </article></slide><slide class=""><hgroup><h2>Assumption checks?</h2></hgroup><article  id="assumption-checks">
 
