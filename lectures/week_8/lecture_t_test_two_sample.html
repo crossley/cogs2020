@@ -3249,16 +3249,16 @@ H_1: &amp;\mu_X &gt; \mu_Y \\
 
 </article></slide><slide class=""><hgroup><h2>Independent samples t-test</h2></hgroup><article  id="independent-samples-t-test-1">
 
-<ul>
-<li>Our previously developed tools don’t work well with H’s of this form so we reform our H’s as follows:</li>
-</ul>
-
 <p>\[
 \begin{align}
 H_0: &amp;\mu_X = \mu_Y \\
 H_1: &amp;\mu_X &gt; \mu_Y \\
 \end{align}
 \]</p>
+
+<ul>
+<li>Our previously developed tools don’t work well with H’s of this form so we reform our H’s as follows:</li>
+</ul>
 
 <p>\[
 \begin{align}
@@ -3267,51 +3267,81 @@ H_1: &amp;\mu_X - \mu_Y &gt; 0 \\
 \end{align}
 \]</p>
 
-</article></slide><slide class=""><hgroup><h2>Independent samples t-test</h2></hgroup><article  id="independent-samples-t-test-2">
-
 <ul>
-<li>Reformed H’s \(\Rightarrow\) reformed test statistic:</li>
+<li>The parameter of interest is the difference between the means of \(X\) and \(Y\).</li>
 </ul>
 
 <p>\[
 \begin{align}
-\widehat{\mu_X - \mu_Y} &amp;= \bar{X} - \bar{Y} \\
-t_{obs} &amp;= \frac{(\bar{x} - \bar{y}) - (\mu_{X_{H_0}} - \mu_{Y_{H_0}})}{\sqrt{s^2_{X-Y}}} \\
-t_{obs} &amp;= \frac{(\bar{x} - \bar{y})}{\sqrt{s^2_{X-Y}}}
+\widehat{\mu_X - \mu_Y} &amp;= \bar{x} - \bar{y}
 \end{align}
 \]</p>
 
-</article></slide><slide class=""><hgroup><h2>What is \(s^2_{X-Y}\)?</h2></hgroup><article  id="what-is-s2_x-y">
+</article></slide><slide class=""><hgroup><h2>Ind samp t-test: test statistic</h2></hgroup><article  id="ind-samp-t-test-test-statistic">
 
 <ul>
-<li>\(s^2_{X-Y}\) is sometimes called the <strong>pooled variance</strong> and its exact form depends on the <strong>sample sizes</strong> and <strong>variances</strong> of \(X\) and \(Y\).</li>
+<li>The exact form of the test statistic depends on whether we assume equal variances between \(X\) and \(Y\) and whether or not the sample sizes are equal.</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>\(s^2_{X-Y}\) with equal variances:</h2></hgroup><article  id="s2_x-y-with-equal-variances">
+</article></slide><slide class=""><hgroup><h2>Ind samp t-test: test statistic</h2></hgroup><article  id="ind-samp-t-test-test-statistic-1">
+
+<p>\[
+\begin{align}
+t_{obs} &amp;= \frac{(\bar{x} - \bar{y}) - (\mu_{X} - \mu_{Y})_{H_0}}{s_{\bar{X}-\bar{Y}}} \\
+        &amp;= \frac{(\bar{x} - \bar{y}) - 0}{s_{\bar{X}-\bar{Y}}} \\
+        &amp;= \frac{(\bar{x} - \bar{y}) - 0}{\sqrt{s^2_{\bar{X}-\bar{Y}}}} \\
+        &amp;= \frac{(\bar{x} - \bar{y})}{\sqrt{s^2_{\bar{X}} + s^2_{\bar{Y}}}} \\
+        &amp;= \frac{(\bar{x} - \bar{y})}{\sqrt{\frac{s_X^2}{n_x} + \frac{s_Y^2}{n_y}}}
+\end{align}
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Ind samp t-test: test statistic</h2></hgroup><article  id="ind-samp-t-test-test-statistic-2">
 
 <ul>
-<li><p>Sample \(x_{obs}\) has \(n_x\) observations with a sample variance of \(s_X^2\).</p></li>
-<li><p>Sample \(y_{obs}\) has \(n_y\) observations with a sample variance of \(s_Y^2\).</p></li>
+<li><p><strong>Welch’s t-test</strong> does not assume equal variance between \(X\) and \(Y\) and does not require equal sample sizes.</p></li>
+<li><p><strong>Welch’s t-test</strong> has a complex expression for the degrees of freedom.</p></li>
 </ul>
 
 <p>\[
 \begin{align}
-s_{X - Y} &amp;= s_{pooled} \\
-s_{pooled}^2 &amp;= \frac{(n_X - 1)s_X^2 + (n_Y - 1)s_Y^2}{n_X + n_Y - 2} \\
-s_{pooled} &amp;= \sqrt{s_{pooled}^2} \\
-df &amp;= 2n - 2
+t_{obs} &amp;= \frac{(\bar{x} - \bar{y})}{\sqrt{\frac{s_X^2}{n_x} + \frac{s_Y^2}{n_y}}} \sim t(df) \\ \\
+df &amp;= \frac{\left(\frac{s_X^2}{n_x} + \frac{s_Y^2}{n_y}\right)^2}
+           {\frac{\left(\frac{s_X^2}{n_x}\right)^2}{n_x - 1} + \frac{\left(\frac{s_Y^2}{n_y}\right)^2}{n_y - 1}}
 \end{align}
 \]</p>
 
-</article></slide><slide class=""><hgroup><h2>\(s^2_{X-Y}\) with unequal variances (Welch’s t-test)</h2></hgroup><article  id="s2_x-y-with-unequal-variances-welchs-t-test">
+</article></slide><slide class=""><hgroup><h2>Test statistic assuming equal variance</h2></hgroup><article  id="test-statistic-assuming-equal-variance">
+
+<ul>
+<li>If we do assume equal variances, then we use a pooled variance estimate instead of keeping the individual samples separate.</li>
+</ul>
 
 <p>\[
 \begin{align}
-t_{obs} &amp;= \frac{(\bar{X} - \bar{Y})}{\sqrt{\frac{s_X^2}{n_1} + \frac{s_Y^2}{n_2}}} \\
-        &amp;\sim t(df) \\
-df &amp;= \frac{\left(\frac{s_X^2}{n_1} + \frac{s_Y^2}{n_2}\right)^2}{\frac{\left(\frac{s_X^2}{n_1}\right)^2}{n_1 - 1} + \frac{\left(\frac{s_Y^2}{n_2}\right)^2}{n_2 - 1}}
+s_{pooled}^2 &amp;= \frac{(n_x - 1)s_X^2 + (n_y - 1)s_Y^2}{n_x + n_y - 2} \\\\
+t_{obs} &amp;= \frac{(\bar{x} - \bar{y})}{\sqrt{s_{pooled}^2\left(\frac{1}{n_x} + \frac{1}{n_y}\right)}} \\
+        &amp;= \frac{(\bar{x} - \bar{y})}{s_{pooled}\sqrt{\left(\frac{1}{n_x} + \frac{1}{n_y}\right)}} \\
 \end{align}
 \]</p>
+
+</article></slide><slide class=""><hgroup><h2>Test statistic assuming equal variance</h2></hgroup><article  id="test-statistic-assuming-equal-variance-1">
+
+<ul>
+<li>When assuming equal variances, the degrees of freedom is simplified.</li>
+</ul>
+
+<p>\[
+\begin{align}
+t_{obs} &amp;= \frac{(\bar{x} - \bar{y})}{s_{pooled}\sqrt{\left(\frac{1}{n_x} + \frac{1}{n_y}\right)}} \sim t(df) \\\\
+df &amp;= n_x + n_y - 2 \\
+\end{align}
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Test statistic with equal sample sizes</h2></hgroup><article  id="test-statistic-with-equal-sample-sizes">
+
+<ul>
+<li>When \(n_x = n_y\), we can simplify the previous equations by replacing both with \(n\). We won’t write out these simplified forms here, since the key ideas have already been explained and we’ll be using <code>R</code> to handle the actual \(t\)-test calculations most of the time.</li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Independent samples t-test in R</h2></hgroup><article  id="independent-samples-t-test-in-r">
 
@@ -3335,13 +3365,13 @@ res &lt;- t.test(x=x_obs,
 ##  Two Sample t-test
 ## 
 ## data:  x_obs and y_obs
-## t = -5.7163, df = 18, p-value = 2.025e-05
+## t = -2.1847, df = 18, p-value = 0.04238
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.777061 -1.746842
+##  -4.01352208 -0.07843591
 ## sample estimates:
 ## mean of x mean of y 
-##  8.954495 11.716446</pre>
+##  9.519335 11.565314</pre>
 
 </article></slide><slide class=""><hgroup><h2>Repeated measures t-test</h2></hgroup><article  id="repeated-measures-t-test">
 
@@ -3405,13 +3435,13 @@ d_obs &lt;- x_obs - y_obs</pre>
 ##  Paired t-test
 ## 
 ## data:  x_obs and y_obs
-## t = -1.3646, df = 9, p-value = 0.2055
+## t = -1.0381, df = 9, p-value = 0.3263
 ## alternative hypothesis: true mean difference is not equal to 0
 ## 95 percent confidence interval:
-##  -3.6632148  0.9065851
+##  -2.728877  1.012162
 ## sample estimates:
 ## mean difference 
-##       -1.378315</pre>
+##      -0.8583576</pre>
 
 </article></slide><slide class=""><hgroup><h2>Question</h2></hgroup><article  id="question">
 
