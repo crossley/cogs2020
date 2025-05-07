@@ -93,5 +93,5 @@ fontsize: 14pt
   - Seeing how every NHST can be seen as fitting a linear model
 
 - Week 13
-  - Model comparison
+  - Loose ends and review
 
