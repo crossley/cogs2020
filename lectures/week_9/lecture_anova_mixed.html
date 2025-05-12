@@ -3211,78 +3211,313 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 <slide class=""><hgroup><h2>Mixed ANOVA</h2></hgroup><article  id="mixed-anova">
 
 <ul>
-<li>A mixed ANOVA is a combination of a between-subjects and within-subjects ANOVA.</li>
-</ul>
-
-<pre >##              y      A      B subject
-##          &lt;num&gt; &lt;fctr&gt; &lt;fctr&gt;  &lt;fctr&gt;
-##  1:  6.1202911      1      1       1
-##  2: -0.2075034      1      1       2
-##  3:  5.2949038      1      1       3
-##  4:  0.2226657      1      1       4
-##  5:  1.1681307      1      1       5
-##  6:  2.5389600      1      2       6
-##  7:  4.7875653      1      2       7
-##  8:  5.3391930      1      2       8
-##  9:  0.6443142      1      2       9
-## 10:  1.6972607      1      2      10
-## 11:  6.1922363      2      1       1
-## 12:  1.1912952      2      1       2
-## 13:  5.3139917      2      1       3
-## 14:  6.3777939      2      1       4
-## 15:  2.8415053      2      1       5
-## 16:  6.2131175      2      2       6
-## 17:  0.3730121      2      2       7
-## 18:  1.0205452      2      2       8
-## 19:  6.7782024      2      2       9
-## 20:  3.0413372      2      2      10
-##              y      A      B subject</pre>
-
-</article></slide><slide class=""><hgroup><h2>Mixed ANOVA using <code>ezANOVA</code></h2></hgroup><article  id="mixed-anova-using-ezanova">
+<li>A mixed ANOVA includes:
 
 <ul>
-<li>It’s mostly just a matter of specifying the within and between factors.</li>
+<li>At least one between-subjects factor</li>
+<li>At least one within-subjects factor.</li>
+</ul></li>
 </ul>
 
-<pre class = 'prettyprint lang-r'>ezANOVA(data=d, dv=y, wid=subject, within=.(A), between=.(B))</pre>
+</article></slide><slide class=""><hgroup><h2>Mixed ANOVA</h2></hgroup><article  id="mixed-anova-1">
+
+<ul>
+<li>As with all ANOVAs, it is an omnibus test:
+
+<ul>
+<li>Are there any population mean differences across different levels of any between-subjects factor?</li>
+<li>Are there any population mean differences across different levels of any within-subjects factor?</li>
+<li>Are there any interactions between any combination of between-subjects and within-subjects factors?</li>
+</ul></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>The logic behind a mixed ANOVA</h2></hgroup><article  id="the-logic-behind-a-mixed-anova">
+
+<ul>
+<li><p>The basic rationale behind a mixed ANOVA is the same as any other ANOVA:</p>
+
+<ul>
+<li><p>If between-level means are equal, the variance between groups should be similar to the variance within groups.</p></li>
+<li><p>If between-level means are not equal, the variance between groups should be larger than the variance within groups.</p></li>
+</ul></li>
+<li><p>Getting into the math behind what really defines between- and within-group variance is beyond the scope of this course.</p></li>
+<li><p>From here we will focus on implementing mixed ANOVAs in <code>R</code>.</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Data from a mixed design</h2></hgroup><article  id="data-from-a-mixed-design">
+
+<pre >##             y      A      B subject
+##         &lt;num&gt; &lt;fctr&gt; &lt;fctr&gt;  &lt;fctr&gt;
+##  1: 0.8790487      1      1       1
+##  2: 3.5396450      2      1       1
+##  3: 9.1174166      3      1       1
+##  4: 2.1410168      1      1       2
+##  5: 4.2585755      2      1       2
+##  6: 9.4301300      3      1       2
+##  7: 2.9218324      1      1       3
+##  8: 1.4698775      2      1       3
+##  9: 4.6262943      3      1       3
+## 10: 1.1086761      1      1       4
+## 11: 6.4481636      2      1       4
+## 12: 6.7196277      3      1       4
+## 13: 2.8015429      1      2       5
+## 14: 4.2213654      2      2       5
+## 15: 4.8883177      3      2       5
+## 16: 5.5738263      1      2       6
+## 17: 4.9957010      2      2       6
+## 18: 2.0667657      3      2       6
+## 19: 3.4027118      1      2       7
+## 20: 3.0544172      2      2       7
+## 21: 3.8643526      3      2       7
+## 22: 1.5640502      1      2       8
+## 23: 1.9479911      2      2       8
+## 24: 4.5422175      3      2       8
+## 25: 0.7499215      1      3       9
+## 26: 0.6266134      2      3       9
+## 27: 7.6755741      3      3       9
+## 28: 2.3067462      1      3      10
+## 29: 1.7237261      2      3      10
+## 30: 8.5076298      3      3      10
+## 31: 2.8529284      1      3      11
+## 32: 3.4098570      2      3      11
+## 33: 7.7902513      3      3      11
+## 34: 3.7562670      1      3      12
+## 35: 5.6431622      2      3      12
+## 36: 7.3772805      3      3      12
+##             y      A      B subject</pre>
+
+</article></slide><slide class=""><hgroup><h2>Checking that the <code>data.table</code> shows a mixed design</h2></hgroup><article  id="checking-that-the-data.table-shows-a-mixed-design">
+
+<pre class = 'prettyprint lang-r'># For within-subjects factor A:
+# Each subject should appear at multiple levels of A
+d[, unique(A), .(subject)]
+
+# For between-subjects factor B:
+# Each subject should appear at only one level of B
+d[, unique(B), .(subject)]</pre>
+
+</article></slide><slide class=""><hgroup><h2>Checking that the <code>data.table</code> shows a mixed design</h2></hgroup><article  id="checking-that-the-data.table-shows-a-mixed-design-1">
+
+<pre >##     subject     V1
+##      &lt;fctr&gt; &lt;fctr&gt;
+##  1:       1      1
+##  2:       1      2
+##  3:       1      3
+##  4:       2      1
+##  5:       2      2
+##  6:       2      3
+##  7:       3      1
+##  8:       3      2
+##  9:       3      3
+## 10:       4      1
+## 11:       4      2
+## 12:       4      3
+## 13:       5      1
+## 14:       5      2
+## 15:       5      3
+## 16:       6      1
+## 17:       6      2
+## 18:       6      3
+## 19:       7      1
+## 20:       7      2
+## 21:       7      3
+## 22:       8      1
+## 23:       8      2
+## 24:       8      3
+## 25:       9      1
+## 26:       9      2
+## 27:       9      3
+## 28:      10      1
+## 29:      10      2
+## 30:      10      3
+## 31:      11      1
+## 32:      11      2
+## 33:      11      3
+## 34:      12      1
+## 35:      12      2
+## 36:      12      3
+##     subject     V1</pre>
+
+<pre >##     subject     V1
+##      &lt;fctr&gt; &lt;fctr&gt;
+##  1:       1      1
+##  2:       2      1
+##  3:       3      1
+##  4:       4      1
+##  5:       5      2
+##  6:       6      2
+##  7:       7      2
+##  8:       8      2
+##  9:       9      3
+## 10:      10      3
+## 11:      11      3
+## 12:      12      3</pre>
+
+</article></slide><slide class=""><hgroup><h2>Verifying Design Structure with <code>.N</code></h2></hgroup><article  id="verifying-design-structure-with-.n">
+
+<pre class = 'prettyprint lang-r'># For within-subjects factor A: Each subject should appear
+# at multiple levels of A.  So the sum of the number of
+# unique levels of A per subject should be greater than 1.
+d[, unique(A), .(subject)][, .N, .(subject)]
+
+# For between-subjects factor B: Each subject should appear
+# at only one level of B.  So the sum of the number of
+# unique levels of B per subject should be equal to 1.
+d[, unique(B), .(subject)][, .N, .(subject)]</pre>
+
+</article></slide><slide class=""><hgroup><h2>Verifying Design Structure with <code>.N</code>: Factor A is within-subjects</h2></hgroup><article  id="verifying-design-structure-with-.n-factor-a-is-within-subjects">
+
+<pre >##     subject     N
+##      &lt;fctr&gt; &lt;int&gt;
+##  1:       1     3
+##  2:       2     3
+##  3:       3     3
+##  4:       4     3
+##  5:       5     3
+##  6:       6     3
+##  7:       7     3
+##  8:       8     3
+##  9:       9     3
+## 10:      10     3
+## 11:      11     3
+## 12:      12     3</pre>
+
+</article></slide><slide class=""><hgroup><h2>Verifying Design Structure with <code>.N</code>: Factor B is between-subjects</h2></hgroup><article  id="verifying-design-structure-with-.n-factor-b-is-between-subjects">
+
+<pre >##     subject     N
+##      &lt;fctr&gt; &lt;int&gt;
+##  1:       1     1
+##  2:       2     1
+##  3:       3     1
+##  4:       4     1
+##  5:       5     1
+##  6:       6     1
+##  7:       7     1
+##  8:       8     1
+##  9:       9     1
+## 10:      10     1
+## 11:      11     1
+## 12:      12     1</pre>
+
+</article></slide><slide class=""><hgroup><h2>Anatomy of a Mixed ANOVA Table</h2></hgroup><article  id="anatomy-of-a-mixed-anova-table">
+
+<table class = 'rmdtable'>
+<col width="23.214286%" />
+<col width="16.071429%" />
+<col width="16.071429%" />
+<col width="17.857143%" />
+<col width="17.857143%" />
+<col width="8.928571%" />
+<tr class="header">
+<th align="left">Effect</th>
+<th align="left">DFn</th>
+<th align="left">DFd</th>
+<th align="left">SS</th>
+<th align="left">MS</th>
+<th align="left">F</th>
+</tr>
+<tr class="odd">
+<td align="left">\(B\)</td>
+<td align="left">\(b - 1\)</td>
+<td align="left">\(N - b\)</td>
+<td align="left">\(\mathrm{SS}_B\)</td>
+<td align="left">\(\mathrm{MS}_B\)</td>
+<td align="left">\(F_B\)</td>
+</tr>
+<tr class="even">
+<td align="left">\(A\)</td>
+<td align="left">\(a - 1\)</td>
+<td align="left">\((a - 1)(N - b)\)</td>
+<td align="left">\(\mathrm{SS}_A\)</td>
+<td align="left">\(\mathrm{MS}_A\)</td>
+<td align="left">\(F_A\)</td>
+</tr>
+<tr class="odd">
+<td align="left">\(A \times B\) Interaction</td>
+<td align="left">\((a - 1)(b - 1)\)</td>
+<td align="left">\((a - 1)(N - b)\)</td>
+<td align="left">\(\mathrm{SS}_{AB}\)</td>
+<td align="left">\(\mathrm{MS}_{AB}\)</td>
+<td align="left">\(F_{AB}\)</td>
+</tr>
+</table>
+
+<ul>
+<li>\(a\): Number of levels in within-subjects factor (\(A\))</li>
+<li>\(b\): Number of levels in between-subjects factor (\(B\))</li>
+<li>\(N\): Total number of subjects</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2><code>ezANOVA</code> makes mixed ANOVA very easy.</h2></hgroup><article  id="ezanova-makes-mixed-anova-very-easy.">
+
+<ul>
+<li>Use the <code>within</code> and <code>between</code> arguments to specify factor roles:</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>d[, A := factor(A)]
+d[, B := factor(B)]
+d[, subject := factor(subject)]
+ezANOVA(data = d,
+        dv = y,
+        wid = subject,
+        within = .(A),
+        between = .(B))</pre>
+
+</article></slide><slide class=""><hgroup><h2><code>ezANOVA</code> makes mixed ANOVA very easy.</h2></hgroup><article  id="ezanova-makes-mixed-anova-very-easy.-1">
 
 <pre >## $ANOVA
-##   Effect DFn DFd          F         p p&lt;.05         ges
-## 2      B   1   8 0.03562049 0.8550013       0.002035179
-## 3      A   1   8 0.95684635 0.3566324       0.060878399
-## 4    B:A   1   8 0.33062325 0.5810987       0.021908471</pre>
+##   Effect DFn DFd         F            p p&lt;.05        ges
+## 2      B   2   9  1.003485 4.041906e-01       0.06945186
+## 3      A   2  18 19.300951 3.326391e-05     * 0.58793204
+## 4    B:A   4  18  4.058954 1.617267e-02     * 0.37503908
+## 
+## $`Mauchly&#39;s Test for Sphericity`
+##   Effect         W         p p&lt;.05
+## 3      A 0.8677183 0.5669112      
+## 4    B:A 0.8677183 0.5669112      
+## 
+## $`Sphericity Corrections`
+##   Effect       GGe        p[GG] p[GG]&lt;.05      HFe        p[HF] p[HF]&lt;.05
+## 3      A 0.8831724 8.310193e-05         * 1.082679 3.326391e-05         *
+## 4    B:A 0.8831724 2.142083e-02         * 1.082679 1.617267e-02         *</pre>
 
-</article></slide><slide class=""><hgroup><h2>Assumption checks?</h2></hgroup><article  id="assumption-checks">
+</article></slide><slide class=""><hgroup><h2>Sanity check degrees of freedom</h2></hgroup><article  id="sanity-check-degrees-of-freedom">
+
+<pre class = 'prettyprint lang-r'>d[, length(unique(A))] # return number of levels of A</pre>
+
+<pre >## [1] 3</pre>
+
+<pre class = 'prettyprint lang-r'>d[, length(unique(B))] # return number of levels of B</pre>
+
+<pre >## [1] 3</pre>
+
+<pre class = 'prettyprint lang-r'>d[, length(unique(subject))] # return number of subjects</pre>
+
+<pre >## [1] 12</pre>
+
+</article></slide><slide class=""><hgroup><h2><code>ezANOVA</code> Output for Mixed Designs</h2></hgroup><article  id="ezanova-output-for-mixed-designs">
+
+<ol>
+<li><p>Standard ANOVA table with F-statistics and p-values</p></li>
+<li><p>Mauchly’s Test for Sphericity reported only for within-subject factors with greater than 2 levels</p></li>
+<li><p>Sphericity Corrections: Greenhouse-Geisser and Huynh-Feldt corrections to be used when Mauchly’s test is significant</p></li>
+<li><p>Levene’s Test for Homogeneity of variance for between-subjects factors</p></li>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Assumptions of a Mixed ANOVA</h2></hgroup><article  id="assumptions-of-a-mixed-anova">
 
 <ul>
-<li><p><code>ezANOVA</code> returns the following:</p></li>
-<li><p>ANOVA A data frame containing the ANOVA results.</p></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+<li>Between-subjects factors (e.g., Group \(B\)):
 
 <ul>
-<li>Mauchly’s Test for Sphericity If any within-Ss variables with &gt;2 levels are present, a data frame containing the results of Mauchly’s test for Sphericity. Only reported for effects &gt;2 levels because sphericity necessarily holds for effects with only 2 levels.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<ul>
-<li>Sphericity Corrections If any within-Ss variables are present, a data frame containing the Greenhouse-Geisser and Huynh-Feldt epsilon values, and corresponding corrected p-values.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+<li>Independence of observations</li>
+<li>Homogeneity of variance across groups</li>
+</ul></li>
+<li>Within-subjects factors (e.g., Condition \(A\)):
 
 <ul>
-<li>Levene’s Test for Homogeneity If the design is purely between-Ss, a data frame containing the results of Levene’s test for Homogeneity of variance. Note that Huynh-Feldt corrected p-values where the Huynh-Feldt epsilon &gt;1 will use 1 as the correction epsilon.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Into the weeds?</h2></hgroup><article  id="into-the-weeds">
-
-<ul>
-<li><p>It’s beyond the scope of this unit to fully deal with the assumptions of these tests, how to check them, and what do if assumptions are violated.</p></li>
-<li><p>I will be happy for you to undertand the nature of the asumptions, and to have some intuition where they come from.</p></li>
-<li><p>In the case of ANOVAs, key assumptions are made about the distribution of the raw data and their variances.</p></li>
+<li>Sphericity (equal variance of pairwise differences)</li>
+</ul></li>
 </ul></article></slide>
 
 

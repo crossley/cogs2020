@@ -81,16 +81,19 @@ fontsize: 14pt
   - <a href="lectures/week_9/lecture_anova_rm.html" target="_blank">Repeated Measures One-way ANOVA</a>
   - <a href="lectures/week_9/lecture_anova_twoway.html" target="_blank">Two-way ANOVA</a>
   - <a href="lectures/week_9/lecture_anova_mixed.html" target="_blank">Mixed ANOVA</a>
-  - <a href="lectures/week_10/lecture_correlation.html" target="_blank">Correlation</a>
-  - <a href="lectures/week_10/lecture_simple_linear_regression.html" target="_blank">Simple linear regression</a>
+  - <a href="lectures/week_9/lecture_anova_practice.html" target="_blank">ANOVA practice questions</a>
 
 - Week 11
-  - <a href="lectures/week_10/lecture_multiple_regression.html" target="_blank">Multiple regression</a>
-  - <a href="lectures/week_10/lecture_partial_correlation.html" target="_blank">Partial correlation</a>
-  - regressions with categorical predictors
+  - <a href="lectures/week_10/lecture_correlation.html" target="_blank">Correlation</a>
+  - <a href="lectures/week_10/lecture_simple_linear_regression_estimation.html" target="_blank">Estimation in simple linear regression</a>
+  - <a href="lectures/week_10/lecture_simple_linear_regression_assumptions.html" target="_blank">Assumptions in simple linear regression</a>
+  - <a href="lectures/week_10/lecture_simple_linear_regression_model_comparison.html" target="_blank">Model comparison in simple linear regression</a>
 
 - Week 12
-  - Seeing how every NHST can be seen as fitting a linear model
+  - <a href="lectures/week_11/lecture_multiple_regression.html" target="_blank">Multiple regression</a>
+  - Maybe: regressions with categorical predictors
+  - Maybe: Seeing how every NHST can be seen as fitting a linear model
+  - Maybe: partial correlation
 
 - Week 13
   - Loose ends and review
