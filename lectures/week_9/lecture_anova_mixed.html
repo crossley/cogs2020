@@ -3286,17 +3286,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
 ## 36: 7.3772805      3      3      12
 ##             y      A      B subject</pre>
 
-</article></slide><slide class=""><hgroup><h2>Checking that the <code>data.table</code> shows a mixed design</h2></hgroup><article  id="checking-that-the-data.table-shows-a-mixed-design">
+</article></slide><slide class=""><hgroup><h2>Checking that the <code>data.table</code> shows a mixed design: A</h2></hgroup><article  id="checking-that-the-data.table-shows-a-mixed-design-a">
 
 <pre class = 'prettyprint lang-r'># For within-subjects factor A:
 # Each subject should appear at multiple levels of A
-d[, unique(A), .(subject)]
+d[, unique(A), .(subject)]</pre>
 
-# For between-subjects factor B:
-# Each subject should appear at only one level of B
-d[, unique(B), .(subject)]</pre>
-
-</article></slide><slide class=""><hgroup><h2>Checking that the <code>data.table</code> shows a mixed design</h2></hgroup><article  id="checking-that-the-data.table-shows-a-mixed-design-1">
+</article></slide><slide class=""><hgroup><h2>Checking that the <code>data.table</code> shows a mixed design: A</h2></hgroup><article  id="checking-that-the-data.table-shows-a-mixed-design-a-1">
 
 <pre >##     subject     V1
 ##      &lt;fctr&gt; &lt;fctr&gt;
@@ -3337,6 +3333,14 @@ d[, unique(B), .(subject)]</pre>
 ## 35:      12      2
 ## 36:      12      3
 ##     subject     V1</pre>
+
+</article></slide><slide class=""><hgroup><h2>Checking that the <code>data.table</code> shows a mixed design: B</h2></hgroup><article  id="checking-that-the-data.table-shows-a-mixed-design-b">
+
+<pre class = 'prettyprint lang-r'># For between-subjects factor B:
+# Each subject should appear at only one level of B
+d[, unique(B), .(subject)]</pre>
+
+</article></slide><slide class=""><hgroup><h2>Checking that the <code>data.table</code> shows a mixed design: B</h2></hgroup><article  id="checking-that-the-data.table-shows-a-mixed-design-b-1">
 
 <pre >##     subject     V1
 ##      &lt;fctr&gt; &lt;fctr&gt;
@@ -3461,7 +3465,8 @@ ezANOVA(data = d,
         dv = y,
         wid = subject,
         within = .(A),
-        between = .(B))</pre>
+        between = .(B),
+        type=3)</pre>
 
 </article></slide><slide class=""><hgroup><h2><code>ezANOVA</code> makes mixed ANOVA very easy.</h2></hgroup><article  id="ezanova-makes-mixed-anova-very-easy.-1">
 
@@ -3501,22 +3506,29 @@ ezANOVA(data = d,
 <li><p>Standard ANOVA table with F-statistics and p-values</p></li>
 <li><p>Mauchly’s Test for Sphericity reported only for within-subject factors with greater than 2 levels</p></li>
 <li><p>Sphericity Corrections: Greenhouse-Geisser and Huynh-Feldt corrections to be used when Mauchly’s test is significant</p></li>
-<li><p>Levene’s Test for Homogeneity of variance for between-subjects factors</p></li>
+<li><p>Levene’s Test for Homogeneity of variance is only reported for purely between-subjects designs</p></li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2>Assumptions of a Mixed ANOVA</h2></hgroup><article  id="assumptions-of-a-mixed-anova">
+</article></slide><slide class=""><hgroup><h2>Why not Levene’s test for mixed designs?</h2></hgroup><article  id="why-not-levenes-test-for-mixed-designs">
 
 <ul>
-<li>Between-subjects factors (e.g., Group \(B\)):
+<li>Tests homogeneity of variance across groups</li>
+<li>Assumes one score per subject per group</li>
+<li>In a pure between-subjects design, each person contributes one value</li>
+<li>Easy to compare group variances</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Why not Levene’s test for mixed designs?</h2></hgroup><article  id="why-not-levenes-test-for-mixed-designs-1">
 
 <ul>
-<li>Independence of observations</li>
-<li>Homogeneity of variance across groups</li>
-</ul></li>
-<li>Within-subjects factors (e.g., Condition \(A\)):
+<li><p>In a mixed design, each subject contributes multiple scores (e.g., one for each level of a within-subject factor)</p></li>
+<li><p>Example:</p>
 
 <ul>
-<li>Sphericity (equal variance of pairwise differences)</li>
+<li>DV = Reaction Time</li>
+<li>Between-subjects = Training (Trained vs Untrained)</li>
+<li>Within-subjects = Stimulus Type (A, B)</li>
+<li>Each participant now has two RT values</li>
 </ul></li>
 </ul></article></slide>
 
