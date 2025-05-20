@@ -89,6 +89,7 @@ fontsize: 14pt
   - <a href="lectures/week_10/lecture_simple_linear_regression_estimation.html" target="_blank">Estimation in simple linear regression</a>
   - <a href="lectures/week_10/lecture_simple_linear_regression_assumptions.html" target="_blank">Assumptions in simple linear regression</a>
   - <a href="lectures/week_10/lecture_simple_linear_regression_model_comparison.html" target="_blank">Model comparison in simple linear regression</a>
+  - <a href="lectures/week_10/lecture_simple_linear_regression_example_questions.html" target="_blank">Simple linear regression example questions</a>
 
 - Week 12
   - <a href="lectures/week_11/lecture_multiple_regression.html" target="_blank">Multiple regression</a>
@@ -98,4 +99,3 @@ fontsize: 14pt
 
 - Week 13
   - Loose ends and review
-
