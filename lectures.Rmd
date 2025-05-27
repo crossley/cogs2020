@@ -92,10 +92,9 @@ fontsize: 14pt
   - <a href="lectures/week_10/lecture_simple_linear_regression_example_questions.html" target="_blank">Simple linear regression example questions</a>
 
 - Week 12
-  - <a href="lectures/week_11/lecture_multiple_regression.html" target="_blank">Multiple regression</a>
-  - Maybe: regressions with categorical predictors
-  - Maybe: Seeing how every NHST can be seen as fitting a linear model
-  - Maybe: partial correlation
+  - <a href="lectures/week_12/lecture_multiple_regression.html" target="_blank">Multiple regression</a>
+  - <a href="lectures/week_12/lecture_partial_correlation.html" target="_blank">Partial correlation</a>
+  - <a href="lectures/week_12/lecture_glm.html" target="_blank">General Linear Model (GLM)</a>
 
 - Week 13
   - Loose ends and review
