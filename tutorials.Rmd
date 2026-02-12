@@ -8,23 +8,7 @@ output:
 fontsize: 14pt
 ---
 
-## Resources from our tutors
-
-- <a href="tutorials/tutors/COGS2020-WEEK1-TUTORIAL-guide.html" target="_blank">Tutorial 1 worksheet</a>
-- <a href="tutorials/tutors/COGS2020-WEEK2-TUTORIAL-blank.html" target="_blank">Tutorial 2 worksheet</a>
-  - <a href="tutorials/tutors/COGS2020-WEEK2-TUTORIAL-solutions.html" target="_blank">Tutorial 2 solutions</a>
-- <a href="tutorials/tutors/COGS2020-WEEK2-TUTORIAL-blank.html" target="_blank">Tutorial 2 worksheet</a>
-  - <a href="tutorials/tutors/COGS2020-WEEK3-TUTORIAL-solutions.html" target="_blank">Tutorial 3 solutions</a>
-- <a href="tutorials/tutors/COGS2020-WEEK3-TUTORIAL-blank.html" target="_blank">Tutorial 3 worksheet</a>
-- <a href="tutorials/tutors/COGS2020-WEEK4-TUTORIAL.html" target="_blank">Tutorial 4 worksheet</a>
-- <a href="tutorials/tutors/COGS2020week5tutorial2025v2.pdf" target="_blank">Tutorial 5 worksheet</a>
-- <a href="tutorials/tutors/COGS2020week6tutorial2025.pdf" target="_blank">Tutorial 6 worksheet</a>
-- <a href="tutorials/tutors/COGS2020WEEK7TUTORIAL2025-final.pdf" target="_blank">Tutorial 7 slides</a>
-- <a href="tutorials/tutors/COGS2020-WEEK8-TUTORIALEXAMPLE.html" target="_blank">Tutorial 8 worksheet</a>
-- <a href="tutorials/tutors/COGS2020WEEK8TUTORIAL2025-final.pdf" target="_blank">Tutorial 8 slides</a>
-- <a href="tutorials/tutors/COGS2020-WEEK9-TUTORIAL-WORKSHEETblank.html" target="_blank">Tutorial 9</a>
-- <a href="tutorials/tutors/COGS2020-WEEK9-TUTORIAL-WORKSHEETsolutions.html" target="_blank">Tutorial 9 solutions</a>
-- <a href="tutorials/tutors/COGS2020-WEEK9-TUTORIALEXAMPLE.html" target="_blank">Tutorial 9 examples</a>
-- <a href="tutorials/tutors/COGS2020WEEK9TUTORIALcombined.pdf" target="_blank">Tutorial 9 slides</a>
-- <a href="tutorials/tutors/COGS2020-WEEK10-TUTORIAL.html" target="_blank">Tutorial 10</a>
-- <a href="tutorials/tutors/COGS2020-WEEK10-TUTORIALsolutions.html" target="_blank">Tutorial 10 solutions</a>
+- <a href="tutorials/tutorial_1.html" target="_blank">Tutorial 1: Introduction to R and RStudio</a>
+- <a href="tutorials/tutorial_2.html" target="_blank">Tutorial 2: Data Manipulation with `data.table`</a>
+- <a href="tutorials/tutorial_3.html" target="_blank">Tutorial 3: Data Visualization with `ggplot2`</a>
+- <a href="tutorials/tutorial_4.html" target="_blank">Tutorial 4: Data wrangling</a>

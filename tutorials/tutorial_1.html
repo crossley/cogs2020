@@ -12,7 +12,7 @@
 <meta name="author" content="Author: Matthew J. Crossley" />
 
 
-<title>Tutorial 1</title>
+<title>Tutorial 1 - Getting started with R (the language) and RStudio (the IDE)</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -367,27 +367,391 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Tutorial 1</h1>
+<h1 class="title toc-ignore">Tutorial 1 - Getting started with R (the
+language) and RStudio (the IDE)</h1>
 <h4 class="author">Author: Matthew J. Crossley</h4>
-<h4 class="date">Last update: 20 May, 2025</h4>
+<h4 class="date">Last update: 12 February, 2026</h4>
 
 </div>
 
 
-<div id="install-r-and-rstudio" class="section level2">
-<h2>Install R and RStudio</h2>
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>This tutorial is designed to get everyone operational in R and to
+build comfort with core R objects and control flow.</p>
+<hr />
+</div>
+<div id="install-r-and-rstudio-before-class-if-possible" class="section level2">
+<h2>Install R and RStudio (before class, if possible)</h2>
 <ul>
 <li><p>Install R: Find the download link <a href="https://www.r-project.org/">here</a></p></li>
-<li><p>Install RStudio: Find the appropriate download link <a href="https://rstudio.com/products/rstudio/">here</a></p></li>
-<li><p>Learn how to use Rstudio: <a href="https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/">An
-opinionated tour of RStudio</a></p></li>
+<li><p>Install RStudio: Find the download link <a href="https://posit.co/download/rstudio-desktop/">here</a></p></li>
 </ul>
+<p>If you already have both installed, you can skip this section.</p>
+<hr />
+</div>
+<div id="r-vs-rstudio-important" class="section level2">
+<h2>R vs RStudio (important!)</h2>
+<p>A common confusion is thinking <strong>R and RStudio are the same
+thing</strong>. They are not.</p>
+<div id="r-the-language" class="section level3">
+<h3>R (the language)</h3>
+<ul>
+<li><p><strong>R is the programming language</strong> (and the software
+that runs R code).</p></li>
+<li><p>If you install R, you can run R code <em>without
+RStudio</em>.</p></li>
+</ul>
+</div>
+<div id="rstudio-the-ide" class="section level3">
+<h3>RStudio (the IDE)</h3>
+<ul>
+<li><p><strong>RStudio is an editor + interface</strong> (an IDE which
+stands for Interactive Development Environment).</p></li>
+<li><p>It helps you write and organise R code, but it is not the
+language itself.</p></li>
+</ul>
+<p>This unit teaches <strong>R</strong>. We use <strong>RStudio</strong>
+simply because many people find they enjoy using it. But you can use any
+editor or interface you like to write and run R code.</p>
+<hr />
+</div>
+</div>
+<div id="running-r-without-rstudio-base-r" class="section level2">
+<h2>Running R without RStudio (base R)</h2>
+<p>You can run R in at least two common “no RStudio” ways.</p>
+<div id="option-a-run-r-interactively-in-a-terminal" class="section level3">
+<h3>Option A: Run R interactively in a Terminal</h3>
+<ol style="list-style-type: decimal">
+<li><p>Open a terminal (Mac: Terminal, Windows: PowerShell or Terminal,
+Linux: any terminal).</p></li>
+<li><p>Type <code>R</code></p></li>
+<li><p>You will enter the R console where you can type things like
+(press enter after each line to execute):</p></li>
+</ol>
+<pre class="r"><code>1 + 1
+x &lt;- 10
+x * 2
+q()</code></pre>
+</div>
+<div id="option-b-run-an-r-script-from-a-terminal" class="section level3">
+<h3>Option B: Run an R script from a Terminal</h3>
+<ol style="list-style-type: decimal">
+<li>Create a plain text file named <code>test_script.R</code>
+containing:</li>
+</ol>
+<pre class="r"><code>x &lt;- 10
+y &lt;- 5
+z &lt;- x + y
+print(z)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>In a terminal, navigate to the directory where you saved
+<code>test_script.R</code> and run
+<code>Rscript test_script.R</code></li>
+</ol>
+<hr />
+</div>
+</div>
+<div id="rstudio-orientation-optional" class="section level2">
+<h2>RStudio orientation (Optional)</h2>
+<p>By default, RStudio has a 4-pane layout.</p>
+<ul>
+<li><strong>Source</strong>: where you write scripts (<code>.R</code>
+files)</li>
+<li><strong>Console</strong>: where code runs</li>
+<li><strong>Environment/History</strong>: your objects (variables) are
+listed here</li>
+<li><strong>Files/Plots/Help</strong>: where output appears</li>
+</ul>
+<p>The idea is to write code in the <strong>script</strong>, run it in
+the <strong>console</strong>, and see results in the
+<strong>environment</strong> and <strong>plots</strong>.</p>
+<p>To run a line of code in the script, place your cursor on the line
+and press <code>Ctrl + Enter</code> (Windows) or
+<code>Cmd + Enter</code> (Mac). You can run multiple lines by selecting
+them and pressing the same shortcut.</p>
+<p>You can restart your session and start from clean slate (clear all
+objects in the environment) by navigating to the <code>session</code>
+menu and clicking <code>Restart R</code> (or using the keyboard
+shortcut).</p>
+<hr />
+</div>
+<div id="part-1-variables-and-basic-operations" class="section level2">
+<h2>Part 1 — Variables and basic operations</h2>
+<pre class="r"><code># A numeric variable
+x &lt;- 10
+y &lt;- 5
+
+# Basic arithmetic
+z &lt;- x + y
+z
+## [1] 15
+
+# A character variable (text)
+s1 &lt;- &quot;10&quot;
+s2 &lt;- &quot;5&quot;
+
+# Convert text to numeric
+as.numeric(s1) + as.numeric(s2)
+## [1] 15
+
+# A logical variable (TRUE/FALSE)
+x == y
+## [1] FALSE
+x &gt; y
+## [1] TRUE
+x &lt; y
+## [1] FALSE</code></pre>
+<p><strong>Inspect types</strong></p>
+<pre class="r"><code>class(x)
+## [1] &quot;numeric&quot;
+class(s1)
+## [1] &quot;character&quot;
+class(x == y)
+## [1] &quot;logical&quot;</code></pre>
+<hr />
+</div>
+<div id="part-2-vectors-lists-and-data.frames" class="section level2">
+<h2>Part 2 — Vectors, lists, and data.frames</h2>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
+<p>A vector is a 1D container where elements are usually the same
+type.</p>
+<pre class="r"><code>v_num &lt;- c(2, 3, 5, 7, 11)
+v_num
+## [1]  2  3  5  7 11
+
+v_chr &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+v_chr
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;
+
+v_log &lt;- c(TRUE, FALSE, TRUE)
+v_log
+## [1]  TRUE FALSE  TRUE</code></pre>
+</div>
+<div id="lists" class="section level3">
+<h3>Lists</h3>
+<p>A list can hold mixed types.</p>
+<pre class="r"><code>L &lt;- list(1, 2, &quot;a&quot;, &quot;b&quot;, TRUE)
+L
+## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 2
+## 
+## [[3]]
+## [1] &quot;a&quot;
+## 
+## [[4]]
+## [1] &quot;b&quot;
+## 
+## [[5]]
+## [1] TRUE</code></pre>
+</div>
+<div id="data.frames" class="section level3">
+<h3>data.frames</h3>
+<p>A data.frame is a table-like object where columns can have different
+types.</p>
+<pre class="r"><code>v1 &lt;- c(&#39;I&#39;, &#39;I&#39;, &#39;I&#39;, &#39;I&#39;, &#39;II&#39;, &#39;II&#39;, &#39;II&#39;, &#39;II&#39;)
+v2 &lt;- c(&#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;c&#39;, &#39;c&#39;, &#39;d&#39;, &#39;d&#39;)
+v3 &lt;- c(-1.6297880,
+        -1.0738506,
+         0.0299236,
+        -1.5435811,
+        -0.5133278,
+        -1.4716107,
+        -1.1986316,
+        -1.5548207)
+
+d &lt;- data.frame(v1=v1, v2=v2, v3=v3)
+d
+##   v1 v2         v3
+## 1  I  a -1.6297880
+## 2  I  a -1.0738506
+## 3  I  b  0.0299236
+## 4  I  b -1.5435811
+## 5 II  c -0.5133278
+## 6 II  c -1.4716107
+## 7 II  d -1.1986316
+## 8 II  d -1.5548207</code></pre>
+<hr />
+</div>
+</div>
+<div id="part-3-indexing-and-accessing-elements" class="section level2">
+<h2>Part 3 — Indexing and accessing elements</h2>
+<div id="vector-indexing" class="section level3">
+<h3>Vector indexing</h3>
+<pre class="r"><code>tmp &lt;- c(0.24, 0.015, 1.34, -1.00, -0.15)
+
+tmp[1]   # first element
+## [1] 0.24
+tmp[3]   # third element
+## [1] 1.34
+tmp[c(1,3,5)]  # multiple elements
+## [1]  0.24  1.34 -0.15</code></pre>
+</div>
+<div id="list-indexing" class="section level3">
+<h3>List indexing</h3>
+<p>Lists have two common indexing styles:</p>
+<ul>
+<li><code>[[ ]]</code> pulls out the element itself</li>
+<li><code>[ ]</code> keeps a list</li>
+</ul>
+<pre class="r"><code>tmp &lt;- list(0.5, &quot;W&quot;, FALSE)
+
+tmp[2]     # returns a list of length 1
+## [[1]]
+## [1] &quot;W&quot;
+tmp[[2]]   # returns the element itself
+## [1] &quot;W&quot;
+
+class(tmp[2])
+## [1] &quot;list&quot;
+class(tmp[[2]])
+## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="data.frame-column-access" class="section level3">
+<h3>data.frame column access</h3>
+<pre class="r"><code>tmp &lt;- data.frame(v1=c(1, 2, 3),
+                  v2=c(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;),
+                  v3=c(TRUE, TRUE, FALSE))
+
+tmp$v2
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;
+tmp[, &quot;v2&quot;]
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;
+tmp[ , 2]
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
+<hr />
+</div>
+</div>
+<div id="part-4-type-coercion-important" class="section level2">
+<h2>Part 4 — Type coercion (important!)</h2>
+<p>R will sometimes coerce types (quietly).</p>
+<pre class="r"><code>element_1 &lt;- &quot;A&quot;
+element_2 &lt;- 2
+element_3 &lt;- FALSE
+
+L &lt;- list(element_1, element_2, element_3)
+V &lt;- c(element_1, element_2, element_3)
+
+L
+## [[1]]
+## [1] &quot;A&quot;
+## 
+## [[2]]
+## [1] 2
+## 
+## [[3]]
+## [1] FALSE
+V
+## [1] &quot;A&quot;     &quot;2&quot;     &quot;FALSE&quot;
+
+class(L[[2]])
+## [1] &quot;numeric&quot;
+class(V[2])
+## [1] &quot;character&quot;</code></pre>
+<p>Key idea: - Lists preserve types per element - Vectors coerce to a
+single type when needed</p>
+<hr />
+</div>
+<div id="part-5-control-flow-for-while-if" class="section level2">
+<h2>Part 5 — Control flow: for, while, if</h2>
+<div id="for-loops" class="section level3">
+<h3>for loops</h3>
+<pre class="r"><code>x &lt;- 5
+for(i in c(1, 3, 5)) {
+  x &lt;- i + 2
+}
+x
+## [1] 7
+i
+## [1] 5</code></pre>
+</div>
+<div id="while-loops" class="section level3">
+<h3>while loops</h3>
+<pre class="r"><code>x &lt;- 10
+y &lt;- c(1, 2, 3)
+while(x &gt; 5) {
+  y &lt;- c(x, y)
+  x &lt;- x - 1
+}
+y
+## [1]  6  7  8  9 10  1  2  3
+length(y)
+## [1] 8</code></pre>
+</div>
+<div id="if-else" class="section level3">
+<h3>if / else</h3>
+<pre class="r"><code>x &lt;- 10
+y &lt;- -10
+
+if(x &gt; y) {
+  z &lt;- 10
+} else {
+  z &lt;- 2
+}
+z
+## [1] 10</code></pre>
+</div>
+<div id="break" class="section level3">
+<h3>break</h3>
+<pre class="r"><code>for(i in 1:10) {
+  x &lt;- i * 2
+  if(x &gt; 5) {
+    break
+  }
+}
+i
+## [1] 3
+x
+## [1] 6</code></pre>
+<hr />
+</div>
+</div>
+<div id="part-6-writing-and-calling-functions" class="section level2">
+<h2>Part 6 — Writing and calling functions</h2>
+<p>Functions are a way to encapsulate code and make it reusable. They
+can help avoid repetition and improve readability. The idea is to define
+a function once, and then call it whenever you need to perform that
+task.</p>
+<pre class="r"><code>f &lt;- function(x) {
+  y &lt;- x^2
+  return(y)
+}
+
+f(3)
+## [1] 9</code></pre>
+<p>Functions can call other functions.</p>
+<pre class="r"><code>g &lt;- function(x) {
+  y &lt;- x - 2
+  return(y)
+}
+
+f(g(4))
+## [1] 4</code></pre>
+<p>Named arguments are allowed, but keep them readable.</p>
+<pre class="r"><code>h &lt;- function(x, y, z) {
+  res &lt;- x + y - z
+  return(res)
+}
+
+h(2, 1, -4)
+## [1] 7
+h(x=2, y=1, z=-4)
+## [1] 7</code></pre>
+<hr />
 </div>
 <div id="work-through-these-practice-exercises" class="section level2">
 <h2>Work through these practice exercises</h2>
 <ul>
-<li>It’s a good idea to work through these on your own, but if you get
-very stuck, solutions can be found <a href="tutorial_1_solutions.html">here</a></li>
+<li><p>It’s a good idea to work through these on your own, but if you
+get very stuck, solutions can be found <a href="tutorial_1_solutions.html">here</a></p></li>
+<li><p>First, it’s a good idea to restart your r session:</p>
+<ul>
+<li>session -&gt; restart r</li>
+</ul></li>
 </ul>
 <div id="section" class="section level3">
 <h3>1.</h3>
