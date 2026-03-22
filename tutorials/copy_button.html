@@ -1,0 +1,115 @@
+<style>
+pre {
+  position: relative;
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 2;
+  border: 1px solid #c8d2dc;
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #2f4f4f;
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 0.35rem 0.55rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.code-copy-button:hover,
+.code-copy-button:focus {
+  background: #f3f7fa;
+  border-color: #93abc2;
+  color: #17324d;
+  outline: none;
+}
+
+.code-copy-button.is-copied {
+  background: #e8f3ea;
+  border-color: #7dae89;
+  color: #1f5c2e;
+}
+
+.code-copy-button.is-error {
+  background: #fbeaea;
+  border-color: #d39a9a;
+  color: #8a2d2d;
+}
+
+pre > code {
+  display: block;
+  padding-top: 2rem;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var blocks = document.querySelectorAll("pre > code");
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+
+    return new Promise(function(resolve, reject) {
+      var textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.setAttribute("readonly", "");
+      textArea.style.position = "absolute";
+      textArea.style.left = "-9999px";
+      document.body.appendChild(textArea);
+      textArea.select();
+
+      try {
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        resolve();
+      } catch (error) {
+        document.body.removeChild(textArea);
+        reject(error);
+      }
+    });
+  }
+
+  blocks.forEach(function(codeBlock) {
+    var pre = codeBlock.parentElement;
+
+    if (!pre || pre.dataset.copyButtonAdded === "true") {
+      return;
+    }
+
+    pre.dataset.copyButtonAdded = "true";
+
+    var button = document.createElement("button");
+    button.className = "code-copy-button";
+    button.type = "button";
+    button.textContent = "Copy";
+    button.setAttribute("aria-label", "Copy code to clipboard");
+
+    button.addEventListener("click", function() {
+      copyText(codeBlock.innerText).then(function() {
+        button.textContent = "Copied";
+        button.classList.remove("is-error");
+        button.classList.add("is-copied");
+        window.setTimeout(function() {
+          button.textContent = "Copy";
+          button.classList.remove("is-copied");
+        }, 1500);
+      }).catch(function() {
+        button.textContent = "Error";
+        button.classList.remove("is-copied");
+        button.classList.add("is-error");
+        window.setTimeout(function() {
+          button.textContent = "Copy";
+          button.classList.remove("is-error");
+        }, 1500);
+      });
+    });
+
+    pre.insertBefore(button, codeBlock);
+  });
+});
+</script>
