@@ -39,7 +39,22 @@ being learned.
 
 ### Background reading
 
-Check back later.
+These are **background papers**. They are **not** the paper describing this
+final project dataset. They are meant to help you understand the theoretical
+context and frame your final project.
+
+- Crossley, M. J., Roeder, J. L., Helie, S., & Ashby, F. G. (2018).
+  Trial-by-trial switching between procedural and declarative categorization
+  systems. *Psychological Research, 82*(2), 371-384.
+  https://doi.org/10.1007/s00426-016-0828-4
+
+- Gregory Ashby, F., & Crossley, M. J. (2010). Interactions between
+  declarative and procedural-learning categorization systems. *Neurobiology of
+  Learning and Memory, 94*(1), 1-12. https://doi.org/10.1016/j.nlm.2010.03.001
+
+- Turner, B. O., Crossley, M. J., & Ashby, F. G. (2017). Hierarchical control
+  of procedural and declarative category-learning systems. *NeuroImage, 150*,
+  150-161. https://doi.org/10.1016/j.neuroimage.2017.02.039
 
 
 ---

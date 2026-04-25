@@ -50,39 +50,38 @@ sessions; EEG data collected during in-lab sessions are not included.
 
 ### Background reading
 
-The following papers provide accessible background on the
-cognitive neuroscience of automaticity in category learning
-and are recommended if you want to understand the
-theoretical context for this experiment:
+These are **background papers**. They are **not** the paper describing this
+final project dataset. They are meant to help you understand the theoretical
+context and frame your final project.
 
 - Ashby, F. G., Ennis, J. M., & Spiering, B. J. (2007). A
   neurobiological theory of automaticity in perceptual
   categorization. Psychological Review, 114(3), 632–656.
   https://doi.org/10.1037/0033-295X.114.3.632
-  (https://doi.org/10.1037/0033-295X.114.3.632)
 
 - Hélie, S., Waldschmidt, J. G., & Ashby, F. G. (2010).
   Automaticity in rule-based and information-integration
   categorization. Attention, Perception, & Psychophysics,
-  72(4), 1013–1031.  https://doi.org/10.3758/APP.72.4.1013
-  (https://doi.org/10.3758/APP.72.4.1013)
+  72(4), 1013–1031. https://doi.org/10.3758/APP.72.4.1013
 
 - Waldschmidt, J. G., & Ashby, F. G. (2011). Cortical and
   striatal contributions to automaticity in
   information-integration categorization. NeuroImage, 56(3),
   1791–1802.
   https://doi.org/10.1016/j.neuroimage.2011.02.011
-  (https://doi.org/10.1016/j.neuroimage.2011.02.011)
 
 - Ashby, F. G., & Crossley, M. J. (2012). Automaticity and
   multiple memory systems. WIREs Cognitive Science, 3(3),
   363–376. https://doi.org/10.1002/wcs.1172
-  (https://doi.org/10.1002/wcs.1172)
+
+- Cantwell, G., Crossley, M. J., & Ashby, F. G. (2015). Multiple stages of
+  learning in perceptual categorization: Evidence and neurocomputational
+  theory. *Psychonomic Bulletin & Review, 22*(6), 1598-1613.
+  https://doi.org/10.3758/s13423-015-0827-2
 
 - Roeder, J. L., & Ashby, F. G. (2016). What is automatized
   during perceptual categorization? Cognition, 154, 22–33.
   https://doi.org/10.1016/j.cognition.2016.04.005
-  (https://doi.org/10.1016/j.cognition.2016.04.005)
 
 ---
 

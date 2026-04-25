@@ -53,7 +53,32 @@ categories (New Learn condition)?
 
 ### Background reading
 
-Check back later.
+These are **background papers**. They are **not** the paper describing this
+final project dataset. They are meant to help you understand the theoretical
+context and frame your final project.
+
+- Ashby, F. G., & Crossley, M. J. (2011). A Computational Model of How
+  Cholinergic Interneurons Protect Striatal-dependent Learning. *Journal of
+  Cognitive Neuroscience, 23*(6), 1549-1566.
+  https://doi.org/10.1162/jocn.2010.21523
+
+- Crossley, M. J., Ashby, F. G., & Maddox, W. T. (2013). Erasing the engram:
+  The unlearning of procedural skills. *Journal of Experimental Psychology:
+  General, 142*(3), 710-741. https://doi.org/10.1037/a0030059
+
+- Crossley, M. J., Ashby, F. G., & Maddox, W. T. (2014). Context-dependent
+  savings in procedural category learning. *Brain and Cognition, 92*, 1-10.
+  https://doi.org/10.1016/j.bandc.2014.09.008
+
+- Crossley, M. J., Horvitz, J. C., Balsam, P. D., & Ashby, F. G. (2016).
+  Expanding the role of striatal cholinergic interneurons and the midbrain
+  dopamine system in appetitive instrumental conditioning. *Journal of
+  Neurophysiology, 115*(1), 240-254. https://doi.org/10.1152/jn.00473.2015
+
+- Crossley, M. J., Maddox, W. T., & Ashby, F. G. (2018). Increased cognitive
+  load enables unlearning in procedural category learning. *Journal of
+  Experimental Psychology: Learning, Memory, and Cognition, 44*(11), 1845-1853.
+  https://doi.org/10.1037/xlm0000554
 
 ---
 
